@@ -1,1 +1,1568 @@
-h1 fa
+<!DOCTYPE html>
+<html lang="bn" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>প্রকাশ — সবার জন্য একটি মুক্ত মঞ্চ</title>
+  <meta name="description" content="প্রকাশ — যেখানে যে কেউ তার লেখা, ভাবনা, গল্প বা কবিতা ভাগ করে নিতে পারে।" />
+  <meta name="author" content="প্রকাশ" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230d1117'/><circle cx='16' cy='16' r='8' fill='none' stroke='%236e9ef7' stroke-width='1.8'/><circle cx='16' cy='16' r='3.5' fill='%236e9ef7' opacity='0.9'/><line x1='16' y1='4' x2='16' y2='8' stroke='%236e9ef7' stroke-width='1.5' stroke-linecap='round'/><line x1='16' y1='24' x2='16' y2='28' stroke='%236e9ef7' stroke-width='1.5' stroke-linecap='round'/><line x1='4' y1='16' x2='8' y2='16' stroke='%236e9ef7' stroke-width='1.5' stroke-linecap='round'/><line x1='24' y1='16' x2='28' y2='16' stroke='%236e9ef7' stroke-width='1.5' stroke-linecap='round'/></svg>">
+  <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f0f4ff" media="(prefers-color-scheme: light)" />
+
+  <script>
+    (function() {
+      var t = localStorage.getItem('prokash-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600&family=Noto+Serif+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+
+    :root {
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --dur: 0.32s;
+    }
+
+    [data-theme="dark"] {
+      --bg:          #0d1117;
+      --bg2:         #111520;
+      --surface:     #161b27;
+      --surface2:    #1c2133;
+      --surface3:    #232840;
+      --text:        #cdd5f0;
+      --text-dim:    #8892b0;
+      --text-muted:  #465070;
+      --accent:      #6e9ef7;
+      --accent2:     #a5c3ff;
+      --accent-dim:  rgba(110,158,247,0.10);
+      --accent-glow: rgba(110,158,247,0.20);
+      --border:      rgba(110,158,247,0.12);
+      --border-soft: rgba(110,158,247,0.07);
+      --shadow:      rgba(0,0,0,0.7);
+      --red:         #f07070;
+      --green:       #70c9a0;
+      --gold:        #f0c060;
+      --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E");
+    }
+
+    [data-theme="light"] {
+      --bg:          #f0f4ff;
+      --bg2:         #e8eef8;
+      --surface:     #dde4f5;
+      --surface2:    #d2daf0;
+      --surface3:    #c7d0e8;
+      --text:        #0d1117;
+      --text-dim:    #374060;
+      --text-muted:  #7080a8;
+      --accent:      #3366cc;
+      --accent2:     #5588ee;
+      --accent-dim:  rgba(51,102,204,0.09);
+      --accent-glow: rgba(51,102,204,0.18);
+      --border:      rgba(51,102,204,0.14);
+      --border-soft: rgba(51,102,204,0.07);
+      --shadow:      rgba(0,0,0,0.10);
+      --red:         #cc4444;
+      --green:       #3a9966;
+      --gold:        #cc9922;
+      --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+    }
+
+    html {
+      font-family: 'Hind Siliguri', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      scroll-behavior: smooth;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+
+    body { min-height: 100vh; position: relative; overflow-x: hidden; }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background: var(--grain);
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* Subtle starfield-like ambient glow on dark */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80vw; height: 80vw;
+      max-width: 900px; max-height: 900px;
+      background: radial-gradient(ellipse at center, rgba(110,158,247,0.04) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── PROGRESS BAR ── */
+    #progressBar {
+      position: fixed; top: 0; left: 0;
+      height: 2px; width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      z-index: 999; transition: width 0.08s linear;
+      pointer-events: none; opacity: 0;
+    }
+    #progressBar.visible { opacity: 1; }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100; height: 3.75rem;
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+
+    .logo {
+      font-size: 1.5rem; font-weight: 600;
+      color: var(--accent); cursor: pointer;
+      letter-spacing: 0.02em; user-select: none;
+      transition: opacity 0.2s; display: flex; align-items: baseline; gap: 0.4rem;
+      flex-shrink: 0;
+    }
+    .logo:hover { opacity: 0.75; }
+    .logo-dot {
+      font-size: 0.58rem; color: var(--text-muted);
+      font-weight: 300; letter-spacing: 0.10em;
+      font-family: 'Hind Siliguri', sans-serif;
+      align-self: center;
+    }
+    .logo-pulse {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      display: inline-block; margin-left: 0.1rem; margin-bottom: 0.1rem;
+      animation: pulseGlow 2.2s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%,100% { box-shadow: 0 0 0 0 var(--accent-glow); opacity: 1; }
+      50% { box-shadow: 0 0 0 5px transparent; opacity: 0.55; }
+    }
+
+    .header-right { display: flex; align-items: center; gap: 0.45rem; }
+
+    .btn-icon {
+      background: none; border: none; cursor: pointer;
+      color: var(--text-muted); width: 2.1rem; height: 2.1rem;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      transition: color 0.2s, background 0.2s; font-size: 0.9rem; flex-shrink: 0; position: relative;
+    }
+    .btn-icon:hover { color: var(--accent); background: var(--accent-dim); }
+    .btn-icon.active { color: var(--accent); background: var(--accent-dim); }
+
+    .btn-ghost {
+      background: none; border: 1px solid var(--border);
+      color: var(--text-muted); font-family: 'Hind Siliguri', sans-serif;
+      font-size: 0.78rem; font-weight: 400;
+      padding: 0.28rem 0.9rem; border-radius: 2rem;
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .btn-ghost:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+
+    .btn-primary-sm {
+      background: var(--accent); color: var(--bg);
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 0.78rem; font-weight: 600;
+      padding: 0.3rem 1rem; border-radius: 2rem;
+      border: none; cursor: pointer;
+      transition: opacity 0.2s; white-space: nowrap;
+    }
+    .btn-primary-sm:hover { opacity: 0.85; }
+
+    /* ── SEARCH BAR ── */
+    #searchBar {
+      position: fixed; top: 3.75rem; left: 0; right: 0;
+      z-index: 99; background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 2rem;
+      transform: translateY(-100%); opacity: 0; pointer-events: none;
+      transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+    }
+    #searchBar.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+    #searchInput {
+      width: 100%; background: var(--surface2);
+      border: 1px solid var(--border); border-radius: 0.5rem;
+      color: var(--text); font-family: 'Hind Siliguri', sans-serif;
+      font-size: 0.9rem; font-weight: 300;
+      padding: 0.55rem 1rem 0.55rem 2.4rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    #searchInput:focus { border-color: var(--accent); }
+    .search-wrap { position: relative; }
+    .search-wrap::before {
+      content: '⌕'; position: absolute; left: 0.75rem; top: 50%;
+      transform: translateY(-50%); color: var(--text-muted); font-size: 1.1rem; pointer-events: none;
+    }
+    #searchCount { text-align: right; font-size: 0.72rem; color: var(--text-muted); margin-top: 0.3rem; font-weight: 300; }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 700px; margin: 0 auto;
+      padding: 6rem 1.5rem 7rem;
+      transition: padding-top 0.3s var(--ease);
+      position: relative; z-index: 1;
+    }
+    main.search-open { padding-top: 8.8rem; }
+
+    /* ── VIEWS ── */
+    .view { display: none; }
+    .view.active { display: block; animation: fadeUp 0.4s var(--ease) both; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── HOME HERO ── */
+    .home-eyebrow {
+      font-size: 0.68rem; font-weight: 400; color: var(--text-muted);
+      letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.55rem;
+    }
+    .home-title {
+      font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+      font-weight: 600; color: var(--text);
+      line-height: 1.18; margin-bottom: 0.5rem;
+    }
+    .home-title span { color: var(--accent); font-weight: 300; }
+    .home-desc {
+      font-size: 0.88rem; font-weight: 300; color: var(--text-muted);
+      line-height: 1.85; margin-bottom: 0.9rem; max-width: 48ch;
+    }
+    .home-stats { display: flex; gap: 1.4rem; margin-bottom: 2.2rem; flex-wrap: wrap; }
+    .stat-pill { font-size: 0.72rem; font-weight: 300; color: var(--text-dim); display: flex; align-items: center; gap: 0.3rem; }
+    .stat-pill strong { color: var(--accent); font-weight: 600; }
+
+    /* ── CATEGORY STRIP ── */
+    .cat-strip { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+    .cat-btn {
+      background: none; border: 1px solid var(--border);
+      color: var(--text-muted); font-family: 'Hind Siliguri', sans-serif;
+      font-size: 0.76rem; font-weight: 400;
+      padding: 0.22rem 0.75rem; border-radius: 2rem; cursor: pointer;
+      transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;
+    }
+    .cat-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .cat-btn.active { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+    .cat-count {
+      background: var(--accent-dim); color: var(--accent);
+      font-size: 0.62rem; padding: 0.05rem 0.35rem;
+      border-radius: 2rem; min-width: 1.2rem; text-align: center;
+    }
+
+    /* ── TOOLBAR ── */
+    .list-toolbar {
+      display: flex; align-items: center;
+      justify-content: space-between; margin-bottom: 1.1rem;
+    }
+    .sort-group { display: flex; gap: 0.3rem; }
+    .sort-btn {
+      background: none; border: 1px solid var(--border);
+      color: var(--text-muted); font-family: 'Hind Siliguri', sans-serif;
+      font-size: 0.7rem; font-weight: 400;
+      padding: 0.18rem 0.65rem; border-radius: 2rem; cursor: pointer; transition: all 0.2s;
+    }
+    .sort-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .sort-btn.active { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+    .btn-random {
+      background: none; border: none; color: var(--text-muted);
+      font-family: 'Hind Siliguri', sans-serif; font-size: 0.72rem; font-weight: 300;
+      cursor: pointer; display: flex; align-items: center; gap: 0.3rem; padding: 0.2rem 0; transition: color 0.2s;
+    }
+    .btn-random:hover { color: var(--accent); }
+
+    /* ── POST LIST ── */
+    .post-list { display: flex; flex-direction: column; }
+    .post-item {
+      padding: 1.35rem 0;
+      border-bottom: 1px solid var(--border-soft);
+      cursor: pointer;
+      animation: slideIn 0.35s var(--ease) both;
+      transition: padding-left 0.2s var(--ease);
+      position: relative;
+    }
+    .post-item:first-child { border-top: 1px solid var(--border-soft); }
+    .post-item::before {
+      content: ''; position: absolute; left: -0.15rem; top: 50%;
+      transform: translateY(-50%) scaleY(0);
+      width: 2px; height: 55%; background: var(--accent);
+      border-radius: 2px; transition: transform 0.2s var(--ease);
+    }
+    .post-item:hover::before { transform: translateY(-50%) scaleY(1); }
+    .post-item:hover { padding-left: 0.85rem; }
+    .post-item:hover .post-title { color: var(--accent); }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-8px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .post-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.35rem; }
+    .post-title { font-size: 1.04rem; font-weight: 500; color: var(--text); line-height: 1.4; transition: color 0.2s; }
+    .post-cat-badge {
+      font-size: 0.65rem; color: var(--accent);
+      border: 1px solid var(--accent-dim); background: var(--accent-dim);
+      padding: 0.1rem 0.55rem; border-radius: 2rem; white-space: nowrap; flex-shrink: 0; margin-top: 0.15rem;
+    }
+    .post-preview { font-size: 0.82rem; font-weight: 300; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.55rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .post-footer { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+    .post-author-chip {
+      display: flex; align-items: center; gap: 0.35rem;
+      font-size: 0.72rem; color: var(--text-dim); font-weight: 400;
+    }
+    .author-avatar {
+      width: 1.4rem; height: 1.4rem; border-radius: 50%;
+      background: var(--accent-dim); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.58rem; color: var(--accent); font-weight: 600; flex-shrink: 0;
+    }
+    .post-date { font-size: 0.66rem; color: var(--text-muted); font-weight: 300; }
+    .post-meta-sep { color: var(--text-muted); opacity: 0.4; font-size: 0.7rem; }
+
+    /* Like count on list */
+    .post-likes-chip { display: flex; align-items: center; gap: 0.25rem; font-size: 0.68rem; color: var(--text-muted); }
+
+    /* ── EMPTY / LOADING ── */
+    .empty-state { text-align: center; padding: 5rem 0 3rem; color: var(--text-muted); font-weight: 300; font-size: 0.92rem; line-height: 2.2; }
+    .empty-glyph { font-size: 2.5rem; display: block; margin-bottom: 1rem; opacity: 0.22; }
+    .loading-row { display: flex; justify-content: center; align-items: center; gap: 6px; padding: 5rem 0; }
+    .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); animation: dotPulse 1.4s infinite ease-in-out; }
+    .dot:nth-child(2) { animation-delay: 0.18s; }
+    .dot:nth-child(3) { animation-delay: 0.36s; }
+    @keyframes dotPulse { 0%,80%,100%{transform:scale(0.7);opacity:0.25} 40%{transform:scale(1);opacity:1} }
+    .no-results { text-align: center; padding: 3rem 0; color: var(--text-muted); font-size: 0.88rem; font-weight: 300; line-height: 2; }
+    .no-results em { color: var(--accent); font-style: normal; }
+
+    /* ── READING VIEW ── */
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--text-muted); font-size: 0.82rem; font-weight: 300;
+      font-family: 'Hind Siliguri', sans-serif;
+      background: none; border: none; padding: 0; cursor: pointer;
+      margin-bottom: 2.8rem; transition: color 0.2s;
+    }
+    .back-btn:hover { color: var(--accent); }
+
+    .read-eyebrow { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+    .read-title { font-size: clamp(1.55rem, 4.5vw, 2.2rem); font-weight: 600; color: var(--text); line-height: 1.22; margin-bottom: 0.5rem; }
+
+    .read-author-row {
+      display: flex; align-items: center; gap: 0.55rem;
+      margin-bottom: 0.7rem;
+    }
+    .read-author-avatar {
+      width: 2rem; height: 2rem; border-radius: 50%;
+      background: var(--accent-dim); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; color: var(--accent); font-weight: 600; flex-shrink: 0;
+    }
+    .read-author-name { font-size: 0.88rem; font-weight: 500; color: var(--text-dim); }
+    .read-author-date { font-size: 0.72rem; color: var(--text-muted); font-weight: 300; }
+
+    .read-meta { font-size: 0.76rem; color: var(--text-muted); font-weight: 300; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+    .read-meta-sep { opacity: 0.35; }
+    .read-rule { width: 2.5rem; height: 1px; background: linear-gradient(90deg, var(--accent), transparent); margin: 1.5rem 0 2rem; }
+
+    .read-body {
+      font-family: 'Noto Serif Bengali', 'Hind Siliguri', serif;
+      font-size: 1.1rem; font-weight: 300;
+      line-height: 2.15; color: var(--text);
+      white-space: pre-wrap; word-break: break-word; letter-spacing: 0.01em;
+    }
+    .drop-cap-letter { display: block; white-space: pre-wrap; }
+    .drop-cap-letter .first-char {
+      float: left; font-size: 3.8em; line-height: 0.72;
+      margin-right: 0.06em; margin-top: 0.08em;
+      color: var(--accent); font-weight: 600;
+      font-family: 'Noto Serif Bengali', serif;
+    }
+
+    /* ── ACTION BAR ── */
+    .read-actions {
+      display: flex; align-items: center; gap: 0.5rem;
+      margin-top: 2.5rem; padding: 1.2rem 1.5rem;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 0.85rem; flex-wrap: wrap;
+    }
+    .action-btn {
+      background: none; border: 1px solid var(--border);
+      color: var(--text-muted); font-family: 'Hind Siliguri', sans-serif;
+      font-size: 0.75rem; font-weight: 400;
+      padding: 0.3rem 0.85rem; border-radius: 2rem; cursor: pointer;
+      transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem; white-space: nowrap;
+    }
+    .action-btn:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+    .action-btn.active { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+    .action-btn.liked { color: var(--red); border-color: rgba(240,112,112,0.4); background: rgba(240,112,112,0.07); }
+    .action-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* Admin delete in action bar */
+    .action-btn.danger { color: var(--red); border-color: rgba(240,112,112,0.3); }
+    .action-btn.danger:hover { background: rgba(240,112,112,0.1); }
+
+    /* ── RELATED ── */
+    .related-section { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--border-soft); }
+    .related-title { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+    .related-list { display: flex; flex-direction: column; }
+    .related-item {
+      padding: 0.75rem 0; border-bottom: 1px solid var(--border-soft);
+      cursor: pointer; display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem;
+      transition: padding-left 0.2s;
+    }
+    .related-item:first-child { border-top: 1px solid var(--border-soft); }
+    .related-item:hover { padding-left: 0.5rem; }
+    .related-item:hover .related-item-title { color: var(--accent); }
+    .related-item-title { font-size: 0.9rem; font-weight: 400; color: var(--text); transition: color 0.2s; }
+    .related-item-author { font-size: 0.68rem; color: var(--text-muted); font-weight: 300; flex-shrink: 0; }
+
+    /* ── COMMENTS ── */
+    .comments-section { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--border-soft); }
+    .comments-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+    .comments-title { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
+    .comments-count-badge { font-size: 0.68rem; color: var(--accent); border: 1px solid var(--accent-dim); background: var(--accent-dim); padding: 0.08rem 0.55rem; border-radius: 2rem; }
+    .comment-form { display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2rem; }
+    .comments-list { display: flex; flex-direction: column; gap: 0.85rem; }
+    .comment-item { padding: 1rem 1.2rem; background: var(--surface2); border-radius: 0.75rem; border: 1px solid var(--border-soft); animation: fadeUp 0.3s var(--ease) both; }
+    .comment-top { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.5rem; }
+    .comment-name { font-weight: 500; font-size: 0.88rem; color: var(--accent); }
+    .comment-date { font-size: 0.66rem; color: var(--text-muted); font-weight: 300; }
+    .comment-body { font-size: 0.88rem; font-weight: 300; line-height: 1.7; color: var(--text-dim); }
+
+    /* ── READ FOOTER ── */
+    .read-footer { margin-top: 3rem; padding-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+    .read-footer-logo { font-size: 1rem; font-weight: 600; color: var(--accent); opacity: 0.4; }
+    .read-footer-glyph { font-size: 0.72rem; color: var(--text-muted); font-weight: 300; }
+
+    /* ── ADMIN VIEW ── */
+    .admin-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 0.85rem; margin-bottom: 2.5rem; }
+    .admin-stat-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1rem 1.2rem; }
+    .admin-stat-label { font-size: 0.68rem; color: var(--text-muted); font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.35rem; }
+    .admin-stat-value { font-size: 1.7rem; font-weight: 600; color: var(--accent); line-height: 1; }
+    .admin-stat-sub { font-size: 0.68rem; color: var(--text-dim); font-weight: 300; margin-top: 0.2rem; }
+    .admin-section-title { font-size: 0.7rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+    .btn-delete { background: none; border: 1px solid rgba(240,112,112,0.3); color: var(--red); font-size: 0.7rem; padding: 0.18rem 0.6rem; border-radius: 0.35rem; cursor: pointer; transition: all 0.2s; font-family: 'Hind Siliguri', sans-serif; }
+    .btn-delete:hover { background: rgba(240,112,112,0.1); }
+
+    /* ── MODALS ── */
+    .overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.78);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      z-index: 200; display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--ease);
+    }
+    .overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 1.25rem; padding: 2.2rem;
+      width: 100%; max-width: 400px; position: relative;
+      transform: translateY(18px) scale(0.98);
+      transition: transform 0.35s var(--spring), background var(--dur);
+    }
+    .overlay.open .modal { transform: translateY(0) scale(1); }
+    .modal-x { position: absolute; top: 1rem; right: 1rem; }
+    .modal-title { font-size: 1.15rem; font-weight: 600; color: var(--text); margin-bottom: 0.28rem; }
+    .modal-sub { font-size: 0.8rem; font-weight: 300; color: var(--text-muted); margin-bottom: 1.65rem; line-height: 1.6; }
+    .modal-tabs { display: flex; gap: 0; margin-bottom: 1.5rem; border: 1px solid var(--border); border-radius: 0.6rem; overflow: hidden; }
+    .modal-tab {
+      flex: 1; background: none; border: none;
+      color: var(--text-muted); font-family: 'Hind Siliguri', sans-serif;
+      font-size: 0.82rem; font-weight: 400; padding: 0.55rem;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .modal-tab.active { background: var(--accent-dim); color: var(--accent); }
+
+    .field { margin-bottom: 1rem; }
+    .field-label { display: block; font-size: 0.72rem; font-weight: 400; color: var(--text-muted); margin-bottom: 0.38rem; letter-spacing: 0.05em; }
+    .field-input, .field-select, .field-textarea {
+      width: 100%; background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 0.55rem; color: var(--text); font-family: 'Hind Siliguri', sans-serif;
+      font-size: 0.9rem; font-weight: 300; padding: 0.62rem 0.88rem; outline: none;
+      transition: border-color 0.2s, background 0.2s; -webkit-appearance: none;
+    }
+    .field-input:focus, .field-select:focus, .field-textarea:focus { border-color: var(--accent); background: var(--surface); }
+    .field-textarea { min-height: 220px; resize: vertical; line-height: 1.85; }
+    .field-select { cursor: pointer; }
+    .field-footer { display: flex; justify-content: space-between; margin-top: 0.28rem; }
+    .field-counter { font-size: 0.68rem; color: var(--text-muted); font-weight: 300; }
+    .field-counter.warn { color: var(--accent); }
+
+    .btn-primary {
+      width: 100%; background: var(--accent); color: var(--bg);
+      font-family: 'Hind Siliguri', sans-serif; font-size: 0.92rem; font-weight: 600;
+      padding: 0.72rem; border: none; border-radius: 0.55rem; cursor: pointer;
+      margin-top: 0.35rem; transition: opacity 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .form-err { font-size: 0.76rem; color: var(--red); margin-bottom: 0.85rem; display: none; line-height: 1.5; }
+    .form-err.show { display: block; }
+    .form-ok { font-size: 0.76rem; color: var(--green); margin-bottom: 0.85rem; display: none; line-height: 1.5; }
+    .form-ok.show { display: block; }
+
+    .divider { display: flex; align-items: center; gap: 0.8rem; margin: 1rem 0; }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .divider span { font-size: 0.7rem; color: var(--text-muted); white-space: nowrap; }
+
+    /* Login notice in post modal */
+    .login-notice {
+      text-align: center; padding: 2rem 1rem;
+      font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 2;
+    }
+    .login-notice strong { color: var(--accent); font-weight: 500; }
+
+    /* ── FAB ── */
+    .fab {
+      position: fixed; bottom: 2rem; right: 2rem;
+      width: 3.25rem; height: 3.25rem; border-radius: 50%;
+      background: var(--accent); color: var(--bg);
+      border: none; font-size: 1.6rem; line-height: 1;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 30px var(--accent-glow), 0 3px 10px var(--shadow);
+      transition: transform 0.25s var(--spring), box-shadow 0.25s; z-index: 90;
+    }
+    .fab:hover { transform: rotate(45deg) scale(1.06); box-shadow: 0 8px 38px var(--accent-glow), 0 4px 14px var(--shadow); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 2rem; left: 50%;
+      transform: translateX(-50%) translateY(4rem);
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); font-size: 0.83rem; font-weight: 400;
+      padding: 0.6rem 1.35rem; border-radius: 3rem; z-index: 500;
+      white-space: nowrap; box-shadow: 0 4px 24px var(--shadow);
+      transition: transform 0.35s var(--spring), opacity 0.35s; pointer-events: none;
+      display: flex; align-items: center; gap: 0.5rem; opacity: 0;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    .toast-icon { font-size: 0.9rem; }
+
+    /* ── SCROLL TO TOP ── */
+    #scrollTopBtn {
+      position: fixed; bottom: 2rem; left: 2rem;
+      width: 2.3rem; height: 2.3rem; border-radius: 50%;
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--text-muted); font-size: 0.9rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, color 0.2s, background 0.2s; z-index: 80;
+    }
+    #scrollTopBtn.show { opacity: 1; pointer-events: all; }
+    #scrollTopBtn:hover { color: var(--accent); background: var(--accent-dim); }
+
+    /* ── USER CHIP ── */
+    .user-chip {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.75rem; color: var(--text-dim); font-weight: 400;
+      background: var(--surface2); border: 1px solid var(--border);
+      padding: 0.22rem 0.7rem 0.22rem 0.35rem; border-radius: 2rem;
+    }
+    .user-chip-avatar {
+      width: 1.4rem; height: 1.4rem; border-radius: 50%;
+      background: var(--accent-dim); display: flex; align-items: center;
+      justify-content: center; font-size: 0.55rem; color: var(--accent); font-weight: 700;
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      header, #searchBar, .fab, .toast, #scrollTopBtn,
+      .back-btn, .read-actions, .related-section, .comments-section, #progressBar { display: none !important; }
+      body { background: white; color: black; }
+      main { padding: 2rem; max-width: 100%; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 520px) {
+      header { padding: 0 1.2rem; }
+      main { padding: 5.5rem 1.2rem 5rem; }
+      main.search-open { padding-top: 8.2rem; }
+      #searchBar { padding: 0.6rem 1.2rem; }
+      .home-title { font-size: 1.65rem; }
+      .read-title { font-size: 1.4rem; }
+      .read-body { font-size: 1rem; }
+      .fab { bottom: 1.4rem; right: 1.2rem; }
+      .modal { padding: 1.65rem 1.4rem; }
+      .read-actions { padding: 1rem; gap: 0.4rem; }
+      .admin-stats { grid-template-columns: 1fr 1fr; }
+      .user-chip span.name-text { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progressBar"></div>
+  <button id="scrollTopBtn" title="উপরে যান" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <!-- ─── HEADER ─── -->
+  <header id="mainHeader">
+    <div class="logo" onclick="showView('home')">
+      প্রকাশ <span class="logo-pulse"></span>
+      <span class="logo-dot">.পাতা.বাংলা</span>
+    </div>
+    <div class="header-right" id="headerRight">
+      <button class="btn-icon" id="searchToggleBtn" title="খুঁজুন (/)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="btn-icon" id="themeBtn" title="থিম পরিবর্তন">🌙</button>
+      <div id="userChipWrap"></div>
+      <button class="btn-ghost" id="adminPanelBtn" style="display:none" onclick="showView('admin')">অ্যাডমিন</button>
+      <button class="btn-ghost" id="authBtn">প্রবেশ / নিবন্ধন</button>
+    </div>
+  </header>
+
+  <!-- ─── SEARCH BAR ─── -->
+  <div id="searchBar">
+    <div class="search-wrap">
+      <input type="search" id="searchInput" placeholder="পোস্ট, লেখক বা শব্দ খুঁজুন…" autocomplete="off" />
+    </div>
+    <div id="searchCount"></div>
+  </div>
+
+  <!-- ─── MAIN ─── -->
+  <main id="mainArea">
+
+    <!-- HOME VIEW -->
+    <div class="view active" id="homeView">
+      <p class="home-eyebrow">সবার জন্য একটি মুক্ত মঞ্চ</p>
+      <h1 class="home-title">লিখুন, পড়ুন, <span>ভাগ করুন</span></h1>
+      <p class="home-desc">প্রকাশ — যেখানে যে কেউ তার কবিতা, গল্প, ভাবনা বা অনুভূতি ভাগ করে নিতে পারে। লগইন করুন এবং আজই আপনার প্রথম পোস্ট প্রকাশ করুন।</p>
+      <div class="home-stats">
+        <span class="stat-pill"><strong id="statTotal">০</strong> টি পোস্ট</span>
+        <span class="stat-pill"><strong id="statAuthors">০</strong> জন লেখক</span>
+        <span class="stat-pill"><strong id="statCats">০</strong> টি বিভাগ</span>
+      </div>
+
+      <div class="cat-strip" id="catStrip">
+        <button class="cat-btn active" data-cat="সব">সব <span class="cat-count" id="count-সব">০</span></button>
+        <button class="cat-btn" data-cat="কবিতা">কবিতা <span class="cat-count" id="count-কবিতা">০</span></button>
+        <button class="cat-btn" data-cat="গল্প">গল্প <span class="cat-count" id="count-গল্প">০</span></button>
+        <button class="cat-btn" data-cat="প্রবন্ধ">প্রবন্ধ <span class="cat-count" id="count-প্রবন্ধ">০</span></button>
+        <button class="cat-btn" data-cat="মতামত">মতামত <span class="cat-count" id="count-মতামত">০</span></button>
+        <button class="cat-btn" data-cat="গজল">গজল <span class="cat-count" id="count-গজল">০</span></button>
+        <button class="cat-btn" data-cat="অন্যান্য">অন্যান্য <span class="cat-count" id="count-অন্যান্য">০</span></button>
+      </div>
+
+      <div class="list-toolbar">
+        <div class="sort-group">
+          <button class="sort-btn active" data-sort="newest">নতুন</button>
+          <button class="sort-btn" data-sort="oldest">পুরনো</button>
+          <button class="sort-btn" data-sort="alpha">অ-আ</button>
+        </div>
+        <button class="btn-random" id="randomBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+          এলোমেলো
+        </button>
+      </div>
+
+      <div id="postList">
+        <div class="loading-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+    </div>
+
+    <!-- ADMIN VIEW -->
+    <div class="view" id="adminView">
+      <button class="back-btn" onclick="showView('home')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="15 18 9 12 15 6"/></svg>
+        পেছনে ফিরুন
+      </button>
+      <p class="read-eyebrow">নিয়ন্ত্রণ কক্ষ</p>
+      <h2 class="read-title">অ্যাডমিন <span style="color:var(--accent);font-weight:300">প্যানেল</span></h2>
+
+      <div class="admin-stats">
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">মোট পোস্ট</div>
+          <div class="admin-stat-value" id="a-total">০</div>
+          <div class="admin-stat-sub">সব বিভাগ মিলিয়ে</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">লেখক</div>
+          <div class="admin-stat-value" id="a-authors">০</div>
+          <div class="admin-stat-sub">অনন্য লেখক</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">বিভাগ</div>
+          <div class="admin-stat-value" id="a-cats">০</div>
+          <div class="admin-stat-sub">সক্রিয় বিভাগ</div>
+        </div>
+      </div>
+
+      <p class="admin-section-title">সব পোস্ট পরিচালনা করুন</p>
+      <div id="adminPostList"></div>
+    </div>
+
+    <!-- READING VIEW -->
+    <article class="view" id="readingView">
+      <button class="back-btn" id="backBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="15 18 9 12 15 6"/></svg>
+        পেছনে ফিরুন
+      </button>
+
+      <p class="read-eyebrow" id="readCat"></p>
+      <h2 class="read-title" id="readTitle"></h2>
+
+      <div class="read-author-row" id="readAuthorRow">
+        <div class="read-author-avatar" id="readAuthorAvatar"></div>
+        <div>
+          <div class="read-author-name" id="readAuthorName"></div>
+          <div class="read-author-date" id="readAuthorDate"></div>
+        </div>
+      </div>
+
+      <p class="read-meta" id="readMeta"></p>
+      <div class="read-rule"></div>
+      <div class="read-body" id="readBody"></div>
+
+      <div class="read-actions" id="readActions">
+        <button class="action-btn" id="likeActionBtn" onclick="toggleLike()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span id="likeCount">০</span>
+        </button>
+        <button class="action-btn" id="copyBtn" onclick="copyPost()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          কপি
+        </button>
+        <button class="action-btn" id="shareBtn" onclick="sharePost()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          শেয়ার
+        </button>
+        <button class="action-btn" onclick="window.print()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          প্রিন্ট
+        </button>
+        <button class="action-btn danger" id="adminDeleteBtn" style="display:none" onclick="adminDeleteCurrentPost()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+          মুছুন
+        </button>
+      </div>
+
+      <section class="related-section" id="relatedSection">
+        <p class="related-title">একই বিভাগের আরও পোস্ট</p>
+        <div class="related-list" id="relatedList"></div>
+      </section>
+
+      <section class="comments-section">
+        <div class="comments-header">
+          <p class="comments-title">মন্তব্য</p>
+          <span class="comments-count-badge" id="commentsCountBadge">০</span>
+        </div>
+        <div class="comment-form" id="commentForm">
+          <input type="text" id="commentName" placeholder="আপনার নাম (ঐচ্ছিক)" class="field-input" />
+          <textarea id="commentText" placeholder="আপনার মন্তব্য লিখুন…" class="field-input field-textarea" style="min-height:90px;"></textarea>
+          <button class="btn-primary" id="submitCommentBtn">মন্তব্য প্রকাশ করুন</button>
+        </div>
+        <div id="commentsList" class="comments-list"></div>
+      </section>
+
+      <footer class="read-footer">
+        <span class="read-footer-logo">প্রকাশ</span>
+        <span class="read-footer-glyph">✦ প্রকাশ.পাতা.বাংলা</span>
+      </footer>
+    </article>
+
+  </main>
+
+  <!-- FAB — write button -->
+  <button class="fab" id="fab" title="নতুন পোস্ট লিখুন (n)" onclick="openWriteModal()">✦</button>
+
+  <!-- ─── AUTH MODAL ─── -->
+  <div class="overlay" id="authOverlay">
+    <div class="modal">
+      <button class="btn-icon modal-x" id="authClose">✕</button>
+
+      <div class="modal-tabs">
+        <button class="modal-tab active" id="tabLogin" onclick="switchAuthTab('login')">প্রবেশ</button>
+        <button class="modal-tab" id="tabRegister" onclick="switchAuthTab('register')">নিবন্ধন</button>
+      </div>
+
+      <!-- LOGIN PANEL -->
+      <div id="loginPanel">
+        <p class="form-err" id="loginErr"></p>
+        <div class="field">
+          <label class="field-label">ইমেইল ঠিকানা</label>
+          <input type="email" class="field-input" id="loginEmail" placeholder="you@example.com" autocomplete="email" />
+        </div>
+        <div class="field">
+          <label class="field-label">পাসওয়ার্ড</label>
+          <input type="password" class="field-input" id="loginPass" placeholder="••••••••" autocomplete="current-password" />
+        </div>
+        <button class="btn-primary" id="loginSubmit">প্রবেশ করুন →</button>
+        <div class="divider"><span>অথবা</span></div>
+        <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);font-weight:300">নতুন এখানে? <button onclick="switchAuthTab('register')" style="background:none;border:none;color:var(--accent);cursor:pointer;font-family:inherit;font-size:inherit;font-weight:500;">নিবন্ধন করুন</button></p>
+      </div>
+
+      <!-- REGISTER PANEL -->
+      <div id="registerPanel" style="display:none">
+        <p class="form-err" id="regErr"></p>
+        <p class="form-ok" id="regOk"></p>
+        <div class="field">
+          <label class="field-label">আপনার নাম / ছদ্মনাম</label>
+          <input type="text" class="field-input" id="regName" placeholder="যেমন: রাহেলা বা কবি_রাত্রি" maxlength="40" />
+        </div>
+        <div class="field">
+          <label class="field-label">ইমেইল ঠিকানা</label>
+          <input type="email" class="field-input" id="regEmail" placeholder="you@example.com" autocomplete="email" />
+        </div>
+        <div class="field">
+          <label class="field-label">পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)</label>
+          <input type="password" class="field-input" id="regPass" placeholder="••••••••" autocomplete="new-password" />
+        </div>
+        <button class="btn-primary" id="regSubmit">নিবন্ধন করুন ✦</button>
+        <div class="divider"><span>অথবা</span></div>
+        <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);font-weight:300">আগেই আছেন? <button onclick="switchAuthTab('login')" style="background:none;border:none;color:var(--accent);cursor:pointer;font-family:inherit;font-size:inherit;font-weight:500;">প্রবেশ করুন</button></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WRITE / ADD POST MODAL ─── -->
+  <div class="overlay" id="addOverlay">
+    <div class="modal" style="max-width:460px">
+      <button class="btn-icon modal-x" id="addClose">✕</button>
+      <h2 class="modal-title">নতুন পোস্ট</h2>
+      <p class="modal-sub">আপনার লেখা, কবিতা, গল্প বা যা খুশি প্রকাশ করুন।</p>
+
+      <!-- Not logged in notice -->
+      <div id="addLoginNotice" class="login-notice" style="display:none">
+        <span style="font-size:2rem;display:block;margin-bottom:0.8rem;opacity:0.3">✍️</span>
+        পোস্ট করতে আপনাকে <strong>লগইন বা নিবন্ধন</strong> করতে হবে।<br>
+        <button onclick="closeOverlay('addOverlay'); openOverlay('authOverlay');"
+          style="margin-top:1rem;background:var(--accent);color:var(--bg);border:none;padding:0.55rem 1.5rem;border-radius:2rem;font-family:inherit;font-size:0.85rem;font-weight:600;cursor:pointer;">
+          লগইন / নিবন্ধন করুন
+        </button>
+      </div>
+
+      <div id="addFormInner">
+        <p class="form-err" id="addErr"></p>
+        <div class="field">
+          <label class="field-label">শিরোনাম</label>
+          <input type="text" class="field-input" id="postTitle" placeholder="আপনার পোস্টের শিরোনাম…" maxlength="120" />
+          <div class="field-footer"><span></span><span class="field-counter" id="titleCounter">০/১২০</span></div>
+        </div>
+        <div class="field">
+          <label class="field-label">বিভাগ</label>
+          <select class="field-select" id="postCat">
+            <option value="কবিতা">কবিতা</option>
+            <option value="গল্প">গল্প</option>
+            <option value="প্রবন্ধ">প্রবন্ধ</option>
+            <option value="মতামত">মতামত</option>
+            <option value="গজল">গজল</option>
+            <option value="অন্যান্য">অন্যান্য</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label">লেখার বিষয়বস্তু</label>
+          <textarea class="field-input field-textarea" id="postBody" placeholder="এখানে আপনার পোস্ট লিখুন…&#10;কবিতা, গল্প, ভাবনা — যা খুশি!"></textarea>
+          <div class="field-footer">
+            <span class="field-counter" id="lineCounter">০ লাইন</span>
+            <span class="field-counter" id="wordCounter">০ শব্দ</span>
+          </div>
+        </div>
+        <button class="btn-primary" id="addSubmit">প্রকাশ করুন ✦</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">
+    <span class="toast-icon" id="toastIcon"></span>
+    <span id="toastMsg"></span>
+  </div>
+
+  <script type="module">
+    import { initializeApp }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import {
+      getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+      signOut, onAuthStateChanged, updateProfile
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import {
+      getFirestore, collection, addDoc, getDocs, getDoc, setDoc,
+      query, orderBy, where, serverTimestamp, deleteDoc, doc,
+      updateDoc, increment, arrayUnion, arrayRemove
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    /* ═══════════════════════════════════════════════
+       🔥 FIREBASE CONFIG — Replace with YOUR project!
+       Go to: https://console.firebase.google.com
+       Create project → Add web app → Copy config below
+    ═══════════════════════════════════════════════ */
+     const firebaseConfig = {
+    apiKey: "AIzaSyB4JoKK3qvOrJ41dk6GbFnd-WZsoteAk2E",
+    authDomain: "prokas-68ac9.firebaseapp.com",
+    projectId: "prokas-68ac9",
+    storageBucket: "prokas-68ac9.firebasestorage.app",
+    messagingSenderId: "1071396074292",
+    appId: "1:1071396074292:web:f5b950e7b82136e8272b61",
+    measurementId: "G-PPE989831D"
+  };
+
+    const ADMIN_EMAIL = "ahnaftahsin99@gmail.com";
+
+    const app  = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db   = getFirestore(app);
+
+    /* ─── State ─── */
+    let posts         = [];
+    let activeCat     = "সব";
+    let activeSort    = "newest";
+    let searchQuery   = "";
+    let currentUser   = null;
+    let currentPostId = null;
+    let isSearchOpen  = false;
+    let prevView      = "home";
+    let userLikes     = JSON.parse(localStorage.getItem("prokash-likes") || "[]");
+
+    /* ─── DOM ─── */
+    const $ = id => document.getElementById(id);
+
+    /* ═══════════════════════════════════════════════
+       AUTH STATE
+    ═══════════════════════════════════════════════ */
+    onAuthStateChanged(auth, user => {
+      currentUser = user;
+      updateHeaderAuth(user);
+      if (user) {
+        closeOverlay("authOverlay");
+        toast(`স্বাগতম, ${user.displayName || user.email.split("@")[0]}! ✦`, "✦");
+      }
+    });
+
+    function updateHeaderAuth(user) {
+      const authBtn       = $("authBtn");
+      const fab           = $("fab");
+      const adminPanelBtn = $("adminPanelBtn");
+      const chipWrap      = $("userChipWrap");
+
+      if (user) {
+        authBtn.textContent = "প্রস্থান";
+        authBtn.onclick     = doSignOut;
+        const name = user.displayName || user.email.split("@")[0];
+        const initial = name.charAt(0).toUpperCase();
+        chipWrap.innerHTML  = `<div class="user-chip"><div class="user-chip-avatar">${initial}</div><span class="name-text">${esc(name)}</span></div>`;
+        if (user.email === ADMIN_EMAIL) {
+          adminPanelBtn.style.display = "inline-block";
+        }
+        // Show write btn
+        fab.style.display = "flex";
+        // Show add form, hide login notice
+        $("addLoginNotice").style.display = "none";
+        $("addFormInner").style.display   = "block";
+      } else {
+        authBtn.textContent = "প্রবেশ / নিবন্ধন";
+        authBtn.onclick     = () => openOverlay("authOverlay");
+        chipWrap.innerHTML  = "";
+        adminPanelBtn.style.display = "none";
+        fab.style.display   = "none";
+        $("addLoginNotice").style.display = "block";
+        $("addFormInner").style.display   = "none";
+        if ($("adminView").classList.contains("active")) showView("home");
+      }
+    }
+
+    /* ═══════════════════════════════════════════════
+       LOAD POSTS
+    ═══════════════════════════════════════════════ */
+    async function loadPosts() {
+      $("postList").innerHTML = `<div class="loading-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>`;
+      try {
+        const q    = query(collection(db, "posts"), orderBy("timestamp", "desc"));
+        const snap = await getDocs(q);
+        posts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        updateStats();
+        renderList();
+        renderAdminList();
+      } catch (e) {
+        $("postList").innerHTML = `<div class="empty-state"><span class="empty-glyph">⚠</span>Firebase সংযোগ ব্যর্থ।<br><small style="font-size:0.7rem;opacity:0.4">${e.message}</small><br><small style="font-size:0.7rem;opacity:0.4;display:block;margin-top:0.5rem">firebaseConfig-এ আপনার প্রজেক্টের তথ্য দিন।</small></div>`;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════
+       STATS
+    ═══════════════════════════════════════════════ */
+    function updateStats() {
+      const total   = posts.length;
+      const cats    = [...new Set(posts.map(p => p.category))].filter(Boolean);
+      const authors = [...new Set(posts.map(p => p.authorEmail))].filter(Boolean);
+
+      $("statTotal").textContent   = toBnNum(total);
+      $("statAuthors").textContent = toBnNum(authors.length);
+      $("statCats").textContent    = toBnNum(cats.length);
+
+      const catCounts = { "সব": total };
+      posts.forEach(p => { catCounts[p.category] = (catCounts[p.category] || 0) + 1; });
+      Object.entries(catCounts).forEach(([cat, cnt]) => {
+        const el = $("count-" + cat);
+        if (el) el.textContent = toBnNum(cnt);
+      });
+
+      $("a-total").textContent   = toBnNum(total);
+      $("a-authors").textContent = toBnNum(authors.length);
+      $("a-cats").textContent    = toBnNum(cats.length);
+    }
+
+    /* ═══════════════════════════════════════════════
+       RENDER LIST
+    ═══════════════════════════════════════════════ */
+    function getFiltered() {
+      let result = activeCat === "সব" ? posts : posts.filter(p => p.category === activeCat);
+      if (searchQuery) {
+        const q = searchQuery.trim().toLowerCase();
+        result = result.filter(p =>
+          (p.title||"").toLowerCase().includes(q) ||
+          (p.content||"").toLowerCase().includes(q) ||
+          (p.authorName||"").toLowerCase().includes(q)
+        );
+      }
+      const copy = [...result];
+      if (activeSort === "oldest") copy.reverse();
+      else if (activeSort === "alpha") copy.sort((a,b) => (a.title||"").localeCompare(b.title||"","bn"));
+      return copy;
+    }
+
+    function renderList() {
+      const filtered = getFiltered();
+      const list     = $("postList");
+
+      if (searchQuery && !filtered.length) {
+        list.innerHTML = `<div class="no-results">"<em>${esc(searchQuery)}</em>" — কোনো পোস্ট পাওয়া যায়নি।<br><span style="font-size:0.8rem;opacity:0.6">অন্য শব্দ দিয়ে চেষ্টা করুন।</span></div>`;
+        return;
+      }
+
+      if (!filtered.length) {
+        list.innerHTML = `<div class="empty-state"><span class="empty-glyph">✍</span>এখনো কোনো পোস্ট নেই।<br>প্রথম পোস্টটি আপনিই করুন!</div>`;
+        return;
+      }
+
+      list.innerHTML = `<div class="post-list">${filtered.map((p, i) => {
+        const name    = p.authorName || p.authorEmail?.split("@")[0] || "অজ্ঞাত";
+        const initial = name.charAt(0).toUpperCase();
+        const likes   = p.likes || 0;
+        return `<div class="post-item" data-id="${p.id}" style="animation-delay:${Math.min(i*35,350)}ms">
+          <div class="post-header">
+            <div class="post-title">${esc(p.title)}</div>
+            <span class="post-cat-badge">${esc(p.category)}</span>
+          </div>
+          <div class="post-preview">${esc(firstLines(p.content, 2))}</div>
+          <div class="post-footer">
+            <div class="post-author-chip">
+              <div class="author-avatar">${initial}</div>
+              ${esc(name)}
+            </div>
+            <span class="post-meta-sep">·</span>
+            <span class="post-date">${fmt(p.timestamp)}</span>
+            ${likes > 0 ? `<span class="post-meta-sep">·</span><span class="post-likes-chip">❤ ${toBnNum(likes)}</span>` : ''}
+          </div>
+        </div>`;
+      }).join("")}</div>`;
+
+      list.querySelectorAll(".post-item").forEach(el => {
+        el.addEventListener("click", () => openPost(el.dataset.id));
+      });
+
+      if (searchQuery) $("searchCount").textContent = toBnNum(filtered.length) + " টি পোস্ট পাওয়া গেছে";
+      else             $("searchCount").textContent = "";
+    }
+
+    function renderAdminList() {
+      const container = $("adminPostList");
+      if (!posts.length) { container.innerHTML = `<div class="empty-state">কোনো পোস্ট নেই।</div>`; return; }
+      container.innerHTML = `<div class="post-list">${posts.map(p => {
+        const name = p.authorName || p.authorEmail?.split("@")[0] || "অজ্ঞাত";
+        return `<div class="post-item" style="cursor:default">
+          <div class="post-header">
+            <div class="post-title">${esc(p.title)}</div>
+            <button class="btn-delete" data-id="${p.id}">মুছুন</button>
+          </div>
+          <div style="display:flex;gap:0.5rem;align-items:center;margin-top:0.3rem;flex-wrap:wrap">
+            <span class="post-cat-badge" style="font-size:0.65rem">${esc(p.category)}</span>
+            <span class="post-date">${esc(name)}</span>
+            <span class="post-date">${fmt(p.timestamp)}</span>
+          </div>
+        </div>`;
+      }).join("")}</div>`;
+
+      container.querySelectorAll(".btn-delete").forEach(btn => {
+        btn.addEventListener("click", async e => {
+          e.stopPropagation();
+          if (!confirm("এই পোস্টটি চিরতরে মুছে ফেলবেন?")) return;
+          await deletePostById(e.target.dataset.id);
+        });
+      });
+    }
+
+    async function deletePostById(id) {
+      try {
+        await deleteDoc(doc(db, "posts", id));
+        posts = posts.filter(p => p.id !== id);
+        updateStats(); renderList(); renderAdminList();
+        toast("পোস্ট মুছে ফেলা হয়েছে", "✓");
+        if (currentPostId === id) showView(prevView || "home");
+      } catch { toast("মুছতে ব্যর্থ হয়েছে", "✕"); }
+    }
+
+    /* ═══════════════════════════════════════════════
+       READING VIEW
+    ═══════════════════════════════════════════════ */
+    function openPost(id) {
+      const p = posts.find(x => x.id === id);
+      if (!p) return;
+      currentPostId = id;
+
+      $("readCat").textContent = p.category;
+      $("readTitle").textContent = p.title;
+
+      const name    = p.authorName || p.authorEmail?.split("@")[0] || "অজ্ঞাত পাঠক";
+      const initial = name.charAt(0).toUpperCase();
+      $("readAuthorAvatar").textContent = initial;
+      $("readAuthorName").textContent   = name;
+      $("readAuthorDate").textContent   = fmt(p.timestamp);
+
+      const words = (p.content||"").trim().split(/\s+/).length;
+      const lines = (p.content||"").split("\n").filter(l => l.trim()).length;
+      const mins  = Math.max(1, Math.ceil(words / 100));
+      $("readMeta").innerHTML = `
+        <span>${toBnNum(lines)} লাইন</span>
+        <span class="read-meta-sep">·</span>
+        <span>${toBnNum(words)} শব্দ</span>
+        <span class="read-meta-sep">·</span>
+        <span>~${toBnNum(mins)} মিনিট পড়ুন</span>`;
+
+      renderPostBody(p.content || "");
+      updateLikeBtn(id, p.likes || 0);
+
+      // Admin delete button visibility
+      $("adminDeleteBtn").style.display = (currentUser && currentUser.email === ADMIN_EMAIL) ? "flex" : "none";
+
+      document.title = `${p.title} — প্রকাশ`;
+      showView("reading");
+      renderRelated(p);
+      loadComments(id);
+    }
+
+    function renderPostBody(content) {
+      const bodyEl = $("readBody");
+      if (!content) { bodyEl.textContent = ""; return; }
+      const firstChar = content.charAt(0);
+      const rest      = content.slice(1);
+      bodyEl.innerHTML = `<span class="drop-cap-letter"><span class="first-char">${esc(firstChar)}</span>${esc(rest)}</span>`;
+    }
+
+    function renderRelated(current) {
+      const section  = $("relatedSection");
+      const list     = $("relatedList");
+      const related  = posts.filter(p => p.id !== current.id && p.category === current.category).slice(0, 4);
+      if (!related.length) { section.style.display = "none"; return; }
+      section.style.display = "block";
+      list.innerHTML = related.map(p => {
+        const name = p.authorName || p.authorEmail?.split("@")[0] || "অজ্ঞাত";
+        return `<div class="related-item" data-id="${p.id}">
+          <span class="related-item-title">${esc(p.title)}</span>
+          <span class="related-item-author">${esc(name)}</span>
+        </div>`;
+      }).join("");
+      list.querySelectorAll(".related-item").forEach(el => {
+        el.addEventListener("click", () => openPost(el.dataset.id));
+      });
+    }
+
+    /* ═══════════════════════════════════════════════
+       LIKES
+    ═══════════════════════════════════════════════ */
+    function updateLikeBtn(id, count) {
+      const btn    = $("likeActionBtn");
+      const liked  = userLikes.includes(id);
+      btn.classList.toggle("liked", liked);
+      $("likeCount").textContent = toBnNum(count);
+    }
+
+    window.toggleLike = async function() {
+      if (!currentPostId) return;
+      const idx   = userLikes.indexOf(currentPostId);
+      const liked = idx > -1;
+      const post  = posts.find(p => p.id === currentPostId);
+      if (!post) return;
+
+      if (liked) {
+        userLikes.splice(idx, 1);
+        post.likes = Math.max(0, (post.likes || 1) - 1);
+      } else {
+        userLikes.push(currentPostId);
+        post.likes = (post.likes || 0) + 1;
+        toast("পছন্দ করা হয়েছে!", "❤");
+      }
+      localStorage.setItem("prokash-likes", JSON.stringify(userLikes));
+      updateLikeBtn(currentPostId, post.likes);
+      renderList();
+      try {
+        await updateDoc(doc(db, "posts", currentPostId), { likes: post.likes });
+      } catch {}
+    };
+
+    /* ═══════════════════════════════════════════════
+       ADMIN DELETE FROM READING
+    ═══════════════════════════════════════════════ */
+    window.adminDeleteCurrentPost = async function() {
+      if (!currentPostId || !currentUser || currentUser.email !== ADMIN_EMAIL) return;
+      if (!confirm("এই পোস্টটি চিরতরে মুছে ফেলবেন?")) return;
+      await deletePostById(currentPostId);
+    };
+
+    /* ═══════════════════════════════════════════════
+       COPY & SHARE
+    ═══════════════════════════════════════════════ */
+    window.copyPost = async function() {
+      const p = posts.find(x => x.id === currentPostId);
+      if (!p) return;
+      const name = p.authorName || p.authorEmail?.split("@")[0] || "অজ্ঞাত";
+      const text = `${p.title}\n\n${p.content}\n\n— ${name} | প্রকাশ`;
+      try {
+        await navigator.clipboard.writeText(text);
+        toast("কপি করা হয়েছে!", "📋");
+      } catch { toast("কপি করতে ব্যর্থ", "✕"); }
+    };
+
+    window.sharePost = async function() {
+      const p = posts.find(x => x.id === currentPostId);
+      if (!p) return;
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: p.title + " — প্রকাশ", text: firstLines(p.content, 1) + "…", url: window.location.href });
+        } else {
+          await navigator.clipboard.writeText(window.location.href);
+          toast("লিংক কপি হয়েছে!", "🔗");
+        }
+      } catch {}
+    };
+
+    /* ═══════════════════════════════════════════════
+       COMMENTS
+    ═══════════════════════════════════════════════ */
+    async function loadComments(postId) {
+      const list  = $("commentsList");
+      const badge = $("commentsCountBadge");
+      list.innerHTML = `<div class="loading-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>`;
+      try {
+        const q    = query(collection(db, "comments"), where("postId", "==", postId));
+        const snap = await getDocs(q);
+        let data   = [];
+        snap.forEach(d => data.push(d.data()));
+        data.sort((a,b) => (b.timestamp?.toMillis?.() || 0) - (a.timestamp?.toMillis?.() || 0));
+        badge.textContent = toBnNum(data.length);
+        if (!data.length) {
+          list.innerHTML = `<div style="color:var(--text-muted);font-size:0.85rem;font-weight:300;padding:1.5rem 0;text-align:center;line-height:2">এখনো কোনো মন্তব্য নেই। প্রথমটি আপনিই করুন!</div>`;
+          return;
+        }
+        list.innerHTML = data.map(d => `
+          <div class="comment-item">
+            <div class="comment-top">
+              <span class="comment-name">${esc(d.name || "অজ্ঞাত পাঠক")}</span>
+              <span class="comment-date">${fmt(d.timestamp)}</span>
+            </div>
+            <div class="comment-body">${esc(d.text).replace(/\n/g,"<br>")}</div>
+          </div>`).join("");
+      } catch(e) {
+        list.innerHTML = `<div style="color:var(--red);font-size:0.85rem;padding:1rem 0">মন্তব্য লোড করতে সমস্যা।</div>`;
+      }
+    }
+
+    $("submitCommentBtn").addEventListener("click", async () => {
+      if (!currentPostId) return;
+      const name = $("commentName").value.trim() || "অজ্ঞাত পাঠক";
+      const text = $("commentText").value.trim();
+      const btn  = $("submitCommentBtn");
+      if (!text) { toast("কিছু লিখুন!", "✏"); return; }
+      btn.disabled = true; btn.textContent = "প্রকাশ হচ্ছে…";
+      try {
+        await addDoc(collection(db, "comments"), { postId: currentPostId, name, text, timestamp: serverTimestamp() });
+        $("commentText").value = "";
+        toast("মন্তব্য প্রকাশিত!", "✓");
+        loadComments(currentPostId);
+      } catch { toast("প্রকাশে ত্রুটি", "✕"); }
+      btn.disabled = false; btn.textContent = "মন্তব্য প্রকাশ করুন";
+    });
+
+    /* ═══════════════════════════════════════════════
+       CATEGORY FILTER
+    ═══════════════════════════════════════════════ */
+    $("catStrip").addEventListener("click", e => {
+      const btn = e.target.closest(".cat-btn");
+      if (!btn) return;
+      activeCat = btn.dataset.cat;
+      document.querySelectorAll(".cat-btn").forEach(b => b.classList.toggle("active", b === btn));
+      renderList();
+    });
+
+    /* ═══════════════════════════════════════════════
+       SORT
+    ═══════════════════════════════════════════════ */
+    document.querySelectorAll(".sort-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        activeSort = btn.dataset.sort;
+        document.querySelectorAll(".sort-btn").forEach(b => b.classList.toggle("active", b === btn));
+        renderList();
+      });
+    });
+
+    /* ═══════════════════════════════════════════════
+       RANDOM
+    ═══════════════════════════════════════════════ */
+    $("randomBtn").addEventListener("click", () => {
+      if (!posts.length) return;
+      openPost(posts[Math.floor(Math.random() * posts.length)].id);
+    });
+
+    /* ═══════════════════════════════════════════════
+       SEARCH
+    ═══════════════════════════════════════════════ */
+    $("searchToggleBtn").addEventListener("click", toggleSearch);
+    function toggleSearch() {
+      isSearchOpen = !isSearchOpen;
+      $("searchBar").classList.toggle("open", isSearchOpen);
+      $("mainArea").classList.toggle("search-open", isSearchOpen);
+      $("searchToggleBtn").classList.toggle("active", isSearchOpen);
+      if (isSearchOpen) setTimeout(() => $("searchInput").focus(), 200);
+      else { searchQuery = ""; $("searchInput").value = ""; $("searchCount").textContent = ""; renderList(); }
+    }
+    $("searchInput").addEventListener("input", () => {
+      searchQuery = $("searchInput").value;
+      if (!$("homeView").classList.contains("active")) showView("home");
+      renderList();
+    });
+
+    /* ═══════════════════════════════════════════════
+       VIEWS
+    ═══════════════════════════════════════════════ */
+    window.showView = function(name) {
+      document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
+      $(name + "View").classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      $("progressBar").classList.remove("visible");
+      $("progressBar").style.width = "0%";
+      if (name === "admin")  renderAdminList();
+      if (name === "home")   document.title = "প্রকাশ — সবার জন্য একটি মুক্ত মঞ্চ";
+    };
+
+    $("backBtn").addEventListener("click", () => { showView(prevView || "home"); prevView = "home"; });
+
+    /* ─── Progress bar + Scroll-top ─── */
+    window.addEventListener("scroll", () => {
+      const reading = $("readingView").classList.contains("active");
+      const bar     = $("progressBar");
+      if (reading) {
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = total > 0 ? (window.scrollY / total * 100) + "%" : "0%";
+        bar.classList.add("visible");
+      } else {
+        bar.classList.remove("visible"); bar.style.width = "0%";
+      }
+      $("scrollTopBtn").classList.toggle("show", window.scrollY > 400);
+    });
+
+    /* ═══════════════════════════════════════════════
+       AUTH MODAL
+    ═══════════════════════════════════════════════ */
+    window.switchAuthTab = function(tab) {
+      $("tabLogin").classList.toggle("active", tab === "login");
+      $("tabRegister").classList.toggle("active", tab === "register");
+      $("loginPanel").style.display    = tab === "login"    ? "block" : "none";
+      $("registerPanel").style.display = tab === "register" ? "block" : "none";
+    };
+
+    $("authBtn").addEventListener("click", () => openOverlay("authOverlay"));
+    $("authClose").addEventListener("click", () => closeOverlay("authOverlay"));
+    $("authOverlay").addEventListener("click", e => { if(e.target === $("authOverlay")) closeOverlay("authOverlay"); });
+
+    // Login
+    $("loginSubmit").addEventListener("click", doLogin);
+    $("loginPass").addEventListener("keydown",  e => { if(e.key==="Enter") doLogin(); });
+    async function doLogin() {
+      const email = $("loginEmail").value.trim();
+      const pass  = $("loginPass").value;
+      const btn   = $("loginSubmit");
+      const err   = $("loginErr");
+      err.classList.remove("show");
+      if (!email || !pass) { err.textContent="ইমেইল ও পাসওয়ার্ড দিন।"; err.classList.add("show"); return; }
+      btn.disabled = true; btn.textContent = "অপেক্ষা করুন…";
+      try {
+        await signInWithEmailAndPassword(auth, email, pass);
+      } catch(e) {
+        err.textContent = "ইমেইল বা পাসওয়ার্ড ভুল।";
+        err.classList.add("show");
+      }
+      btn.disabled = false; btn.textContent = "প্রবেশ করুন →";
+    }
+
+    // Register
+    $("regSubmit").addEventListener("click", doRegister);
+    $("regPass").addEventListener("keydown", e => { if(e.key==="Enter") doRegister(); });
+    async function doRegister() {
+      const name  = $("regName").value.trim();
+      const email = $("regEmail").value.trim();
+      const pass  = $("regPass").value;
+      const btn   = $("regSubmit");
+      const err   = $("regErr");
+      const ok    = $("regOk");
+      err.classList.remove("show"); ok.classList.remove("show");
+      if (!name)  { err.textContent="আপনার নাম বা ছদ্মনাম দিন।"; err.classList.add("show"); return; }
+      if (!email) { err.textContent="ইমেইল ঠিকানা দিন।"; err.classList.add("show"); return; }
+      if (pass.length < 6) { err.textContent="পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে।"; err.classList.add("show"); return; }
+      btn.disabled = true; btn.textContent = "নিবন্ধন হচ্ছে…";
+      try {
+        const cred = await createUserWithEmailAndPassword(auth, email, pass);
+        await updateProfile(cred.user, { displayName: name });
+        // Save display name to Firestore users collection too
+        await setDoc(doc(db, "users", cred.user.uid), { name, email, createdAt: serverTimestamp() }, { merge: true });
+        ok.textContent = "নিবন্ধন সম্পন্ন! স্বাগতম, " + name + " ✦";
+        ok.classList.add("show");
+      } catch(e) {
+        let msg = "নিবন্ধনে সমস্যা হয়েছে।";
+        if (e.code === "auth/email-already-in-use") msg = "এই ইমেইল দিয়ে আগেই অ্যাকাউন্ট আছে।";
+        err.textContent = msg; err.classList.add("show");
+      }
+      btn.disabled = false; btn.textContent = "নিবন্ধন করুন ✦";
+    }
+
+    async function doSignOut() {
+      await signOut(auth);
+      toast("প্রস্থান সম্পন্ন", "✓");
+    }
+
+    /* ═══════════════════════════════════════════════
+       WRITE / ADD POST MODAL
+    ═══════════════════════════════════════════════ */
+    window.openWriteModal = function() { openOverlay("addOverlay"); };
+    $("addClose").addEventListener("click", () => closeOverlay("addOverlay"));
+    $("addOverlay").addEventListener("click", e => { if(e.target === $("addOverlay")) closeOverlay("addOverlay"); });
+
+    $("postTitle").addEventListener("input", function() {
+      $("titleCounter").textContent = `${toBnNum(this.value.length)}/১২০`;
+      $("titleCounter").classList.toggle("warn", this.value.length > 100);
+    });
+    $("postBody").addEventListener("input", function() {
+      const lines = this.value.split("\n").filter(l => l.trim()).length;
+      const words = this.value.trim() ? this.value.trim().split(/\s+/).length : 0;
+      $("lineCounter").textContent = toBnNum(lines) + " লাইন";
+      $("wordCounter").textContent = toBnNum(words) + " শব্দ";
+    });
+
+    $("addSubmit").addEventListener("click", doAddPost);
+    async function doAddPost() {
+      if (!currentUser) { toast("আগে লগইন করুন!", "✕"); return; }
+      const title    = $("postTitle").value.trim();
+      const content  = $("postBody").value.trim();
+      const category = $("postCat").value;
+      const btn      = $("addSubmit");
+      const err      = $("addErr");
+      err.classList.remove("show");
+      if (!title || !content) { err.textContent = "শিরোনাম ও লেখার বিষয়বস্তু দিন।"; err.classList.add("show"); return; }
+      btn.disabled = true; btn.textContent = "প্রকাশ হচ্ছে…";
+      try {
+        const authorName  = currentUser.displayName || currentUser.email.split("@")[0];
+        const authorEmail = currentUser.email;
+        const ref = await addDoc(collection(db, "posts"), {
+          title, content, category, authorName, authorEmail, likes: 0, timestamp: serverTimestamp()
+        });
+        posts.unshift({ id: ref.id, title, content, category, authorName, authorEmail, likes: 0, timestamp: { toDate: () => new Date() } });
+        updateStats(); renderList(); renderAdminList();
+        closeOverlay("addOverlay");
+        $("postTitle").value = ""; $("postBody").value = "";
+        $("titleCounter").textContent = "০/১২০";
+        $("lineCounter").textContent  = "০ লাইন";
+        $("wordCounter").textContent  = "০ শব্দ";
+        toast("পোস্ট প্রকাশিত হয়েছে ✦", "✦");
+      } catch(e) {
+        err.textContent = "প্রকাশ করা যায়নি। আবার চেষ্টা করুন।";
+        err.classList.add("show"); console.error(e);
+      }
+      btn.disabled = false; btn.textContent = "প্রকাশ করুন ✦";
+    }
+
+    /* ═══════════════════════════════════════════════
+       THEME
+    ═══════════════════════════════════════════════ */
+    const html = document.documentElement;
+    const themeBtn = $("themeBtn");
+    themeBtn.textContent = html.getAttribute("data-theme") === "dark" ? "🌙" : "☀️";
+    themeBtn.addEventListener("click", () => {
+      const next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", next);
+      themeBtn.textContent = next === "dark" ? "🌙" : "☀️";
+      localStorage.setItem("prokash-theme", next);
+    });
+
+    /* ═══════════════════════════════════════════════
+       KEYBOARD SHORTCUTS
+    ═══════════════════════════════════════════════ */
+    document.addEventListener("keydown", e => {
+      const inInput = ["INPUT","TEXTAREA","SELECT"].includes(e.target.tagName);
+      if (e.key === "Escape") {
+        closeOverlay("authOverlay"); closeOverlay("addOverlay");
+        if (isSearchOpen) toggleSearch();
+      }
+      if (!inInput) {
+        if (e.key === "/") { e.preventDefault(); if (!isSearchOpen) toggleSearch(); else $("searchInput").focus(); }
+        if ((e.key === "n" || e.key === "ন") && currentUser) { e.preventDefault(); openWriteModal(); }
+        if (e.key === "r") {
+          if ($("homeView").classList.contains("active") && posts.length) {
+            openPost(posts[Math.floor(Math.random()*posts.length)].id);
+          }
+        }
+        if (e.key === "Backspace" && $("readingView").classList.contains("active")) {
+          e.preventDefault();
+          showView(prevView || "home"); prevView = "home";
+        }
+      }
+    });
+
+    /* ═══════════════════════════════════════════════
+       HELPERS
+    ═══════════════════════════════════════════════ */
+    window.openOverlay  = id => $(id).classList.add("open");
+    window.closeOverlay = id => $(id).classList.remove("open");
+
+    function esc(str) {
+      return String(str||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+    }
+    function firstLines(str, n) {
+      return (str||"").split("\n").filter(l => l.trim()).slice(0, n).join(" ");
+    }
+    function fmt(ts) {
+      if (!ts) return "";
+      const d = ts.toDate ? ts.toDate() : new Date(ts);
+      if (isNaN(d)) return "";
+      return d.toLocaleDateString("bn-BD", { year:"numeric", month:"long", day:"numeric" });
+    }
+    function toBnNum(n) {
+      return String(n).replace(/[0-9]/g, d => "০১২৩৪৫৬৭৮৯"[+d]);
+    }
+
+    let toastTimer;
+    function toast(msg, icon = "", ms = 2700) {
+      $("toastMsg").textContent  = msg;
+      $("toastIcon").textContent = icon;
+      const el = $("toast");
+      el.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove("show"), ms);
+    }
+
+    /* ─── Boot ─── */
+    loadPosts();
+  </script>
+</body>
+</html>
