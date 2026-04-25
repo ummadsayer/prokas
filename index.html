@@ -12,16 +12,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Scheherazade+New:wght@400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600&family=Noto+Serif+Bengali:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
 <style>
-/* ═══════════════════════════════════════════
-   PROKASH — COMPLETE REDESIGN v2.0
-   বিপ্লবী কলম, জাগ্রত চেতনা
-═══════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 ::selection{background:var(--accent-dim);color:var(--accent)}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px}
-
 :root{
   --ease:cubic-bezier(0.25,0.46,0.45,0.94);
   --spring:cubic-bezier(0.34,1.56,0.64,1);
@@ -78,91 +73,34 @@
   --salaam-border:rgba(139,58,15,0.2);
   --marquee-bg:rgba(230,220,200,0.97);--marquee-border:rgba(139,58,15,0.2);
 }
-
 html{font-family:'Hind Siliguri',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;scroll-behavior:smooth;transition:background var(--dur) var(--ease),color var(--dur) var(--ease)}
 body{min-height:100vh;position:relative;overflow-x:hidden;padding-bottom:var(--marquee-h)}
 body::before{content:'';position:fixed;inset:0;background:var(--orb1),var(--orb2);pointer-events:none;z-index:0}
-
-/* ═══ SALAAM BAR (Arabic) ═══ */
-.salaam-bar{
-  position:fixed;top:0;left:0;right:0;z-index:999;
-  height:var(--salaam-h);
-  display:flex;align-items:center;justify-content:center;
-  background:var(--salaam-bg);
-  border-bottom:1px solid var(--salaam-border);
-  backdrop-filter:blur(20px);
-  overflow:hidden;
-}
-.salaam-bar::before,.salaam-bar::after{
-  content:'';position:absolute;top:0;bottom:0;width:4px;
-  background:linear-gradient(to bottom,transparent,var(--accent),transparent);
-  opacity:0.4;
-}
+.salaam-bar{position:fixed;top:0;left:0;right:0;z-index:999;height:var(--salaam-h);display:flex;align-items:center;justify-content:center;background:var(--salaam-bg);border-bottom:1px solid var(--salaam-border);backdrop-filter:blur(20px);overflow:hidden;}
+.salaam-bar::before,.salaam-bar::after{content:'';position:absolute;top:0;bottom:0;width:4px;background:linear-gradient(to bottom,transparent,var(--accent),transparent);opacity:0.4;}
 .salaam-bar::before{left:0}.salaam-bar::after{right:0}
-.salaam-ornament{
-  color:var(--accent);font-size:0.75rem;opacity:0.5;margin:0 1rem;
-  animation:ornamentPulse 3s ease-in-out infinite;flex-shrink:0;
-}
+.salaam-ornament{color:var(--accent);font-size:0.75rem;opacity:0.5;margin:0 1rem;animation:ornamentPulse 3s ease-in-out infinite;flex-shrink:0;}
 @keyframes ornamentPulse{0%,100%{opacity:0.3;transform:scale(1)}50%{opacity:0.7;transform:scale(1.1)}}
-.salaam-text{
-  font-family:'Amiri','Scheherazade New',serif;
-  font-size:1.15rem;font-weight:700;
-  color:var(--accent2);
-  letter-spacing:0.04em;
-  text-align:center;
-  text-shadow:0 0 20px var(--accent-glow);
-  white-space:nowrap;
-  direction:rtl;
-}
-.salaam-divider{
-  color:var(--accent);opacity:0.35;margin:0 1.2rem;
-  font-size:1rem;flex-shrink:0;
-}
-
-/* ═══ PROGRESS BAR ═══ */
+.salaam-text{font-family:'Amiri','Scheherazade New',serif;font-size:1.15rem;font-weight:700;color:var(--accent2);letter-spacing:0.04em;text-align:center;text-shadow:0 0 20px var(--accent-glow);white-space:nowrap;direction:rtl;}
+.salaam-divider{color:var(--accent);opacity:0.35;margin:0 1.2rem;font-size:1rem;flex-shrink:0;}
 #progressBar{position:fixed;top:var(--salaam-h);left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));z-index:998;pointer-events:none;opacity:0;box-shadow:0 0 8px var(--accent-glow);transition:width 0.08s linear,opacity 0.3s}
 #progressBar.visible{opacity:1}
-
-/* ═══ ANNOUNCEMENT BAR ═══ */
-#announcementBar{
-  position:fixed;left:0;right:0;z-index:200;
-  background:var(--ann-bg);border-bottom:1px solid var(--ann-border);
-  padding:0.4rem 1.5rem;display:none;align-items:center;justify-content:center;
-  gap:0.6rem;font-size:0.78rem;color:var(--accent);
-  backdrop-filter:blur(12px);
-  animation:slideDown 0.4s var(--ease) both;
-}
+#announcementBar{position:fixed;left:0;right:0;z-index:200;background:var(--ann-bg);border-bottom:1px solid var(--ann-border);padding:0.4rem 1.5rem;display:none;align-items:center;justify-content:center;gap:0.6rem;font-size:0.78rem;color:var(--accent);backdrop-filter:blur(12px);animation:slideDown 0.4s var(--ease) both;}
 #announcementBar.show{display:flex}
 .ann-close{background:none;border:none;color:var(--accent);cursor:pointer;font-size:0.85rem;margin-left:auto;opacity:0.5;transition:opacity 0.2s}
 .ann-close:hover{opacity:1}
 @keyframes slideDown{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
-
-/* ═══ HEADER ═══ */
-header{
-  position:fixed;left:0;right:0;z-index:100;
-  height:var(--header-h);padding:0 1.8rem;
-  display:flex;align-items:center;justify-content:space-between;
-  border-bottom:1px solid var(--border-soft);
-  transition:background var(--dur),top 0.3s;
-}
+header{position:fixed;left:0;right:0;z-index:100;height:var(--header-h);padding:0 1.8rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-soft);transition:background var(--dur),top 0.3s;}
 [data-theme="dark"] header{background:rgba(8,11,20,0.92);backdrop-filter:blur(30px) saturate(180%)}
 [data-theme="light"] header{background:rgba(248,244,236,0.94);backdrop-filter:blur(28px)}
 [data-theme="sepia"] header{background:rgba(242,232,213,0.94);backdrop-filter:blur(28px)}
-
-/* Logo */
 .logo{display:flex;align-items:center;gap:0.6rem;cursor:pointer;user-select:none;transition:opacity 0.2s}
 .logo:hover{opacity:0.75}
-.logo-icon{
-  width:2.2rem;height:2.2rem;border-radius:0.5rem;
-  background:var(--accent-dim);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  transition:transform 0.4s var(--spring),background 0.3s;flex-shrink:0;
-}
+.logo-icon{width:2.2rem;height:2.2rem;border-radius:0.5rem;background:var(--accent-dim);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:transform 0.4s var(--spring),background 0.3s;flex-shrink:0;}
 .logo:hover .logo-icon{background:var(--accent-glow);transform:rotate(20deg) scale(1.08)}
 .logo-icon svg{width:22px;height:22px}
 .logo-text{font-family:'Noto Serif Bengali',serif;font-size:1.32rem;font-weight:700;color:var(--accent);line-height:1}
 .logo-sub{display:block;font-size:0.52rem;color:var(--text-muted);font-weight:300;letter-spacing:0.2em;text-transform:uppercase;margin-top:0.1rem}
-
 .header-right{display:flex;align-items:center;gap:0.25rem;flex-wrap:nowrap}
 .btn-icon{background:none;border:none;cursor:pointer;color:var(--text-muted);width:2.1rem;height:2.1rem;border-radius:0.45rem;display:flex;align-items:center;justify-content:center;transition:color 0.2s,background 0.2s,transform 0.2s;font-size:0.88rem;flex-shrink:0;position:relative}
 .btn-icon:hover{color:var(--accent);background:var(--accent-dim);transform:scale(1.08)}
@@ -170,24 +108,19 @@ header{
 .btn-icon .badge{position:absolute;top:3px;right:3px;width:6px;height:6px;border-radius:50%;background:var(--accent);border:1.5px solid var(--bg);display:none}
 .btn-icon .badge.show{display:block;animation:pulseBadge 2s infinite}
 @keyframes pulseBadge{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
-
 .btn-ghost{background:none;border:1px solid var(--border);color:var(--text-muted);font-family:'Hind Siliguri',sans-serif;font-size:0.75rem;padding:0.22rem 0.8rem;border-radius:2rem;cursor:pointer;transition:all 0.2s;white-space:nowrap}
 .btn-ghost:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-dim);transform:translateY(-1px)}
 .btn-ghost.admin-style{color:var(--blue);border-color:rgba(122,176,232,0.3)}
 .btn-ghost.admin-style:hover{background:rgba(122,176,232,0.08);border-color:var(--blue)}
-
 .user-chip{display:flex;align-items:center;gap:0.35rem;background:var(--surface2);border:1px solid var(--border-soft);padding:0.15rem 0.6rem 0.15rem 0.25rem;border-radius:2rem;font-size:0.72rem;color:var(--text-dim);cursor:pointer;transition:all 0.2s}
 .user-chip:hover{border-color:var(--border);background:var(--surface3)}
 .user-avatar{width:1.35rem;height:1.35rem;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:0.55rem;color:var(--bg);font-weight:700;flex-shrink:0}
-
 .sync-indicator{display:flex;align-items:center;gap:0.28rem;font-size:0.6rem;color:var(--text-muted);padding:0.18rem 0.48rem;border-radius:2rem;border:1px solid var(--border-soft);background:var(--surface2);transition:all 0.4s;white-space:nowrap}
 .sync-indicator.syncing{color:var(--accent);border-color:var(--border)}
 .sync-indicator.synced{color:var(--green);border-color:rgba(120,212,160,0.25)}
 .sync-dot{width:4px;height:4px;border-radius:50%;background:currentColor}
 .sync-indicator.syncing .sync-dot{animation:blink 0.9s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
-
-/* ═══ SEARCH BAR ═══ */
 #searchBar{position:fixed;left:0;right:0;z-index:99;background:var(--bg2);border-bottom:1px solid var(--border-soft);padding:0.65rem 1.8rem;transform:translateY(-110%);opacity:0;pointer-events:none;transition:transform 0.32s var(--ease),opacity 0.32s var(--ease)}
 #searchBar.open{transform:translateY(0);opacity:1;pointer-events:all}
 .search-inner{position:relative}
@@ -198,21 +131,14 @@ header{
 .search-clear.show{opacity:1;pointer-events:all}
 #searchCount{font-size:0.66rem;color:var(--text-muted);margin-top:0.25rem;font-weight:300}
 mark{background:rgba(232,168,76,0.22);color:var(--accent2);border-radius:2px;padding:0 1px}
-
-/* ═══ MAIN LAYOUT ═══ */
 main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;transition:padding-top 0.3s}
-
-/* ═══ VIEW SYSTEM ═══ */
 .view{display:none}
 .view.active{display:block;animation:viewIn 0.4s var(--ease) both}
 @keyframes viewIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-
-/* ═══ HERO ═══ */
 .home-hero{position:relative;margin-bottom:1.5rem;padding:2rem 2rem 1.8rem;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--r);overflow:hidden;box-shadow:var(--card-glow)}
 .home-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:320px;height:320px;background:radial-gradient(circle,var(--accent-dim) 0%,transparent 70%);border-radius:50%;animation:heroOrb 8s ease-in-out infinite alternate}
 .home-hero::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 24px,rgba(232,168,76,0.012) 24px,rgba(232,168,76,0.012) 25px);pointer-events:none}
 @keyframes heroOrb{from{transform:translate(0,0) scale(1)}to{transform:translate(-25px,18px) scale(1.15)}}
-
 .hero-eyebrow{font-size:0.62rem;font-weight:400;color:var(--accent);letter-spacing:0.25em;text-transform:uppercase;opacity:0.8;display:flex;align-items:center;gap:0.45rem;margin-bottom:0.7rem}
 .hero-eyebrow::before{content:'';display:inline-block;width:18px;height:1.5px;background:var(--accent);opacity:0.7}
 .home-title{font-family:'Noto Serif Bengali',serif;font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:700;color:var(--text);line-height:1.18;margin-bottom:0.5rem}
@@ -223,8 +149,6 @@ main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;tr
 .stat-pill strong{color:var(--accent);font-weight:700;font-size:1.1rem;font-family:'Noto Serif Bengali',serif}
 .hero-glyph{position:absolute;bottom:-0.8rem;right:1.2rem;font-size:9rem;opacity:0.02;font-family:'Noto Serif Bengali',serif;line-height:1;pointer-events:none;color:var(--accent);animation:glyphFloat 12s ease-in-out infinite alternate}
 @keyframes glyphFloat{from{transform:translateY(0) rotate(-4deg)}to{transform:translateY(-12px) rotate(3deg)}}
-
-/* ═══ CATEGORY STRIP ═══ */
 .cat-strip-wrap{margin-bottom:1rem}
 .cat-strip{display:flex;gap:0.35rem;overflow-x:auto;padding-bottom:0.3rem;scrollbar-width:none}
 .cat-strip::-webkit-scrollbar{display:none}
@@ -232,8 +156,6 @@ main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;tr
 .cat-btn:hover{color:var(--accent);border-color:var(--border);background:var(--surface2);transform:translateY(-1px)}
 .cat-btn.active{color:var(--accent);border-color:var(--accent);background:var(--accent-dim)}
 .cat-count{background:var(--accent-dim);color:var(--accent);font-size:0.56rem;padding:0.05rem 0.32rem;border-radius:2rem;min-width:1.2rem;text-align:center;font-weight:500}
-
-/* ═══ TOOLBAR ═══ */
 .list-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem;flex-wrap:wrap;gap:0.5rem}
 .sort-group{display:flex;gap:0.2rem;flex-wrap:wrap}
 .sort-btn{background:none;border:1px solid var(--border-soft);color:var(--text-muted);font-family:'Hind Siliguri',sans-serif;font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:2rem;cursor:pointer;transition:all 0.2s}
@@ -243,27 +165,15 @@ main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;tr
 .btn-random{background:none;border:none;color:var(--text-muted);font-family:'Hind Siliguri',sans-serif;font-size:0.7rem;cursor:pointer;display:flex;align-items:center;gap:0.22rem;padding:0.18rem 0;transition:color 0.2s}
 .btn-random:hover{color:var(--accent)}
 .results-count{font-size:0.66rem;color:var(--text-muted);font-weight:300}
-
-/* ═══ POST CARDS ═══ */
 .post-list{display:flex;flex-direction:column;gap:0.42rem}
 .pinned-label{font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);opacity:0.6;margin-bottom:0.38rem;display:flex;align-items:center;gap:0.28rem}
 .pinned-label::before{content:'';flex:0 0 20px;height:1px;background:var(--accent);opacity:0.5}
-
-.post-item{
-  padding:1.1rem 1.2rem 1.1rem 1.3rem;
-  background:var(--surface);border:1px solid var(--border-soft);
-  border-radius:var(--r-sm);cursor:pointer;
-  display:grid;grid-template-columns:1fr auto;gap:0.8rem;align-items:center;
-  animation:slideIn 0.32s var(--ease) both;
-  transition:background 0.2s,border-color 0.2s,transform 0.2s,box-shadow 0.2s;
-  position:relative;overflow:hidden;
-}
+.post-item{padding:1.1rem 1.2rem 1.1rem 1.3rem;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--r-sm);cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:0.8rem;align-items:center;animation:slideIn 0.32s var(--ease) both;transition:background 0.2s,border-color 0.2s,transform 0.2s,box-shadow 0.2s;position:relative;overflow:hidden;}
 .post-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--accent),var(--accent2));transform:scaleY(0);transform-origin:center;transition:transform 0.24s var(--ease);border-radius:0 2px 2px 0}
 .post-item:hover::before{transform:scaleY(1)}
 .post-item:hover{background:var(--surface2);border-color:var(--border);transform:translateX(3px);box-shadow:var(--card-hover-glow)}
 .post-item:hover .post-title{color:var(--accent)}
 @keyframes slideIn{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:translateX(0)}}
-
 .post-title{font-family:'Noto Serif Bengali',serif;font-size:1rem;font-weight:500;color:var(--text);line-height:1.4;margin-bottom:0.2rem;transition:color 0.2s}
 .post-preview{font-size:0.77rem;font-weight:300;color:var(--text-muted);line-height:1.55;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:38ch;margin-bottom:0.32rem}
 .post-footer-row{display:flex;align-items:center;gap:0.45rem;flex-wrap:wrap}
@@ -278,8 +188,6 @@ main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;tr
 .like-chip{display:flex;align-items:center;gap:0.18rem;font-size:0.61rem;color:var(--text-muted)}
 .fav-dot{font-size:0.7rem;color:var(--accent);opacity:0;transition:opacity 0.2s}
 .fav-dot.show{opacity:1}
-
-/* ═══ FEATURED BANNER ═══ */
 .featured-banner{margin-bottom:1.5rem;padding:1.5rem 1.7rem;background:linear-gradient(135deg,var(--surface),var(--accent-dim));border:1px solid var(--accent);border-radius:var(--r);cursor:pointer;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;box-shadow:var(--card-glow)}
 .featured-banner:hover{transform:translateY(-2px);box-shadow:var(--card-hover-glow)}
 .featured-tag{font-size:0.57rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;display:flex;align-items:center;gap:0.38rem}
@@ -287,8 +195,6 @@ main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;tr
 .featured-title{font-family:'Noto Serif Bengali',serif;font-size:1.4rem;font-weight:600;color:var(--text);line-height:1.28;margin-bottom:0.4rem}
 .featured-preview{font-size:0.83rem;color:var(--text-dim);font-weight:300;line-height:1.75;margin-bottom:0.6rem;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .featured-meta{display:flex;align-items:center;gap:0.45rem;font-size:0.7rem;color:var(--text-muted)}
-
-/* ═══ EMPTY / LOADING ═══ */
 .empty-state{text-align:center;padding:5rem 0 3rem;color:var(--text-muted);font-weight:300;font-size:0.9rem;line-height:2.5}
 .empty-glyph{font-size:3rem;display:block;margin-bottom:1rem;opacity:0.15;font-family:'Noto Serif Bengali',serif}
 .loading-row{display:flex;justify-content:center;align-items:center;gap:6px;padding:5rem 0}
@@ -297,12 +203,8 @@ main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;tr
 @keyframes pulse{0%,80%,100%{transform:scale(0.6);opacity:0.18}40%{transform:scale(1);opacity:1}}
 .no-results{text-align:center;padding:3.5rem 0;color:var(--text-muted);font-size:0.88rem;font-weight:300;line-height:2.4}
 .no-results em{color:var(--accent);font-style:normal;font-family:'Noto Serif Bengali',serif}
-
-/* ═══ BACK BUTTON ═══ */
 .back-btn{display:inline-flex;align-items:center;gap:0.35rem;color:var(--text-muted);font-size:0.79rem;font-weight:300;background:none;border:none;padding:0;cursor:pointer;margin-bottom:2.5rem;transition:color 0.2s,gap 0.2s}
 .back-btn:hover{color:var(--accent);gap:0.5rem}
-
-/* ═══ READING VIEW ═══ */
 .read-eyebrow{font-size:0.63rem;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem;opacity:0.85}
 .read-eyebrow::before{content:'';display:inline-block;width:12px;height:1.5px;background:currentColor;opacity:0.8}
 .read-title{font-family:'Noto Serif Bengali',serif;font-size:clamp(1.6rem,4.5vw,2.5rem);font-weight:700;color:var(--text);line-height:1.2;margin-bottom:0.6rem}
@@ -312,7 +214,6 @@ main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;tr
 .read-author-date{font-size:0.7rem;color:var(--text-muted);font-weight:300}
 .read-meta{font-size:0.72rem;color:var(--text-muted);display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.5rem}
 .read-meta-sep{opacity:0.3}
-
 .read-prefs{display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap;margin-bottom:0.85rem;padding:0.6rem 0.9rem;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--r-sm)}
 .pref-group{display:flex;align-items:center;gap:0.32rem}
 .pref-label{font-size:0.59rem;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap}
@@ -325,19 +226,15 @@ main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;tr
 .font-family-btn:hover,.font-family-btn.active{color:var(--accent);border-color:var(--accent);background:var(--accent-dim)}
 .line-height-btn{background:none;border:1px solid var(--border-soft);color:var(--text-muted);font-size:0.63rem;padding:0.16rem 0.42rem;border-radius:2rem;cursor:pointer;transition:all 0.2s}
 .line-height-btn:hover,.line-height-btn.active{color:var(--accent);border-color:var(--accent);background:var(--accent-dim)}
-
 .read-divider{display:flex;align-items:center;gap:1rem;margin:2rem 0}
 .read-divider::before,.read-divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
 .read-divider-glyph{color:var(--accent);font-size:0.78rem;opacity:0.4;animation:spin 25s linear infinite}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-
 .read-body{font-family:var(--read-font,'Noto Serif Bengali',serif);font-size:var(--body-fs,1.1rem);font-weight:300;line-height:var(--body-lh,2.4);color:var(--text);white-space:pre-wrap;word-break:break-word;letter-spacing:0.01em;transition:font-size 0.2s,line-height 0.2s,font-family 0.2s}
 .read-body.font-hind{font-family:'Hind Siliguri',sans-serif !important}
 .read-body.font-serif{font-family:'Noto Serif Bengali',serif !important}
 .read-body.font-lora{font-family:'Lora',serif !important}
 .drop-cap::first-letter{float:left;font-size:4em;line-height:0.7;margin-right:0.06em;margin-top:0.12em;color:var(--accent);font-weight:700;font-family:'Noto Serif Bengali',serif}
-
-/* ═══ READ ACTIONS ═══ */
 .read-actions{display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap;margin-top:2.5rem;padding:1.1rem 1.2rem;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--r);box-shadow:var(--card-glow)}
 .action-btn{background:none;border:1px solid var(--border-soft);color:var(--text-muted);font-family:'Hind Siliguri',sans-serif;font-size:0.72rem;padding:0.26rem 0.75rem;border-radius:2rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:0.22rem;white-space:nowrap}
 .action-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-dim);transform:translateY(-1px)}
@@ -346,8 +243,6 @@ main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;tr
 .action-btn.danger{color:var(--red);border-color:rgba(224,120,120,0.25)}
 .action-btn.danger:hover{background:var(--red-dim);border-color:var(--red)}
 .action-btn svg{width:10px;height:10px;flex-shrink:0}
-
-/* ═══ RELATED ═══ */
 .related-section{margin-top:2.8rem;padding-top:1.8rem;border-top:1px solid var(--border-soft)}
 .section-label{font-size:0.63rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.9rem}
 .related-item{padding:0.75rem 0;border-bottom:1px solid var(--border-soft);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:padding-left 0.22s}
@@ -356,8 +251,6 @@ main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;tr
 .related-item:hover .related-item-title{color:var(--accent)}
 .related-item-title{font-size:0.9rem;font-weight:400;color:var(--text);transition:color 0.2s;font-family:'Noto Serif Bengali',serif}
 .related-item-author{font-size:0.61rem;color:var(--text-muted);font-weight:300;flex-shrink:0}
-
-/* ═══ COMMENTS ═══ */
 .comments-section{margin-top:2.8rem;padding-top:1.8rem;border-top:1px solid var(--border-soft)}
 .comments-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.4rem}
 .comments-count-badge{font-size:0.62rem;color:var(--accent);border:1px solid var(--border);background:var(--accent-dim);padding:0.06rem 0.48rem;border-radius:2rem}
@@ -372,24 +265,16 @@ main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;tr
 .comment-item:hover .comment-del-btn{opacity:0.5}
 .comment-del-btn:hover{opacity:1 !important}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-
-/* ═══ READ FOOTER ═══ */
 .read-footer{margin-top:3rem;padding:1.3rem;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--r);display:flex;align-items:center;justify-content:space-between}
 .read-footer-logo{font-family:'Noto Serif Bengali',serif;font-size:1rem;font-weight:700;color:var(--accent);opacity:0.4}
 .read-footer-glyph{font-size:0.66rem;color:var(--text-muted);font-weight:300}
-
-/* ═══ FAVORITES VIEW ═══ */
 .fav-empty{text-align:center;padding:4.5rem 0 3rem;color:var(--text-muted);font-weight:300;font-size:0.9rem;line-height:2.4}
-
-/* ═══ AUTHORS VIEW ═══ */
 .authors-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:0.75rem;margin-top:1.5rem}
 .author-card{padding:1.2rem;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--r);text-align:center;cursor:pointer;transition:all 0.22s;box-shadow:var(--card-glow)}
 .author-card:hover{background:var(--surface2);border-color:var(--border);transform:translateY(-2px);box-shadow:var(--card-hover-glow)}
 .author-card-avatar{width:3rem;height:3rem;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--bg);font-weight:700;margin:0 auto 0.65rem}
 .author-card-name{font-family:'Noto Serif Bengali',serif;font-size:0.95rem;font-weight:500;color:var(--text);margin-bottom:0.28rem}
 .author-card-count{font-size:0.71rem;color:var(--text-muted);font-weight:300}
-
-/* ═══ ADMIN VIEW ═══ */
 .admin-banner{display:flex;align-items:center;gap:0.6rem;padding:0.85rem 1.2rem;background:rgba(122,176,232,0.06);border:1px solid rgba(122,176,232,0.18);border-radius:var(--r-sm);margin-bottom:2rem;font-size:0.8rem;color:var(--blue);font-weight:300}
 .admin-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.7rem;margin-bottom:2.5rem}
 .admin-stat-card{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--r-sm);padding:1.1rem 1.2rem;position:relative;overflow:hidden;transition:transform 0.2s,border-color 0.2s;box-shadow:var(--card-glow)}
@@ -412,8 +297,6 @@ main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;tr
 .btn-sm.hide-active{color:var(--text-muted);background:var(--surface3)}
 .btn-del-sm{background:none;border:1px solid rgba(224,120,120,0.22);color:var(--red);font-size:0.66rem;padding:0.16rem 0.48rem;border-radius:var(--r-xs);cursor:pointer;transition:all 0.2s;font-family:'Hind Siliguri',sans-serif}
 .btn-del-sm:hover{background:var(--red-dim);border-color:var(--red)}
-
-/* ═══ MODALS ═══ */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(20px);z-index:300;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.3s var(--ease)}
 .overlay.open{opacity:1;pointer-events:all}
 .modal{background:var(--bg2);border:1px solid var(--border);border-radius:1.3rem;padding:2rem 2rem 2.2rem;width:100%;max-width:450px;position:relative;transform:translateY(24px) scale(0.96);transition:transform 0.36s var(--spring),background var(--dur);max-height:92vh;overflow-y:auto;scrollbar-width:none}
@@ -428,13 +311,11 @@ main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;tr
 .modal-tabs{display:flex;gap:0;margin-bottom:1.5rem;border:1px solid var(--border);border-radius:0.6rem;overflow:hidden}
 .modal-tab{flex:1;background:none;border:none;color:var(--text-muted);font-family:'Hind Siliguri',sans-serif;font-size:0.82rem;padding:0.55rem;cursor:pointer;transition:all 0.2s}
 .modal-tab.active{background:var(--accent-dim);color:var(--accent)}
-
 .settings-tabs{display:flex;gap:0.28rem;flex-wrap:wrap;margin-bottom:1.5rem}
 .settings-tab{background:none;border:1px solid var(--border-soft);color:var(--text-muted);font-family:'Hind Siliguri',sans-serif;font-size:0.73rem;padding:0.28rem 0.68rem;border-radius:2rem;cursor:pointer;transition:all 0.2s}
 .settings-tab:hover{color:var(--accent);border-color:var(--border)}
 .settings-tab.active{color:var(--accent);border-color:var(--accent);background:var(--accent-dim)}
 .settings-panel{display:none}.settings-panel.active{display:block;animation:fadeUp 0.3s var(--ease) both}
-
 .field{margin-bottom:0.9rem}
 .field-label{display:block;font-size:0.7rem;font-weight:400;color:var(--text-muted);margin-bottom:0.33rem;letter-spacing:0.04em}
 .field-label span{color:var(--red);margin-left:0.12rem}
@@ -447,30 +328,23 @@ main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;tr
 .field-counter.warn{color:var(--accent)}
 .field-hint{font-size:0.63rem;color:var(--text-muted);font-weight:300;opacity:0.7}
 [data-theme="dark"] .field-date::-webkit-calendar-picker-indicator{filter:invert(0.55) sepia(1) saturate(1.8) hue-rotate(10deg);opacity:0.5;cursor:pointer}
-
-/* Category management */
 .cat-manage-list{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem;max-height:220px;overflow-y:auto}
 .cat-manage-item{display:flex;align-items:center;justify-content:space-between;gap:0.5rem;background:var(--surface2);border:1px solid var(--border-soft);border-radius:var(--r-xs);padding:0.5rem 0.75rem;font-size:0.84rem;font-family:'Noto Serif Bengali',serif;color:var(--text-dim)}
 .cat-manage-item .cat-item-name{flex:1}
 .cat-manage-item .cat-item-count{font-size:0.65rem;color:var(--text-muted)}
 .cat-add-row{display:flex;gap:0.5rem}
 .cat-add-row .field-input{flex:1;margin-bottom:0}
-
-/* Dedication names editor */
 .ded-names-list{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:1rem;max-height:240px;overflow-y:auto}
 .ded-name-item{display:flex;align-items:center;gap:0.5rem;background:var(--surface2);border:1px solid var(--border-soft);border-radius:var(--r-xs);padding:0.45rem 0.75rem}
 .ded-name-text{flex:1;font-size:0.83rem;font-family:'Noto Serif Bengali',serif;color:var(--text-dim)}
 .ded-name-del{background:none;border:none;color:var(--red);cursor:pointer;font-size:0.8rem;opacity:0.5;transition:opacity 0.2s;padding:0.1rem 0.3rem}
 .ded-name-del:hover{opacity:1}
-
-/* Color swatches */
 .color-swatches{display:flex;gap:0.45rem;flex-wrap:wrap;margin-top:0.5rem}
 .color-swatch{width:1.75rem;height:1.75rem;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform 0.2s,border-color 0.2s}
 .color-swatch:hover{transform:scale(1.18)}
 .color-swatch.active{border-color:var(--text)}
 .color-picker-wrap{display:flex;align-items:center;gap:0.5rem;margin-top:0.5rem}
 .color-picker-input{width:2.1rem;height:2.1rem;border:none;padding:0;background:none;cursor:pointer;border-radius:50%;overflow:hidden}
-
 .btn-primary{width:100%;background:var(--accent);color:var(--bg);font-family:'Hind Siliguri',sans-serif;font-size:0.92rem;font-weight:700;padding:0.72rem;border:none;border-radius:var(--r-sm);cursor:pointer;margin-top:0.4rem;transition:opacity 0.2s,transform 0.12s,box-shadow 0.2s;letter-spacing:0.02em}
 .btn-primary:hover{opacity:0.85;box-shadow:0 4px 22px var(--accent-glow)}
 .btn-primary:active{transform:scale(0.98)}
@@ -486,147 +360,69 @@ main{max-width:740px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;tr
 .login-notice{text-align:center;padding:2.2rem 1rem;font-size:0.88rem;color:var(--text-muted);font-weight:300;line-height:2}
 .login-notice strong{color:var(--accent);font-weight:500}
 .confirm-modal{max-width:360px;text-align:center}
-
 .toggle-wrap{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem}
 .toggle-label{font-size:0.78rem;color:var(--text-dim);font-weight:300;cursor:pointer}
 .toggle{appearance:none;width:2.55rem;height:1.38rem;border-radius:2rem;background:var(--surface3);cursor:pointer;position:relative;transition:background 0.3s;flex-shrink:0}
 .toggle:checked{background:var(--accent)}
 .toggle::after{content:'';position:absolute;width:0.98rem;height:0.98rem;border-radius:50%;background:#fff;top:0.2rem;left:0.2rem;transition:left 0.3s var(--spring)}
 .toggle:checked::after{left:1.38rem}
-
-/* ═══ ZEN MODE ═══ */
 body.zen header,body.zen .back-btn,body.zen .read-actions,body.zen .related-section,body.zen .comments-section,body.zen .read-footer,body.zen .read-prefs,body.zen .dedication-marquee{opacity:0;pointer-events:none;transition:opacity 0.4s}
 body.zen .read-eyebrow,body.zen .read-author-row,body.zen .read-meta{opacity:0.2}
 body.zen #progressBar{opacity:0 !important}
 .zen-exit{position:fixed;bottom:3rem;right:1.5rem;background:var(--surface2);border:1px solid var(--border);color:var(--text-muted);font-family:'Hind Siliguri',sans-serif;font-size:0.72rem;padding:0.4rem 0.88rem;border-radius:2rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity 0.3s;z-index:50;backdrop-filter:blur(8px)}
 body.zen .zen-exit{opacity:1;pointer-events:all}
 .zen-exit:hover{color:var(--accent)}
-
-/* ═══ FAB ═══ */
 .fab{position:fixed;bottom:calc(var(--marquee-h) + 1.4rem);right:1.8rem;width:3.1rem;height:3.1rem;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);border:none;font-size:1.4rem;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 6px 28px var(--accent-glow),0 2px 10px var(--shadow);transition:transform 0.28s var(--spring),box-shadow 0.28s;z-index:90}
 .fab.show{display:flex;animation:fabPop 0.5s var(--spring) both}
 .fab:hover{transform:rotate(45deg) scale(1.1);box-shadow:0 10px 40px rgba(232,168,76,0.5)}
 @keyframes fabPop{from{transform:scale(0) rotate(-90deg);opacity:0}to{transform:scale(1) rotate(0deg);opacity:1}}
-
-/* ═══ TOAST ═══ */
 .toast{position:fixed;bottom:calc(var(--marquee-h) + 1rem);left:50%;transform:translateX(-50%) translateY(4rem);background:var(--surface2);border:1px solid var(--border);color:var(--text);font-size:0.81rem;padding:0.55rem 1.3rem;border-radius:3rem;z-index:500;white-space:nowrap;box-shadow:0 6px 28px var(--shadow);transition:transform 0.36s var(--spring),opacity 0.36s;pointer-events:none;display:flex;align-items:center;gap:0.42rem;backdrop-filter:blur(12px);opacity:0}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-
-/* ═══ SCROLL TOP ═══ */
 #scrollTopBtn{position:fixed;bottom:calc(var(--marquee-h) + 1.4rem);left:1.8rem;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--surface2);border:1px solid var(--border);color:var(--text-muted);font-size:0.85rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s,color 0.2s;z-index:80}
 #scrollTopBtn.show{opacity:1;pointer-events:all}
 #scrollTopBtn:hover{color:var(--accent);background:var(--accent-dim)}
-
-/* ═══ SHORTCUTS MODAL ═══ */
 .shortcut-grid{display:grid;grid-template-columns:auto 1fr;gap:0.5rem 1.2rem;align-items:center}
 .shortcut-key{background:var(--surface3);border:1px solid var(--border);border-radius:0.3rem;padding:0.14rem 0.48rem;font-size:0.7rem;color:var(--accent);font-weight:600;font-family:monospace;text-align:center}
 .shortcut-desc{font-size:0.8rem;color:var(--text-dim);font-weight:300}
-
-/* ═══ DEDICATION MARQUEE (bottom fixed) ═══ */
-.dedication-marquee{
-  position:fixed;bottom:0;left:0;right:0;z-index:150;
-  height:var(--marquee-h);
-  background:var(--marquee-bg);
-  border-top:1px solid var(--marquee-border);
-  overflow:hidden;
-  display:flex;align-items:center;
-  backdrop-filter:blur(16px);
-}
-.dedication-marquee::before,.dedication-marquee::after{
-  content:'';position:absolute;top:0;bottom:0;width:80px;z-index:10;pointer-events:none;
-}
+.dedication-marquee{position:fixed;bottom:0;left:0;right:0;z-index:150;height:var(--marquee-h);background:var(--marquee-bg);border-top:1px solid var(--marquee-border);overflow:hidden;display:flex;align-items:center;backdrop-filter:blur(16px);}
+.dedication-marquee::before,.dedication-marquee::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:10;pointer-events:none;}
 .dedication-marquee::before{left:0;background:linear-gradient(to right,var(--marquee-bg),transparent)}
 .dedication-marquee::after{right:0;background:linear-gradient(to left,var(--marquee-bg),transparent)}
-.marquee-prefix{
-  position:absolute;left:0;top:0;bottom:0;z-index:11;
-  display:flex;align-items:center;padding:0 1rem;
-  font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--accent);font-weight:500;background:var(--marquee-bg);
-  white-space:nowrap;
-}
+.marquee-prefix{position:absolute;left:0;top:0;bottom:0;z-index:11;display:flex;align-items:center;padding:0 1rem;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:500;background:var(--marquee-bg);white-space:nowrap;}
 .marquee-prefix::after{content:'';position:absolute;right:0;top:15%;bottom:15%;width:1px;background:var(--accent);opacity:0.3}
-.marquee-track{
-  display:flex;align-items:center;
-  margin-left:7rem;
-  animation:marqueeScroll var(--marquee-duration, 40s) linear infinite;
-  white-space:nowrap;
-}
+.marquee-track{display:flex;align-items:center;margin-left:7rem;animation:marqueeScroll var(--marquee-duration, 40s) linear infinite;white-space:nowrap;}
 .marquee-track:hover{animation-play-state:paused}
-.marquee-item{
-  font-family:'Noto Serif Bengali',serif;
-  font-size:0.78rem;font-weight:400;
-  color:var(--accent);opacity:0.75;
-  padding:0 0.8rem;
-  transition:opacity 0.2s;
-}
+.marquee-item{font-family:'Noto Serif Bengali',serif;font-size:0.78rem;font-weight:400;color:var(--accent);opacity:0.75;padding:0 0.8rem;transition:opacity 0.2s;}
 .marquee-item:hover{opacity:1}
 .marquee-sep{color:var(--accent);opacity:0.25;padding:0 0.2rem;font-size:0.7rem}
-@keyframes marqueeScroll{
-  0%{transform:translateX(0%)}
-  100%{transform:translateX(-50%)}
-}
-
-/* ═══ PRINT ═══ */
-@media print{
-  header,#searchBar,.fab,.toast,.zen-exit,#scrollTopBtn,.back-btn,.read-actions,.related-section,.comments-section,.read-footer,.read-prefs,#progressBar,body::before,.salaam-bar,.dedication-marquee,#announcementBar{display:none !important}
-  html,body{background:#fff !important;color:#111 !important}
-  main{padding:2rem !important;max-width:100% !important}
-  .read-title{font-size:20pt !important;color:#111 !important}
-  .read-body{font-size:12pt !important;line-height:2.3 !important;color:#111 !important}
-  @page{size:A4 portrait;margin:2cm}
-}
-
-/* ═══ RESPONSIVE ═══ */
-@media(max-width:580px){
-  header{padding:0 1rem}
-  .logo-sub{display:none}
-  #searchBar{padding:0.6rem 1rem}
-  .home-hero{padding:1.4rem 1.3rem}
-  .home-title{font-size:1.65rem}
-  .read-title{font-size:1.42rem}
-  .post-preview{max-width:22ch}
-  .modal{padding:1.5rem 1.25rem 1.8rem;border-radius:1rem}
-  .field-row{grid-template-columns:1fr}
-  .fab{right:1rem}
-  .admin-stats{grid-template-columns:1fr 1fr}
-  .sync-indicator{display:none}
-  .user-chip .name-text{display:none}
-  .salaam-text{font-size:0.95rem}
-  .read-prefs{flex-wrap:wrap;gap:0.45rem}
-  .authors-grid{grid-template-columns:1fr 1fr}
-  .marquee-item{font-size:0.7rem}
-  #announcementBar{font-size:0.71rem;padding:0.35rem 0.8rem}
-}
+@keyframes marqueeScroll{0%{transform:translateX(0%)}100%{transform:translateX(-50%)}}
+/* ── Settings sync status badge ── */
+.settings-sync-note{font-size:0.65rem;color:var(--text-muted);margin-top:0.4rem;font-weight:300;opacity:0.7;display:flex;align-items:center;gap:0.3rem}
+.settings-sync-note.cloud{color:var(--green)}
+.settings-sync-note.local{color:var(--accent)}
+@media print{header,#searchBar,.fab,.toast,.zen-exit,#scrollTopBtn,.back-btn,.read-actions,.related-section,.comments-section,.read-footer,.read-prefs,#progressBar,body::before,.salaam-bar,.dedication-marquee,#announcementBar{display:none !important}html,body{background:#fff !important;color:#111 !important}main{padding:2rem !important;max-width:100% !important}.read-title{font-size:20pt !important;color:#111 !important}.read-body{font-size:12pt !important;line-height:2.3 !important;color:#111 !important}@page{size:A4 portrait;margin:2cm}}
+@media(max-width:580px){header{padding:0 1rem}.logo-sub{display:none}#searchBar{padding:0.6rem 1rem}.home-hero{padding:1.4rem 1.3rem}.home-title{font-size:1.65rem}.read-title{font-size:1.42rem}.post-preview{max-width:22ch}.modal{padding:1.5rem 1.25rem 1.8rem;border-radius:1rem}.field-row{grid-template-columns:1fr}.fab{right:1rem}.admin-stats{grid-template-columns:1fr 1fr}.sync-indicator{display:none}.user-chip .name-text{display:none}.salaam-text{font-size:0.95rem}.read-prefs{flex-wrap:wrap;gap:0.45rem}.authors-grid{grid-template-columns:1fr 1fr}.marquee-item{font-size:0.7rem}#announcementBar{font-size:0.71rem;padding:0.35rem 0.8rem}}
 </style>
 </head>
 <body>
 
-<!-- ═══ SALAAM BAR ═══ -->
 <div class="salaam-bar" id="salaamBar">
   <span class="salaam-ornament">✦</span>
   <span class="salaam-text" id="salaamText">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ &nbsp;·&nbsp; اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</span>
   <span class="salaam-ornament">✦</span>
 </div>
-
-<!-- ═══ PROGRESS BAR ═══ -->
 <div id="progressBar"></div>
-
-<!-- ═══ ANNOUNCEMENT BAR ═══ -->
 <div id="announcementBar">
   <span>📢</span>
   <span id="annText">স্বাগতম</span>
   <button class="ann-close" onclick="hideAnn()">✕</button>
 </div>
-
-<!-- ═══ ZEN EXIT ═══ -->
 <button class="zen-exit" id="zenExit" onclick="exitZen()">✕ ফোকাস বন্ধ</button>
 <button id="scrollTopBtn" title="উপরে যান" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-<!-- ═══ HEADER ═══ -->
 <header id="mainHeader">
   <div class="logo" onclick="navHome()">
     <div class="logo-icon">
-      <!-- Philosophical 8-Point Star + Quill Icon -->
       <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none">
         <path d="M20 4L22.5 16L33 8L25 19L38 20L25 21L33 32L22.5 24L20 37L17.5 24L7 32L15 21L2 20L15 19L7 8L17.5 16Z" stroke="#e8a84c" stroke-width="0.9" opacity="0.45"/>
         <circle cx="20" cy="20" r="7" stroke="#e8a84c" stroke-width="0.9" opacity="0.6"/>
@@ -640,10 +436,7 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
     </div>
   </div>
   <div class="header-right">
-    <div class="sync-indicator" id="syncIndicator">
-      <div class="sync-dot"></div>
-      <span id="syncText">লোড হচ্ছে</span>
-    </div>
+    <div class="sync-indicator" id="syncIndicator"><div class="sync-dot"></div><span id="syncText">লোড হচ্ছে</span></div>
     <button class="btn-icon" id="searchToggleBtn" title="খোঁজুন (/)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
     </button>
@@ -662,7 +455,6 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
   </div>
 </header>
 
-<!-- ═══ SEARCH BAR ═══ -->
 <div id="searchBar">
   <div class="search-inner">
     <span class="search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
@@ -672,10 +464,7 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
   <div id="searchCount"></div>
 </div>
 
-<!-- ═══ MAIN ═══ -->
 <main id="mainArea">
-
-  <!-- HOME VIEW -->
   <div class="view active" id="homeView">
     <div class="home-hero">
       <p class="hero-eyebrow">সবার জন্য মুক্ত মঞ্চ</p>
@@ -688,26 +477,15 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
       </div>
       <div class="hero-glyph" aria-hidden="true">প্র</div>
     </div>
-
-    <!-- FEATURED POST -->
     <div id="featuredBannerWrap" style="display:none">
       <div class="featured-banner" id="featuredBanner" onclick="openFeaturedPost()">
         <div class="featured-tag">বিশেষ নির্বাচন</div>
         <div class="featured-title" id="featuredTitle"></div>
         <div class="featured-preview" id="featuredPreview"></div>
-        <div class="featured-meta">
-          <span id="featuredAuthor"></span><span>·</span><span id="featuredDate"></span>
-        </div>
+        <div class="featured-meta"><span id="featuredAuthor"></span><span>·</span><span id="featuredDate"></span></div>
       </div>
     </div>
-
-    <!-- CATEGORY STRIP -->
-    <div class="cat-strip-wrap">
-      <div class="cat-strip" id="catStrip">
-        <!-- Dynamically populated -->
-      </div>
-    </div>
-
+    <div class="cat-strip-wrap"><div class="cat-strip" id="catStrip"></div></div>
     <div class="list-toolbar">
       <div class="sort-group">
         <button class="sort-btn active" data-sort="newest">নতুন</button>
@@ -726,7 +504,6 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
     <div id="postList"><div class="loading-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
   </div>
 
-  <!-- FAVORITES VIEW -->
   <div class="view" id="favoritesView">
     <button class="back-btn" onclick="showView('home',{restoreScroll:true})">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><polyline points="15 18 9 12 15 6"/></svg>
@@ -738,7 +515,6 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
     <div id="favPostList"></div>
   </div>
 
-  <!-- AUTHORS VIEW -->
   <div class="view" id="authorsView">
     <button class="back-btn" onclick="showView('home',{restoreScroll:true})">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><polyline points="15 18 9 12 15 6"/></svg>
@@ -750,7 +526,6 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
     <div class="authors-grid" id="authorsGrid"></div>
   </div>
 
-  <!-- ADMIN VIEW -->
   <div class="view" id="adminView">
     <button class="back-btn" onclick="showView('home',{restoreScroll:true})">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><polyline points="15 18 9 12 15 6"/></svg>
@@ -782,7 +557,6 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
     <div id="adminPostList"></div>
   </div>
 
-  <!-- READING VIEW -->
   <article class="view" id="readingView">
     <button class="back-btn" id="backBtn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><polyline points="15 18 9 12 15 6"/></svg>
@@ -792,10 +566,7 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
     <h2 class="read-title" id="readTitle"></h2>
     <div class="read-author-row">
       <div class="read-author-avatar" id="readAuthorAvatar"></div>
-      <div>
-        <div class="read-author-name" id="readAuthorName"></div>
-        <div class="read-author-date" id="readAuthorDate"></div>
-      </div>
+      <div><div class="read-author-name" id="readAuthorName"></div><div class="read-author-date" id="readAuthorDate"></div></div>
     </div>
     <p class="read-meta" id="readMeta"></p>
     <div class="read-prefs" id="readPrefs">
@@ -861,19 +632,16 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
       <span class="read-footer-glyph">✦ মুক্ত কলমের মঞ্চ</span>
     </footer>
   </article>
-
 </main>
 
-<!-- ═══ DEDICATION MARQUEE (bottom) ═══ -->
 <div class="dedication-marquee" id="dedicationMarquee">
   <div class="marquee-prefix">উৎসর্গ</div>
-  <div class="marquee-track" id="marqueeTrack"><!-- dynamically built --></div>
+  <div class="marquee-track" id="marqueeTrack"></div>
 </div>
 
-<!-- ═══ FAB ═══ -->
 <button class="fab" id="fab" title="নতুন পোস্ট (n)" onclick="openWriteModal()">✦</button>
 
-<!-- ═══ AUTH MODAL ═══ -->
+<!-- AUTH MODAL -->
 <div class="overlay" id="authOverlay">
   <div class="modal">
     <button class="modal-x" onclick="closeOverlay('authOverlay')">✕</button>
@@ -902,7 +670,7 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
   </div>
 </div>
 
-<!-- ═══ WRITE/EDIT MODAL ═══ -->
+<!-- WRITE MODAL -->
 <div class="overlay" id="writeOverlay">
   <div class="modal modal-wide">
     <button class="modal-x" onclick="closeOverlay('writeOverlay')">✕</button>
@@ -931,12 +699,12 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
   </div>
 </div>
 
-<!-- ═══ SITE SETTINGS MODAL (Admin) ═══ -->
+<!-- SETTINGS MODAL -->
 <div class="overlay" id="settingsOverlay">
   <div class="modal modal-xl">
     <button class="modal-x" onclick="closeOverlay('settingsOverlay')">✕</button>
     <h2 class="modal-title">সাইট সেটিংস</h2>
-    <p class="modal-sub">সাইটের সব কিছু কাস্টমাইজ করুন।</p>
+    <p class="modal-sub">সাইটের সব কিছু কাস্টমাইজ করুন। <span style="color:var(--green);font-size:0.72rem">✓ সেটিংস সরাসরি সংরক্ষিত হয়</span></p>
     <div class="settings-tabs">
       <button class="settings-tab active" data-stab="identity" onclick="switchSettingsTab('identity')">পরিচিতি</button>
       <button class="settings-tab" data-stab="theme" onclick="switchSettingsTab('theme')">থিম</button>
@@ -946,8 +714,6 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
       <button class="settings-tab" data-stab="categories" onclick="switchSettingsTab('categories')">বিভাগ</button>
       <button class="settings-tab" data-stab="dedication" onclick="switchSettingsTab('dedication')">উৎসর্গ</button>
     </div>
-
-    <!-- IDENTITY -->
     <div class="settings-panel active" id="stab-identity">
       <div class="field"><label class="field-label">সাইটের নাম</label><input type="text" class="field-input" id="s-siteName" maxlength="30"/></div>
       <div class="field"><label class="field-label">ট্যাগলাইন</label><input type="text" class="field-input" id="s-tagline" maxlength="60"/></div>
@@ -955,9 +721,8 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
       <div class="field"><label class="field-label">হোম বিবরণ</label><textarea class="field-input field-textarea" id="s-heroDesc" style="min-height:80px"></textarea></div>
       <div class="field"><label class="field-label">ফুটার ট্যাগলাইন</label><input type="text" class="field-input" id="s-footerTag" maxlength="50"/></div>
       <button class="btn-primary" onclick="saveIdentitySettings()">পরিচিতি সংরক্ষণ করুন ✦</button>
+      <p class="form-ok" id="identityOk" style="margin-top:0.5rem"></p>
     </div>
-
-    <!-- THEME -->
     <div class="settings-panel" id="stab-theme">
       <div class="field"><label class="field-label">ডিফল্ট থিম</label><select class="field-select" id="s-defaultTheme"><option value="dark">ডার্ক</option><option value="light">লাইট</option><option value="sepia">সেপিয়া</option></select></div>
       <div class="field">
@@ -980,32 +745,28 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
       </div>
       <div class="field"><label class="field-label">মার্কি গতি (সেকেন্ড, কম = দ্রুত)</label><input type="range" class="field-input" id="s-marqueeSpeed" min="20" max="90" step="5" value="40" style="padding:0.3rem 0"/></div>
       <button class="btn-primary" onclick="saveThemeSettings()">থিম সংরক্ষণ করুন ✦</button>
+      <p class="form-ok" id="themeOk" style="margin-top:0.5rem"></p>
     </div>
-
-    <!-- SALAAM BAR -->
     <div class="settings-panel" id="stab-salaam">
       <div class="toggle-wrap"><input type="checkbox" class="toggle" id="s-salaamActive" checked/><label class="toggle-label" for="s-salaamActive">সালাম বার সক্রিয়</label></div>
       <div class="field"><label class="field-label">সালাম বার লেখা (আরবি/বাংলা)</label><input type="text" class="field-input" id="s-salaamText" value="بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ · اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ" style="direction:rtl;font-family:'Amiri',serif;font-size:1rem"/></div>
       <button class="btn-primary" onclick="saveSalaamSettings()">সালাম সংরক্ষণ করুন ✦</button>
+      <p class="form-ok" id="salaamOk" style="margin-top:0.5rem"></p>
     </div>
-
-    <!-- ANNOUNCEMENT -->
     <div class="settings-panel" id="stab-announcement">
       <div class="toggle-wrap"><input type="checkbox" class="toggle" id="s-annActive"/><label class="toggle-label" for="s-annActive">ঘোষণাবার সক্রিয়</label></div>
       <div class="field"><label class="field-label">ঘোষণার বার্তা</label><input type="text" class="field-input" id="s-annText" placeholder="সাইটে স্বাগতম!" maxlength="120"/></div>
       <button class="btn-primary" onclick="saveAnnouncementSettings()">ঘোষণা সংরক্ষণ করুন ✦</button>
+      <p class="form-ok" id="annOk" style="margin-top:0.5rem"></p>
     </div>
-
-    <!-- FEATURED -->
     <div class="settings-panel" id="stab-featured">
       <p style="font-size:0.8rem;color:var(--text-muted);font-weight:300;margin-bottom:1rem;line-height:1.7">একটি পোস্টকে হোমপেজে বিশেষভাবে প্রদর্শন করুন।</p>
       <div class="field"><label class="field-label">ফিচার পোস্ট নির্বাচন</label><select class="field-select" id="s-featuredPost"><option value="">— কোনো ফিচার পোস্ট নেই —</option></select></div>
       <button class="btn-primary" onclick="saveFeaturedSettings()">ফিচার পোস্ট সংরক্ষণ করুন ✦</button>
+      <p class="form-ok" id="featuredOk" style="margin-top:0.5rem"></p>
     </div>
-
-    <!-- CATEGORIES -->
     <div class="settings-panel" id="stab-categories">
-      <p style="font-size:0.8rem;color:var(--text-muted);font-weight:300;margin-bottom:1rem;line-height:1.7">বিভাগ যোগ করুন বা মুছুন। যে বিভাগে পোস্ট আছে, তা মুছলে পোস্টগুলো বিভাগহীন হবে।</p>
+      <p style="font-size:0.8rem;color:var(--text-muted);font-weight:300;margin-bottom:1rem;line-height:1.7">বিভাগ যোগ করুন বা মুছুন।</p>
       <div class="cat-manage-list" id="catManageList"></div>
       <div class="cat-add-row">
         <input type="text" class="field-input" id="newCatInput" placeholder="নতুন বিভাগের নাম…" maxlength="20"/>
@@ -1013,11 +774,10 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
       </div>
       <p class="form-ok" id="catOk" style="margin-top:0.6rem"></p>
       <button class="btn-primary" style="margin-top:1rem" onclick="saveCategoriesSettings()">বিভাগ সংরক্ষণ করুন ✦</button>
+      <p class="form-ok" id="catSaveOk" style="margin-top:0.5rem"></p>
     </div>
-
-    <!-- DEDICATION -->
     <div class="settings-panel" id="stab-dedication">
-      <p style="font-size:0.8rem;color:var(--text-muted);font-weight:300;margin-bottom:1rem;line-height:1.7">নিচের স্ক্রলিং মার্কিতে যাদের নাম দেখাবে তাদের তালিকা।</p>
+      <p style="font-size:0.8rem;color:var(--text-muted);font-weight:300;margin-bottom:1rem;line-height:1.7">নিচের স্ক্রলিং মার্কিতে যাদের নাম দেখাবে।</p>
       <div class="ded-names-list" id="dedNamesList"></div>
       <div class="cat-add-row" style="margin-bottom:0.5rem">
         <input type="text" class="field-input" id="newDedName" placeholder="নতুন নাম যোগ করুন…" maxlength="60"/>
@@ -1025,13 +785,12 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
       </div>
       <p class="form-ok" id="dedOk" style="margin-top:0.3rem"></p>
       <button class="btn-primary" style="margin-top:0.8rem" onclick="saveDedicationSettings()">উৎসর্গ সংরক্ষণ করুন ✦</button>
+      <p class="form-ok" id="dedSaveOk" style="margin-top:0.5rem"></p>
     </div>
-
-    <p class="form-ok" id="settingsOk" style="margin-top:0.8rem"></p>
   </div>
 </div>
 
-<!-- ═══ USER MANAGER MODAL ═══ -->
+<!-- USER MANAGER -->
 <div class="overlay" id="userManagerOverlay">
   <div class="modal modal-wide">
     <button class="modal-x" onclick="closeOverlay('userManagerOverlay')">✕</button>
@@ -1041,7 +800,7 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
   </div>
 </div>
 
-<!-- ═══ CONFIRM DELETE MODAL ═══ -->
+<!-- CONFIRM DELETE -->
 <div class="overlay" id="deleteOverlay">
   <div class="modal confirm-modal">
     <h2 class="modal-title" style="margin-bottom:0.5rem">পোস্ট মুছবেন?</h2>
@@ -1053,7 +812,7 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
   </div>
 </div>
 
-<!-- ═══ SHORTCUTS MODAL ═══ -->
+<!-- SHORTCUTS -->
 <div class="overlay" id="shortcutsOverlay">
   <div class="modal">
     <button class="modal-x" onclick="closeOverlay('shortcutsOverlay')">✕</button>
@@ -1071,7 +830,6 @@ body.zen .zen-exit{opacity:1;pointer-events:all}
   </div>
 </div>
 
-<!-- ═══ TOAST ═══ -->
 <div class="toast" id="toast"><span id="toastIcon"></span><span id="toastMsg"></span></div>
 
 <script type="module">
@@ -1086,9 +844,6 @@ import {
   updateDoc, increment, onSnapshot, Timestamp
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-/* ════════════════════════════════
-   FIREBASE CONFIG
-════════════════════════════════ */
 const firebaseConfig = {
   apiKey: "AIzaSyB4JoKK3qvOrJ41dk6GbFnd-WZsoteAk2E",
   authDomain: "prokas-68ac9.firebaseapp.com",
@@ -1106,432 +861,338 @@ const DEFAULT_DED_NAMES = [
   "জিয়া হক","মতিউর রহমান মল্লিক","জামাল নজরুল ইসলাম",
   "সম্রাট","শহিদ ইব্রাহিম","আবরার ফাহাদ"
 ];
+const LS_SETTINGS = "prokash-site-settings"; // localStorage key for settings
 
 const app  = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db   = getFirestore(app);
 
-/* ════════════════════════════════
-   STATE
-════════════════════════════════ */
-let posts          = [];
-let categories     = [...DEFAULT_CATS];
-let dedNames       = [...DEFAULT_DED_NAMES];
-let activeCat      = "সব";
-let activeSort     = "newest";
-let adminCatFilter = "all";
-let searchQuery    = "";
-let currentUser    = null;
-let currentPostId  = null;
-let isSearchOpen   = false;
-let isEditMode     = false;
-let prevView       = "home";
-let pendingDeleteId = null;
-let favorites      = JSON.parse(localStorage.getItem("prokash-favs")||"[]");
-let userLikes      = JSON.parse(localStorage.getItem("prokash-likes")||"[]");
-let isFirstLoad    = true;
-let bodyFontSize   = parseFloat(localStorage.getItem("prokash-fs")||"1.1");
-let bodyFont       = localStorage.getItem("prokash-font")||"serif";
-let bodyLH         = localStorage.getItem("prokash-lh")||"2.4";
-let siteSettings   = {};
-let ttsUtterance   = null;
-let isTTSPlaying   = false;
-let annHidden      = sessionStorage.getItem("ann-hidden")==="1";
-const scrollMem    = {};
-const $            = id => document.getElementById(id);
+/* ══ STATE ══ */
+let posts=[], categories=[...DEFAULT_CATS], dedNames=[...DEFAULT_DED_NAMES];
+let activeCat="সব", activeSort="newest", adminCatFilter="all", searchQuery="";
+let currentUser=null, currentPostId=null, isSearchOpen=false, isEditMode=false;
+let prevView="home", pendingDeleteId=null;
+let favorites=JSON.parse(localStorage.getItem("prokash-favs")||"[]");
+let userLikes=JSON.parse(localStorage.getItem("prokash-likes")||"[]");
+let isFirstLoad=true;
+let bodyFontSize=parseFloat(localStorage.getItem("prokash-fs")||"1.1");
+let bodyFont=localStorage.getItem("prokash-font")||"serif";
+let bodyLH=localStorage.getItem("prokash-lh")||"2.4";
+let siteSettings={};
+let ttsUtterance=null, isTTSPlaying=false;
+let annHidden=sessionStorage.getItem("ann-hidden")==="1";
+const scrollMem={};
+const $=id=>document.getElementById(id);
 
-/* ════════════════════════════════
-   HELPERS
-════════════════════════════════ */
-function openOverlay(id)  { $(id).classList.add("open"); }
-function closeOverlay(id) { $(id).classList.remove("open"); }
-window.openOverlay = openOverlay;
-window.closeOverlay = closeOverlay;
+/* ══ OVERLAY HELPERS ══ */
+function openOverlay(id){$(id).classList.add("open")}
+function closeOverlay(id){$(id).classList.remove("open")}
+window.openOverlay=openOverlay; window.closeOverlay=closeOverlay;
 
-function esc(str) {
-  return String(str||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-}
-function firstLines(str,n){
-  return (str||"").split("\n").filter(l=>l.trim()).slice(0,n).join(" ");
-}
-function fmt(ts){
-  if(!ts) return "";
-  const d = ts.toDate ? ts.toDate() : (ts.seconds ? new Date(ts.seconds*1000) : new Date(ts));
-  return isNaN(d) ? "" : d.toLocaleDateString("bn-BD",{year:"numeric",month:"long",day:"numeric"});
-}
-function toBn(n) {
-  return String(n).replace(/[0-9]/g, d => "০১২৩৪৫৬৭৮৯"[+d]);
-}
-function isNew(p) {
-  const ts = p.timestamp;
-  if (!ts) return false;
-  const d = ts.toDate ? ts.toDate() : (ts.seconds ? new Date(ts.seconds*1000) : null);
-  return d && (Date.now()-d.getTime()) < 7*24*60*60*1000;
-}
-function todayValue() {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-}
+function esc(str){return String(str||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+function firstLines(str,n){return(str||"").split("\n").filter(l=>l.trim()).slice(0,n).join(" ")}
+function fmt(ts){if(!ts)return"";const d=ts.toDate?ts.toDate():(ts.seconds?new Date(ts.seconds*1000):new Date(ts));return isNaN(d)?"":d.toLocaleDateString("bn-BD",{year:"numeric",month:"long",day:"numeric"})}
+function toBn(n){return String(n).replace(/[0-9]/g,d=>"০১২৩৪৫৬৭৮৯"[+d])}
+function isNew(p){const ts=p.timestamp;if(!ts)return false;const d=ts.toDate?ts.toDate():(ts.seconds?new Date(ts.seconds*1000):null);return d&&(Date.now()-d.getTime())<7*24*60*60*1000}
+function todayValue(){const d=new Date();return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
 
 let toastTimer;
-function toast(msg, icon="", ms=2800) {
-  $("toastMsg").textContent = msg;
-  $("toastIcon").textContent = icon;
-  const el = $("toast");
-  el.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>el.classList.remove("show"), ms);
+function toast(msg,icon="",ms=2800){$("toastMsg").textContent=msg;$("toastIcon").textContent=icon;const el=$("toast");el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),ms)}
+window.toast=toast;
+
+/* ══════════════════════════════════════════
+   SETTINGS — localStorage PRIMARY, Firestore BACKUP
+   সেটিংস সবসময় localStorage-এ সংরক্ষণ হবে।
+   Firestore sync হলে ভালো, না হলেও কোনো সমস্যা নেই।
+══════════════════════════════════════════ */
+
+function lsGetSettings(){
+  try{ return JSON.parse(localStorage.getItem(LS_SETTINGS)||"{}"); }
+  catch{ return {}; }
 }
-window.toast = toast;
-
-function showSettingsOk(msg) {
-  const el = $("settingsOk"); el.textContent = msg; el.classList.add("show");
-  setTimeout(()=>el.classList.remove("show"), 3000);
+function lsSaveSettings(update){
+  const merged={...lsGetSettings(),...update};
+  localStorage.setItem(LS_SETTINGS, JSON.stringify(merged));
+  return merged;
 }
-
-/* ════════════════════════════════
-   FONT SIZE & READING PREFS
-════════════════════════════════ */
-const FS_MIN=0.85, FS_MAX=1.65;
-function applyFontSize(s) {
-  bodyFontSize = Math.max(FS_MIN, Math.min(FS_MAX, s));
-  document.documentElement.style.setProperty("--body-fs", bodyFontSize+"rem");
-  localStorage.setItem("prokash-fs", bodyFontSize);
-  $("fsDisplay").textContent = Math.round(bodyFontSize*100)+"%";
-  $("fsDown").disabled = bodyFontSize <= FS_MIN;
-  $("fsUp").disabled   = bodyFontSize >= FS_MAX;
-}
-applyFontSize(bodyFontSize);
-$("fsUp").addEventListener("click",   () => applyFontSize(bodyFontSize+0.1));
-$("fsDown").addEventListener("click", () => applyFontSize(bodyFontSize-0.1));
-
-window.setFont = function(f) {
-  bodyFont = f; localStorage.setItem("prokash-font", f);
-  const rb = $("readBody");
-  rb.classList.toggle("font-hind",  f==="hind");
-  rb.classList.toggle("font-serif", f==="serif");
-  rb.classList.toggle("font-lora",  f==="lora");
-  $("fontSerif").classList.toggle("active", f==="serif");
-  $("fontHind").classList.toggle("active",  f==="hind");
-  $("fontLora").classList.toggle("active",  f==="lora");
-};
-window.setLineH = function(lh) {
-  bodyLH = lh; localStorage.setItem("prokash-lh", lh);
-  document.documentElement.style.setProperty("--body-lh", lh);
-  $("lhNormal").classList.toggle("active",  lh==="2.4");
-  $("lhRelaxed").classList.toggle("active", lh==="3.0");
-};
-setFont(bodyFont);
-setLineH(bodyLH);
-document.documentElement.style.setProperty("--body-lh", bodyLH);
-
-/* ════════════════════════════════
-   SYNC STATUS
-════════════════════════════════ */
-function setSyncStatus(s) {
-  const el = $("syncIndicator"); if (!el) return;
-  el.className = "sync-indicator " + s;
-  const st = $("syncText"); if (!st) return;
-  if (s==="syncing") st.textContent = "সিঙ্ক হচ্ছে…";
-  if (s==="synced")  st.textContent = "আপডেট হয়েছে";
+// Try Firestore in background — silent fail is OK
+async function fsSaveSettings(update){
+  try{
+    await setDoc(doc(db,"settings","general"),update,{merge:true});
+    return true;
+  }catch(e){
+    console.warn("[Prokash] Firestore settings sync skipped:", e.message);
+    return false;
+  }
 }
 
-/* ════════════════════════════════
-   DYNAMIC HEADER OFFSET
-   (salaam → ann → header → search)
-════════════════════════════════ */
-function computeOffsets() {
-  const salaamH = 2.8; // rem
-  const headerH = 3.8; // rem
-
-  // Find which bars are visible
-  const salaamActive = $("salaamBar") && getComputedStyle($("salaamBar")).display !== "none";
-  const annActive = $("announcementBar").classList.contains("show");
-
-  let topOffset = salaamActive ? salaamH : 0;
-  $("mainHeader").style.top = topOffset + "rem";
-
-  let annTop = topOffset + headerH;
-  $("announcementBar").style.top = topOffset + "rem";
-  // If ann exists, push header down further?
-  // Actually: salaam is always at top, header is below salaam, ann is below header
-  $("announcementBar").style.top = (topOffset + headerH) + "rem";
-  $("searchBar").style.top = (topOffset + headerH + (annActive ? 2.3 : 0)) + "rem";
-
-  let mainTop = topOffset + headerH + (annActive ? 2.3 : 0) + 1.5;
-  $("mainArea").style.paddingTop = mainTop + "rem";
-
-  // Set CSS variable for header-top used in progress bar
-  document.documentElement.style.setProperty("--header-top-calc", (topOffset) + "rem");
-  $("progressBar").style.top = topOffset + "rem";
+function showOk(elId, msg){
+  const el=$(elId); if(!el)return;
+  el.textContent=msg; el.classList.add("show");
+  setTimeout(()=>el.classList.remove("show"),3000);
 }
 
-/* ════════════════════════════════
-   SETTINGS LOAD & APPLY
-════════════════════════════════ */
-async function loadSettings() {
-  try {
-    const snap = await getDoc(doc(db,"settings","general"));
-    if (snap.exists()) {
-      siteSettings = snap.data();
-      applySettings();
+async function loadSettings(){
+  // 1. Load from localStorage immediately (instant)
+  const local = lsGetSettings();
+  if(Object.keys(local).length>0){
+    siteSettings=local; applySettings();
+  }
+  // 2. Try to load from Firestore (may have newer data from another device)
+  try{
+    const snap=await getDoc(doc(db,"settings","general"));
+    if(snap.exists()){
+      const remote=snap.data();
+      // Merge remote into local and save
+      const merged={...local,...remote};
+      localStorage.setItem(LS_SETTINGS, JSON.stringify(merged));
+      siteSettings=merged; applySettings();
     }
-  } catch(e) { console.warn("Settings load failed", e); }
+  }catch(e){
+    console.warn("[Prokash] Firestore settings load skipped:", e.message);
+    // Already applied local settings above — no error shown to user
+  }
 }
 
-function applySettings() {
-  const s = siteSettings;
-  if (s.siteName) {
-    $("headerSiteName").textContent = s.siteName;
-    $("footerSiteName").textContent = s.siteName;
-    document.title = s.siteName + " — মুক্ত কলমের মঞ্চ";
-  }
-  if (s.tagline) $("headerTagline").textContent = s.tagline;
-  if (s.heroTitle) {
-    const ht = $("heroTitle");
-    const parts = s.heroTitle.split(",");
-    ht.innerHTML = parts.map((p,i)=>i===parts.length-1?`<span>${esc(p.trim())}</span>`:esc(p.trim())).join(",<br>");
-  }
-  if (s.heroDesc) $("heroDesc").textContent = s.heroDesc;
-  if (s.footerTag) $("footerSiteName").parentElement.querySelector(".read-footer-glyph").textContent = s.footerTag;
-  if (s.accentColor) {
-    document.documentElement.style.setProperty("--accent", s.accentColor);
-    document.documentElement.style.setProperty("--accent-dim", s.accentColor+"18");
-    document.documentElement.style.setProperty("--accent-glow", s.accentColor+"40");
-  }
-  if (s.marqueeSpeed) {
-    document.documentElement.style.setProperty("--marquee-duration", s.marqueeSpeed+"s");
-  }
-  // Categories
-  if (s.categories && Array.isArray(s.categories) && s.categories.length > 0) {
-    categories = s.categories;
-  }
-  renderCategoryStrip();
-  populatePostCatSelect();
-  // Dedication names
-  if (s.dedNames && Array.isArray(s.dedNames) && s.dedNames.length > 0) {
-    dedNames = s.dedNames;
-  }
+function applySettings(){
+  const s=siteSettings;
+  if(s.siteName){$("headerSiteName").textContent=s.siteName;$("footerSiteName").textContent=s.siteName;document.title=s.siteName+" — মুক্ত কলমের মঞ্চ";}
+  if(s.tagline)$("headerTagline").textContent=s.tagline;
+  if(s.heroTitle){const ht=$("heroTitle");const parts=s.heroTitle.split(",");ht.innerHTML=parts.map((p,i)=>i===parts.length-1?`<span>${esc(p.trim())}</span>`:esc(p.trim())).join(",<br>")}
+  if(s.heroDesc)$("heroDesc").textContent=s.heroDesc;
+  if(s.footerTag){const fg=$("footerSiteName");if(fg&&fg.parentElement){const g=fg.parentElement.querySelector(".read-footer-glyph");if(g)g.textContent=s.footerTag;}}
+  if(s.accentColor){document.documentElement.style.setProperty("--accent",s.accentColor);document.documentElement.style.setProperty("--accent-dim",s.accentColor+"18");document.documentElement.style.setProperty("--accent-glow",s.accentColor+"40");}
+  if(s.marqueeSpeed)document.documentElement.style.setProperty("--marquee-duration",s.marqueeSpeed+"s");
+  if(s.categories&&Array.isArray(s.categories)&&s.categories.length>0)categories=s.categories;
+  renderCategoryStrip(); populatePostCatSelect();
+  if(s.dedNames&&Array.isArray(s.dedNames)&&s.dedNames.length>0)dedNames=s.dedNames;
   renderMarquee();
-
-  // Salaam bar
-  if (s.salaamText) $("salaamText").innerHTML = s.salaamText;
-  if (s.salaamActive === false) {
-    $("salaamBar").style.display = "none";
-    document.documentElement.style.setProperty("--salaam-h","0rem");
-  } else {
-    $("salaamBar").style.display = "flex";
-    document.documentElement.style.setProperty("--salaam-h","2.8rem");
-  }
-
-  // Announcement
-  if (s.announcement && s.announcementActive && !annHidden) {
-    $("annText").textContent = s.announcement;
-    $("announcementBar").classList.add("show");
-  }
-  if (s.featuredPostId) renderFeaturedBanner(s.featuredPostId);
+  if(s.salaamText)$("salaamText").innerHTML=s.salaamText;
+  if(s.salaamActive===false){$("salaamBar").style.display="none";document.documentElement.style.setProperty("--salaam-h","0rem");}
+  else{$("salaamBar").style.display="flex";document.documentElement.style.setProperty("--salaam-h","2.8rem");}
+  if(s.announcement&&s.announcementActive&&!annHidden){$("annText").textContent=s.announcement;$("announcementBar").classList.add("show");}
+  if(s.featuredPostId)renderFeaturedBanner(s.featuredPostId);
   computeOffsets();
 }
 
-window.hideAnn = function() {
-  $("announcementBar").classList.remove("show");
-  sessionStorage.setItem("ann-hidden","1");
-  annHidden = true;
-  computeOffsets();
-};
+window.hideAnn=function(){$("announcementBar").classList.remove("show");sessionStorage.setItem("ann-hidden","1");annHidden=true;computeOffsets();};
 
-/* ════════════════════════════════
-   DEDICATION MARQUEE
-════════════════════════════════ */
-function renderMarquee() {
-  const track = $("marqueeTrack");
-  if (!track) return;
-  // Build two copies for seamless loop
-  let html = "";
-  const buildItems = () => dedNames.map(name =>
-    `<span class="marquee-item">${esc(name)}</span><span class="marquee-sep">✦</span>`
-  ).join("");
-  html = buildItems() + buildItems();
-  track.innerHTML = html;
-}
+/* ══ SAVE FUNCTIONS — always localStorage first, Firestore in background ══ */
 
-/* ════════════════════════════════
-   CATEGORY STRIP & SELECT
-════════════════════════════════ */
-function renderCategoryStrip() {
-  const strip = $("catStrip");
-  const visible = posts.filter(p=>!p.hidden);
-  const counts = {"সব": visible.length};
-  categories.forEach(c => {
-    counts[c] = visible.filter(p=>p.category===c).length;
-  });
-  let html = `<button class="cat-btn ${activeCat==="সব"?"active":""}" data-cat="সব">সব <span class="cat-count">${toBn(counts["সব"]||0)}</span></button>`;
-  categories.forEach(c => {
-    html += `<button class="cat-btn ${activeCat===c?"active":""}" data-cat="${esc(c)}">${esc(c)} <span class="cat-count">${toBn(counts[c]||0)}</span></button>`;
-  });
-  strip.innerHTML = html;
-  strip.querySelectorAll(".cat-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      activeCat = btn.dataset.cat;
-      strip.querySelectorAll(".cat-btn").forEach(b=>b.classList.toggle("active",b===btn));
-      renderList();
-    });
-  });
-}
-
-function populatePostCatSelect() {
-  const sel = $("postCat");
-  const cur = sel.value;
-  sel.innerHTML = categories.map(c=>`<option value="${esc(c)}" ${c===cur?"selected":""}>${esc(c)}</option>`).join("");
-}
-
-function buildAdminCatFilter() {
-  const el = $("adminCatFilter"); if (!el) return;
-  let html = `<button class="sort-btn ${adminCatFilter==="all"?"active":""}" data-acat="all" onclick="filterAdminCat('all',this)">সব</button>`;
-  categories.forEach(c => {
-    html += `<button class="sort-btn ${adminCatFilter===c?"active":""}" data-acat="${esc(c)}" onclick="filterAdminCat('${esc(c)}',this)">${esc(c)}</button>`;
-  });
-  el.innerHTML = html;
-}
-window.filterAdminCat = (cat, el) => {
-  adminCatFilter = cat;
-  document.querySelectorAll("#adminCatFilter .sort-btn").forEach(b=>b.classList.toggle("active",b===el));
-  renderAdminList();
-};
-
-/* ════════════════════════════════
-   REAL-TIME LISTENER
-════════════════════════════════ */
-function startListener() {
-  setSyncStatus("syncing");
-  const q = query(collection(db,"posts"), orderBy("timestamp","desc"));
-  onSnapshot(q, snap => {
-    if (!isFirstLoad) {
-      snap.docChanges().forEach(ch => {
-        if (ch.type==="added" && !posts.find(p=>p.id===ch.doc.id)) {
-          toast("নতুন পোস্ট যুক্ত হয়েছে ✦","✦");
-        }
-      });
-    }
-    posts = snap.docs.map(d=>({id:d.id,...d.data()}));
-    isFirstLoad = false;
-    setSyncStatus("synced");
-    setTimeout(()=>{ const el=$("syncIndicator");if(el)el.style.opacity="0.5"; },2500);
-    updateStats();
-    renderCategoryStrip();
-    renderList();
-    renderAdminList();
-    renderAuthors();
-    buildAdminCatFilter();
-    if (siteSettings.featuredPostId) renderFeaturedBanner(siteSettings.featuredPostId);
-    if (currentPostId && $("readingView").classList.contains("active")) {
-      const updated = posts.find(p=>p.id===currentPostId);
-      if (updated) {
-        $("readTitle").textContent = updated.title;
-        $("readBody").textContent = updated.content||"";
-      }
-    }
-    const hash = window.location.hash;
-    if (hash.startsWith("#post/") && snap.docs.length > 0) {
-      const id = hash.slice(6);
-      if (id && posts.find(p=>p.id===id)) openPost(id, false);
-    }
-  }, err => {
-    setSyncStatus("syncing");
-    $("postList").innerHTML = `<div class="empty-state"><span class="empty-glyph">⚠</span>Firebase সংযোগ ব্যর্থ।</div>`;
-  });
-}
-
-/* ════════════════════════════════
-   STATS
-════════════════════════════════ */
-function updateStats() {
-  const vis = posts.filter(p=>!p.hidden);
-  const total = vis.length;
-  const cats  = [...new Set(vis.map(p=>p.category).filter(Boolean))];
-  const auths = [...new Set(vis.map(p=>p.authorEmail).filter(Boolean))];
-  const likes = vis.reduce((s,p)=>s+(p.likes||0),0);
-  $("statTotal").textContent   = toBn(total);
-  $("statAuthors").textContent = toBn(auths.length);
-  $("statCats").textContent    = toBn(cats.length);
-  $("a-total").textContent     = toBn(total);
-  $("a-authors").textContent   = toBn(auths.length);
-  $("a-cats").textContent      = toBn(cats.length);
-  $("a-likes").textContent     = toBn(likes);
-  if (cats.length) {
-    const catCounts = {};
-    vis.forEach(p=>{ if(p.category) catCounts[p.category]=(catCounts[p.category]||0)+1; });
-    const top = cats.reduce((a,b)=>(catCounts[a]||0)>=(catCounts[b]||0)?a:b);
-    $("a-top-cat").textContent     = top;
-    $("a-top-cat-sub").textContent = toBn(catCounts[top]||0)+" টি পোস্ট";
-  }
-  $("favBadge").classList.toggle("show", favorites.length>0);
-  // Count comments (approximate)
-  getDocs(collection(db,"comments")).then(s=>{ const el=$("a-comments");if(el)el.textContent=toBn(s.size); }).catch(()=>{});
-}
-
-/* ════════════════════════════════
-   RENDER POST LIST
-════════════════════════════════ */
-function getFiltered() {
-  let r = posts.filter(p=>!p.hidden);
-  if (activeCat !== "সব") r = r.filter(p=>p.category===activeCat);
-  if (searchQuery) {
-    const q = searchQuery.trim().toLowerCase();
-    r = r.filter(p =>
-      (p.title||"").toLowerCase().includes(q) ||
-      (p.content||"").toLowerCase().includes(q) ||
-      (p.authorName||"").toLowerCase().includes(q)
-    );
-  }
-  const pinned   = r.filter(p=>p.pinned);
-  const unpinned = r.filter(p=>!p.pinned);
-  const sort = arr => {
-    const c = [...arr];
-    if (activeSort==="oldest") c.reverse();
-    else if (activeSort==="alpha") c.sort((a,b)=>(a.title||"").localeCompare(b.title||"","bn"));
-    else if (activeSort==="likes") c.sort((a,b)=>(b.likes||0)-(a.likes||0));
-    return c;
+window.saveIdentitySettings=async function(){
+  const update={
+    siteName:$("s-siteName").value.trim()||"প্রকাশ",
+    tagline:$("s-tagline").value.trim()||"মুক্ত কলমের মঞ্চ",
+    heroTitle:$("s-heroTitle").value.trim(),
+    heroDesc:$("s-heroDesc").value.trim(),
+    footerTag:$("s-footerTag").value.trim()
   };
-  return [...sort(pinned),...sort(unpinned)];
+  lsSaveSettings(update);
+  Object.assign(siteSettings,update);
+  applySettings();
+  showOk("identityOk","✓ পরিচিতি সংরক্ষিত হয়েছে!");
+  toast("পরিচিতি সংরক্ষিত ✓","✓");
+  fsSaveSettings(update); // background sync, no await
+};
+
+window.saveThemeSettings=async function(){
+  const update={
+    defaultTheme:$("s-defaultTheme").value,
+    accentColor:$("s-accentColor").value,
+    marqueeSpeed:parseInt($("s-marqueeSpeed").value)
+  };
+  lsSaveSettings(update);
+  Object.assign(siteSettings,update);
+  applySettings();
+  showOk("themeOk","✓ থিম সংরক্ষিত হয়েছে!");
+  toast("থিম সংরক্ষিত ✓","✓");
+  fsSaveSettings(update);
+};
+
+window.saveSalaamSettings=async function(){
+  const update={
+    salaamText:$("s-salaamText").value.trim(),
+    salaamActive:$("s-salaamActive").checked
+  };
+  lsSaveSettings(update);
+  Object.assign(siteSettings,update);
+  applySettings();
+  computeOffsets();
+  showOk("salaamOk","✓ সালাম বার সংরক্ষিত হয়েছে!");
+  toast("সালাম সংরক্ষিত ✓","✓");
+  fsSaveSettings(update);
+};
+
+window.saveAnnouncementSettings=async function(){
+  const update={
+    announcement:$("s-annText").value.trim(),
+    announcementActive:$("s-annActive").checked
+  };
+  lsSaveSettings(update);
+  Object.assign(siteSettings,update);
+  annHidden=false; sessionStorage.removeItem("ann-hidden");
+  applySettings();
+  showOk("annOk","✓ ঘোষণা সংরক্ষিত হয়েছে!");
+  toast("ঘোষণা সংরক্ষিত ✓","✓");
+  fsSaveSettings(update);
+};
+
+window.saveFeaturedSettings=async function(){
+  const val=$("s-featuredPost").value;
+  const update={featuredPostId:val||null};
+  lsSaveSettings(update);
+  Object.assign(siteSettings,update);
+  if(val)renderFeaturedBanner(val);
+  else $("featuredBannerWrap").style.display="none";
+  showOk("featuredOk","✓ ফিচার পোস্ট সংরক্ষিত হয়েছে!");
+  toast("ফিচার পোস্ট সংরক্ষিত ✓","✓");
+  fsSaveSettings(update);
+};
+
+window.saveCategoriesSettings=async function(){
+  if(!editingCategories.length){toast("অন্তত একটি বিভাগ রাখতে হবে","✕");return;}
+  const update={categories:[...editingCategories]};
+  lsSaveSettings(update);
+  Object.assign(siteSettings,update);
+  categories=[...editingCategories];
+  renderCategoryStrip(); populatePostCatSelect(); buildAdminCatFilter();
+  showOk("catSaveOk","✓ বিভাগ সংরক্ষিত হয়েছে!");
+  toast("বিভাগ সংরক্ষিত ✓","✓");
+  fsSaveSettings(update);
+};
+
+window.saveDedicationSettings=async function(){
+  const update={dedNames:[...editingDedNames]};
+  lsSaveSettings(update);
+  Object.assign(siteSettings,update);
+  dedNames=[...editingDedNames];
+  renderMarquee();
+  showOk("dedSaveOk","✓ উৎসর্গ সংরক্ষিত হয়েছে!");
+  toast("উৎসর্গ সংরক্ষিত ✓","✓");
+  fsSaveSettings(update);
+};
+
+/* ══ FONT/READING PREFS ══ */
+const FS_MIN=0.85,FS_MAX=1.65;
+function applyFontSize(s){bodyFontSize=Math.max(FS_MIN,Math.min(FS_MAX,s));document.documentElement.style.setProperty("--body-fs",bodyFontSize+"rem");localStorage.setItem("prokash-fs",bodyFontSize);$("fsDisplay").textContent=Math.round(bodyFontSize*100)+"%";$("fsDown").disabled=bodyFontSize<=FS_MIN;$("fsUp").disabled=bodyFontSize>=FS_MAX;}
+applyFontSize(bodyFontSize);
+$("fsUp").addEventListener("click",()=>applyFontSize(bodyFontSize+0.1));
+$("fsDown").addEventListener("click",()=>applyFontSize(bodyFontSize-0.1));
+
+window.setFont=function(f){bodyFont=f;localStorage.setItem("prokash-font",f);const rb=$("readBody");rb.classList.toggle("font-hind",f==="hind");rb.classList.toggle("font-serif",f==="serif");rb.classList.toggle("font-lora",f==="lora");$("fontSerif").classList.toggle("active",f==="serif");$("fontHind").classList.toggle("active",f==="hind");$("fontLora").classList.toggle("active",f==="lora");};
+window.setLineH=function(lh){bodyLH=lh;localStorage.setItem("prokash-lh",lh);document.documentElement.style.setProperty("--body-lh",lh);$("lhNormal").classList.toggle("active",lh==="2.4");$("lhRelaxed").classList.toggle("active",lh==="3.0");};
+setFont(bodyFont); setLineH(bodyLH);
+document.documentElement.style.setProperty("--body-lh",bodyLH);
+
+/* ══ SYNC STATUS ══ */
+function setSyncStatus(s){const el=$("syncIndicator");if(!el)return;el.className="sync-indicator "+s;const st=$("syncText");if(!st)return;if(s==="syncing")st.textContent="সিঙ্ক হচ্ছে…";if(s==="synced")st.textContent="আপডেট হয়েছে";}
+
+/* ══ LAYOUT OFFSETS ══ */
+function computeOffsets(){
+  const salaamActive=$("salaamBar")&&getComputedStyle($("salaamBar")).display!=="none";
+  const annActive=$("announcementBar").classList.contains("show");
+  const salaamH=salaamActive?2.8:0;
+  const headerH=3.8;
+  $("mainHeader").style.top=salaamH+"rem";
+  $("announcementBar").style.top=(salaamH+headerH)+"rem";
+  $("searchBar").style.top=(salaamH+headerH+(annActive?2.3:0))+"rem";
+  $("mainArea").style.paddingTop=(salaamH+headerH+(annActive?2.3:0)+1.5)+"rem";
+  $("progressBar").style.top=salaamH+"rem";
 }
 
-function hl(text, q) {
-  if (!q) return esc(text);
-  const safe = q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-  return esc(text).replace(new RegExp(`(${safe})`,'gi'),'<mark>$1</mark>');
+/* ══ MARQUEE ══ */
+function renderMarquee(){
+  const track=$("marqueeTrack");if(!track)return;
+  const items=()=>dedNames.map(n=>`<span class="marquee-item">${esc(n)}</span><span class="marquee-sep">✦</span>`).join("");
+  track.innerHTML=items()+items();
 }
 
-const thumbSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="9" height="9"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>`;
+/* ══ CATEGORY STRIP ══ */
+function renderCategoryStrip(){
+  const strip=$("catStrip");
+  const visible=posts.filter(p=>!p.hidden);
+  const counts={"সব":visible.length};
+  categories.forEach(c=>{counts[c]=visible.filter(p=>p.category===c).length;});
+  let html=`<button class="cat-btn ${activeCat==="সব"?"active":""}" data-cat="সব">সব <span class="cat-count">${toBn(counts["সব"]||0)}</span></button>`;
+  categories.forEach(c=>{html+=`<button class="cat-btn ${activeCat===c?"active":""}" data-cat="${esc(c)}">${esc(c)} <span class="cat-count">${toBn(counts[c]||0)}</span></button>`;});
+  strip.innerHTML=html;
+  strip.querySelectorAll(".cat-btn").forEach(btn=>{btn.addEventListener("click",()=>{activeCat=btn.dataset.cat;strip.querySelectorAll(".cat-btn").forEach(b=>b.classList.toggle("active",b===btn));renderList();});});
+}
 
-function renderList() {
-  const filtered = getFiltered();
-  const list = $("postList");
-  $("resultsCount").textContent = (activeCat!=="সব"&&!searchQuery) ? toBn(filtered.length)+" টি" : "";
+function populatePostCatSelect(){const sel=$("postCat");const cur=sel.value;sel.innerHTML=categories.map(c=>`<option value="${esc(c)}" ${c===cur?"selected":""}>${esc(c)}</option>`).join("");}
 
-  if (searchQuery && !filtered.length) {
-    list.innerHTML = `<div class="no-results">"<em>${esc(searchQuery)}</em>" — কোনো পোস্ট পাওয়া যায়নি।</div>`;
-    $("searchCount").textContent = ""; return;
-  }
-  if (!filtered.length) {
-    list.innerHTML = `<div class="empty-state"><span class="empty-glyph">✍</span>এখনো কোনো পোস্ট নেই।<br>${currentUser?"প্রথম পোস্টটি আপনিই করুন!":"লগইন করে প্রথম পোস্ট করুন!"}</div>`;
-    return;
-  }
+function buildAdminCatFilter(){
+  const el=$("adminCatFilter");if(!el)return;
+  let html=`<button class="sort-btn ${adminCatFilter==="all"?"active":""}" data-acat="all" onclick="filterAdminCat('all',this)">সব</button>`;
+  categories.forEach(c=>{html+=`<button class="sort-btn ${adminCatFilter===c?"active":""}" data-acat="${esc(c)}" onclick="filterAdminCat('${esc(c)}',this)">${esc(c)}</button>`;});
+  el.innerHTML=html;
+}
+window.filterAdminCat=(cat,el)=>{adminCatFilter=cat;document.querySelectorAll("#adminCatFilter .sort-btn").forEach(b=>b.classList.toggle("active",b===el));renderAdminList();};
 
-  const hasPinned = filtered.some(p=>p.pinned);
-  let html = `<div class="post-list">`;
-  if (hasPinned) html += `<div class="pinned-label">📌 পিন করা পোস্ট</div>`;
-  let unpinnedStarted = false;
-  filtered.forEach((p, i) => {
-    if (hasPinned && !p.pinned && !unpinnedStarted) {
-      html += `<div class="pinned-label" style="margin-top:0.8rem">সাম্প্রতিক পোস্ট</div>`;
-      unpinnedStarted = true;
-    }
-    const name = p.authorName||(p.authorEmail||"অজ্ঞাত").split("@")[0];
-    const init = name.charAt(0).toUpperCase();
-    const isFav = favorites.includes(p.id);
-    html += `
-    <div class="post-item ${p.pinned?"pinned-card":""}" data-id="${p.id}" style="animation-delay:${Math.min(i*28,500)}ms">
+/* ══ REALTIME LISTENER ══ */
+function startListener(){
+  setSyncStatus("syncing");
+  const q=query(collection(db,"posts"),orderBy("timestamp","desc"));
+  onSnapshot(q,snap=>{
+    if(!isFirstLoad){snap.docChanges().forEach(ch=>{if(ch.type==="added"&&!posts.find(p=>p.id===ch.doc.id))toast("নতুন পোস্ট যুক্ত হয়েছে ✦","✦");});}
+    posts=snap.docs.map(d=>({id:d.id,...d.data()}));
+    isFirstLoad=false;
+    setSyncStatus("synced");
+    setTimeout(()=>{const el=$("syncIndicator");if(el)el.style.opacity="0.5";},2500);
+    updateStats(); renderCategoryStrip(); renderList(); renderAdminList(); renderAuthors(); buildAdminCatFilter();
+    if(siteSettings.featuredPostId)renderFeaturedBanner(siteSettings.featuredPostId);
+    if(currentPostId&&$("readingView").classList.contains("active")){const u=posts.find(p=>p.id===currentPostId);if(u){$("readTitle").textContent=u.title;$("readBody").textContent=u.content||"";}}
+    const hash=window.location.hash;
+    if(hash.startsWith("#post/")&&snap.docs.length>0){const id=hash.slice(6);if(id&&posts.find(p=>p.id===id))openPost(id,false);}
+  },err=>{setSyncStatus("syncing");$("postList").innerHTML=`<div class="empty-state"><span class="empty-glyph">⚠</span>Firebase সংযোগ ব্যর্থ।</div>`;});
+}
+
+/* ══ STATS ══ */
+function updateStats(){
+  const vis=posts.filter(p=>!p.hidden);
+  const cats=[...new Set(vis.map(p=>p.category).filter(Boolean))];
+  const auths=[...new Set(vis.map(p=>p.authorEmail).filter(Boolean))];
+  const likes=vis.reduce((s,p)=>s+(p.likes||0),0);
+  $("statTotal").textContent=toBn(vis.length);
+  $("statAuthors").textContent=toBn(auths.length);
+  $("statCats").textContent=toBn(cats.length);
+  $("a-total").textContent=toBn(vis.length);
+  $("a-authors").textContent=toBn(auths.length);
+  $("a-cats").textContent=toBn(cats.length);
+  $("a-likes").textContent=toBn(likes);
+  if(cats.length){const cc={};vis.forEach(p=>{if(p.category)cc[p.category]=(cc[p.category]||0)+1;});const top=cats.reduce((a,b)=>(cc[a]||0)>=(cc[b]||0)?a:b);$("a-top-cat").textContent=top;$("a-top-cat-sub").textContent=toBn(cc[top]||0)+" টি পোস্ট";}
+  $("favBadge").classList.toggle("show",favorites.length>0);
+  getDocs(collection(db,"comments")).then(s=>{const el=$("a-comments");if(el)el.textContent=toBn(s.size);}).catch(()=>{});
+}
+
+/* ══ POST LIST ══ */
+function getFiltered(){
+  let r=posts.filter(p=>!p.hidden);
+  if(activeCat!=="সব")r=r.filter(p=>p.category===activeCat);
+  if(searchQuery){const q=searchQuery.trim().toLowerCase();r=r.filter(p=>(p.title||"").toLowerCase().includes(q)||(p.content||"").toLowerCase().includes(q)||(p.authorName||"").toLowerCase().includes(q));}
+  const pinned=r.filter(p=>p.pinned),unpinned=r.filter(p=>!p.pinned);
+  const sort=arr=>{const c=[...arr];if(activeSort==="oldest")c.reverse();else if(activeSort==="alpha")c.sort((a,b)=>(a.title||"").localeCompare(b.title||"","bn"));else if(activeSort==="likes")c.sort((a,b)=>(b.likes||0)-(a.likes||0));return c;};
+  return[...sort(pinned),...sort(unpinned)];
+}
+function hl(text,q){if(!q)return esc(text);const safe=q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");return esc(text).replace(new RegExp(`(${safe})`,"gi"),"<mark>$1</mark>")}
+const thumbSvg=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="9" height="9"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>`;
+
+function renderList(){
+  const filtered=getFiltered();
+  const list=$("postList");
+  $("resultsCount").textContent=(activeCat!=="সব"&&!searchQuery)?toBn(filtered.length)+" টি":"";
+  if(searchQuery&&!filtered.length){list.innerHTML=`<div class="no-results">"<em>${esc(searchQuery)}</em>" — কোনো পোস্ট পাওয়া যায়নি।</div>`;$("searchCount").textContent="";return;}
+  if(!filtered.length){list.innerHTML=`<div class="empty-state"><span class="empty-glyph">✍</span>এখনো কোনো পোস্ট নেই।<br>${currentUser?"প্রথম পোস্টটি আপনিই করুন!":"লগইন করে প্রথম পোস্ট করুন!"}</div>`;return;}
+  const hasPinned=filtered.some(p=>p.pinned);
+  let html=`<div class="post-list">`;
+  if(hasPinned)html+=`<div class="pinned-label">📌 পিন করা পোস্ট</div>`;
+  let unpinnedStarted=false;
+  filtered.forEach((p,i)=>{
+    if(hasPinned&&!p.pinned&&!unpinnedStarted){html+=`<div class="pinned-label" style="margin-top:0.8rem">সাম্প্রতিক পোস্ট</div>`;unpinnedStarted=true;}
+    const name=p.authorName||(p.authorEmail||"অজ্ঞাত").split("@")[0];
+    const init=name.charAt(0).toUpperCase();
+    const isFav=favorites.includes(p.id);
+    html+=`<div class="post-item ${p.pinned?"pinned-card":""}" data-id="${p.id}" style="animation-delay:${Math.min(i*28,500)}ms">
       <div>
         <div class="post-title">${hl(p.title,searchQuery)}${isNew(p)?'<span class="new-badge">নতুন</span>':''}</div>
         <div class="post-preview">${hl(firstLines(p.content,1),searchQuery)}</div>
@@ -1548,49 +1209,38 @@ function renderList() {
       </div>
     </div>`;
   });
-  html += `</div>`;
-  list.innerHTML = html;
+  html+=`</div>`;
+  list.innerHTML=html;
   list.querySelectorAll(".post-item").forEach(el=>el.addEventListener("click",()=>openPost(el.dataset.id)));
-  if (searchQuery) $("searchCount").textContent = toBn(filtered.length)+" টি পোস্ট পাওয়া গেছে";
-  else $("searchCount").textContent = "";
+  if(searchQuery)$("searchCount").textContent=toBn(filtered.length)+" টি পোস্ট পাওয়া গেছে";
+  else $("searchCount").textContent="";
 }
 
-/* ════════════════════════════════
-   FEATURED BANNER
-════════════════════════════════ */
-function renderFeaturedBanner(postId) {
-  const p = posts.find(x=>x.id===postId&&!x.hidden);
-  if (!p) { $("featuredBannerWrap").style.display="none"; return; }
-  $("featuredTitle").textContent   = p.title;
-  $("featuredPreview").textContent = firstLines(p.content,2);
-  $("featuredAuthor").textContent  = p.authorName||(p.authorEmail||"").split("@")[0];
-  $("featuredDate").textContent    = fmt(p.timestamp);
-  $("featuredBannerWrap").style.display = "block";
-  window._featuredPostId = postId;
+/* ══ FEATURED ══ */
+function renderFeaturedBanner(postId){
+  const p=posts.find(x=>x.id===postId&&!x.hidden);
+  if(!p){$("featuredBannerWrap").style.display="none";return;}
+  $("featuredTitle").textContent=p.title;
+  $("featuredPreview").textContent=firstLines(p.content,2);
+  $("featuredAuthor").textContent=p.authorName||(p.authorEmail||"").split("@")[0];
+  $("featuredDate").textContent=fmt(p.timestamp);
+  $("featuredBannerWrap").style.display="block";
+  window._featuredPostId=postId;
 }
-window.openFeaturedPost = () => { if(window._featuredPostId) openPost(window._featuredPostId); };
+window.openFeaturedPost=()=>{if(window._featuredPostId)openPost(window._featuredPostId);};
 
-/* ════════════════════════════════
-   ADMIN POST LIST
-════════════════════════════════ */
-function renderAdminList() {
-  const el = $("adminPostList"); if (!el) return;
-  let filtered = posts;
-  if (adminCatFilter !== "all") filtered = posts.filter(p=>p.category===adminCatFilter);
-  if (!filtered.length) {
-    el.innerHTML = `<div class="empty-state" style="padding:3rem 0">কোনো পোস্ট নেই।</div>`; return;
-  }
-  el.innerHTML = filtered.map(p => {
-    const name = p.authorName||(p.authorEmail||"অজ্ঞাত").split("@")[0];
-    return `<div class="admin-post-item ${p.hidden?"hidden-post":""}">
+/* ══ ADMIN LIST ══ */
+function renderAdminList(){
+  const el=$("adminPostList");if(!el)return;
+  let filtered=posts;
+  if(adminCatFilter!=="all")filtered=posts.filter(p=>p.category===adminCatFilter);
+  if(!filtered.length){el.innerHTML=`<div class="empty-state" style="padding:3rem 0">কোনো পোস্ট নেই।</div>`;return;}
+  el.innerHTML=filtered.map(p=>{
+    const name=p.authorName||(p.authorEmail||"অজ্ঞাত").split("@")[0];
+    return`<div class="admin-post-item ${p.hidden?"hidden-post":""}">
       <div>
         <div class="admin-post-title">${esc(p.title)}${p.pinned?'<span class="new-badge" style="background:var(--blue)">📌</span>':''}${p.hidden?'<span class="new-badge" style="background:var(--text-muted)">লুকানো</span>':''}</div>
-        <div class="admin-post-meta">
-          <span class="post-cat-badge">${esc(p.category||"")}</span>
-          <span class="post-date">${esc(name)}</span>
-          <span class="post-date">${fmt(p.timestamp)}</span>
-          ${(p.likes||0)>0?`<span class="like-chip">${thumbSvg} ${toBn(p.likes)}</span>`:''}
-        </div>
+        <div class="admin-post-meta"><span class="post-cat-badge">${esc(p.category||"")}</span><span class="post-date">${esc(name)}</span><span class="post-date">${fmt(p.timestamp)}</span>${(p.likes||0)>0?`<span class="like-chip">${thumbSvg} ${toBn(p.likes)}</span>`:''}</div>
       </div>
       <div class="admin-actions">
         <button class="btn-sm" onclick="adminEditPost('${p.id}')">✏ সম্পাদনা</button>
@@ -1601,807 +1251,391 @@ function renderAdminList() {
     </div>`;
   }).join("");
 }
+window.adminEditPost=id=>openEditModal(id);
+window.adminTogglePin=async(id,pin)=>{try{await updateDoc(doc(db,"posts",id),{pinned:pin});toast(pin?"পিন করা হয়েছে":"পিন সরানো হয়েছে","📌");}catch{toast("ব্যর্থ","✕");}};
+window.adminToggleHide=async(id,hide)=>{try{await updateDoc(doc(db,"posts",id),{hidden:hide});toast(hide?"লুকানো হয়েছে":"প্রকাশিত হয়েছে",hide?"🙈":"👁");}catch{toast("ব্যর্থ","✕");}};
 
-window.adminEditPost = id => openEditModal(id);
-window.adminTogglePin = async(id,pin) => {
-  try { await updateDoc(doc(db,"posts",id),{pinned:pin}); toast(pin?"পিন করা হয়েছে":"পিন সরানো হয়েছে","📌"); }
-  catch { toast("ব্যর্থ","✕"); }
-};
-window.adminToggleHide = async(id,hide) => {
-  try { await updateDoc(doc(db,"posts",id),{hidden:hide}); toast(hide?"লুকানো হয়েছে":"প্রকাশিত হয়েছে",hide?"🙈":"👁"); }
-  catch { toast("ব্যর্থ","✕"); }
-};
-
-/* ════════════════════════════════
-   AUTHORS
-════════════════════════════════ */
-function renderAuthors() {
-  const grid = $("authorsGrid"); if (!grid) return;
-  const vis = posts.filter(p=>!p.hidden);
-  const map = {};
-  vis.forEach(p => {
-    const email = p.authorEmail||"anonymous";
-    const name  = p.authorName||(p.authorEmail||"অজ্ঞাত").split("@")[0];
-    if (!map[email]) map[email] = {name, email, count:0};
-    map[email].count++;
-  });
-  const authors = Object.values(map).sort((a,b)=>b.count-a.count);
-  if (!authors.length) {
-    grid.innerHTML = `<div style="color:var(--text-muted);font-size:0.88rem;font-weight:300;grid-column:1/-1;text-align:center;padding:3rem 0">এখনো কোনো লেখক নেই।</div>`;
-    return;
-  }
-  grid.innerHTML = authors.map(a => {
-    const init = a.name.charAt(0).toUpperCase();
-    return `<div class="author-card" onclick="filterByAuthor('${esc(a.email)}')">
-      <div class="author-card-avatar">${init}</div>
-      <div class="author-card-name">${esc(a.name)}</div>
-      <div class="author-card-count">${toBn(a.count)} টি পোস্ট</div>
-    </div>`;
-  }).join("");
+/* ══ AUTHORS ══ */
+function renderAuthors(){
+  const grid=$("authorsGrid");if(!grid)return;
+  const vis=posts.filter(p=>!p.hidden);
+  const map={};
+  vis.forEach(p=>{const email=p.authorEmail||"anonymous";const name=p.authorName||(p.authorEmail||"অজ্ঞাত").split("@")[0];if(!map[email])map[email]={name,email,count:0};map[email].count++;});
+  const authors=Object.values(map).sort((a,b)=>b.count-a.count);
+  if(!authors.length){grid.innerHTML=`<div style="color:var(--text-muted);font-size:0.88rem;font-weight:300;grid-column:1/-1;text-align:center;padding:3rem 0">এখনো কোনো লেখক নেই।</div>`;return;}
+  grid.innerHTML=authors.map(a=>{const init=a.name.charAt(0).toUpperCase();return`<div class="author-card" onclick="filterByAuthor('${esc(a.email)}')"><div class="author-card-avatar">${init}</div><div class="author-card-name">${esc(a.name)}</div><div class="author-card-count">${toBn(a.count)} টি পোস্ট</div></div>`;}).join("");
 }
-window.filterByAuthor = email => {
-  searchQuery = email;
-  $("searchInput").value = email;
-  showView("home", {restoreScroll:false});
-  renderList();
-};
+window.filterByAuthor=email=>{searchQuery=email;$("searchInput").value=email;showView("home",{restoreScroll:false});renderList();};
 
-/* ════════════════════════════════
-   FAVORITES
-════════════════════════════════ */
-function renderFavorites() {
-  const favPosts = posts.filter(p=>favorites.includes(p.id));
-  const container = $("favPostList");
-  if (!favPosts.length) {
-    container.innerHTML = `<div class="fav-empty"><span class="empty-glyph">♡</span>এখনো কোনো পোস্ট সংরক্ষণ করেননি।<br>পোস্ট পড়ার সময় ❤ চাপলে এখানে যুক্ত হবে।</div>`;
-    return;
-  }
-  container.innerHTML = `<div class="post-list">${favPosts.map((p,i) => {
-    const name = p.authorName||(p.authorEmail||"অজ্ঞাত").split("@")[0];
-    const init = name.charAt(0).toUpperCase();
-    return `<div class="post-item" data-id="${p.id}" style="animation-delay:${i*35}ms">
-      <div>
-        <div class="post-title">${esc(p.title)}</div>
-        <div class="post-footer-row"><div class="post-author-chip"><div class="post-avatar-sm">${init}</div>${esc(name)}</div></div>
-      </div>
-      <div class="post-item-right"><span class="post-cat-badge">${esc(p.category||"")}</span><span class="post-date">${fmt(p.timestamp)}</span></div>
-    </div>`;
-  }).join("")}</div>`;
-  container.querySelectorAll(".post-item").forEach(el => {
-    el.addEventListener("click", () => { prevView="favorites"; openPost(el.dataset.id); });
-  });
+/* ══ FAVORITES ══ */
+function renderFavorites(){
+  const favPosts=posts.filter(p=>favorites.includes(p.id));
+  const container=$("favPostList");
+  if(!favPosts.length){container.innerHTML=`<div class="fav-empty"><span class="empty-glyph">♡</span>এখনো কোনো পোস্ট সংরক্ষণ করেননি।<br>পোস্ট পড়ার সময় ❤ চাপলে এখানে যুক্ত হবে।</div>`;return;}
+  container.innerHTML=`<div class="post-list">${favPosts.map((p,i)=>{const name=p.authorName||(p.authorEmail||"অজ্ঞাত").split("@")[0];const init=name.charAt(0).toUpperCase();return`<div class="post-item" data-id="${p.id}" style="animation-delay:${i*35}ms"><div><div class="post-title">${esc(p.title)}</div><div class="post-footer-row"><div class="post-author-chip"><div class="post-avatar-sm">${init}</div>${esc(name)}</div></div></div><div class="post-item-right"><span class="post-cat-badge">${esc(p.category||"")}</span><span class="post-date">${fmt(p.timestamp)}</span></div></div>`;}).join("")}</div>`;
+  container.querySelectorAll(".post-item").forEach(el=>{el.addEventListener("click",()=>{prevView="favorites";openPost(el.dataset.id);});});
 }
 
-/* ════════════════════════════════
-   READING VIEW
-════════════════════════════════ */
-function openPost(id, pushHistory=true) {
-  const p = posts.find(x=>x.id===id);
-  if (!p || p.hidden) return;
-  currentPostId = id;
-  $("readCat").textContent     = p.category||"";
-  $("readTitle").textContent   = p.title;
-  $("readBody").textContent    = p.content||"";
-  const name = p.authorName||(p.authorEmail||"অজ্ঞাত").split("@")[0];
-  $("readAuthorAvatar").textContent = name.charAt(0).toUpperCase();
-  $("readAuthorName").textContent   = name;
-  $("readAuthorDate").textContent   = fmt(p.timestamp);
-  const words = (p.content||"").trim().split(/\s+/).length;
-  const lines = (p.content||"").split("\n").filter(l=>l.trim()).length;
-  const mins  = Math.max(1, Math.ceil(words/90));
-  $("readMeta").innerHTML = `<span>${toBn(lines)} লাইন</span><span class="read-meta-sep">·</span><span>${toBn(words)} শব্দ</span><span class="read-meta-sep">·</span><span>~${toBn(mins)} মিনিট</span>`;
-  updateFavBtn(id);
-  updateLikeBtn(id, p.likes||0);
-  const isAdmin = currentUser && currentUser.email===ADMIN_EMAIL;
-  const isOwner = currentUser && currentUser.email===p.authorEmail;
-  $("adminEditBtn").style.display = (isAdmin||isOwner) ? "flex" : "none";
-  document.title = `${p.title} — প্রকাশ`;
-  if (pushHistory) history.pushState({postId:id}, p.title, `#post/${id}`);
-  showView("reading", {restoreScroll:false, skipSave:true});
-  renderRelated(p);
-  loadComments(id);
-  if (isTTSPlaying) stopTTS();
+/* ══ READING VIEW ══ */
+function openPost(id,pushHistory=true){
+  const p=posts.find(x=>x.id===id);
+  if(!p||p.hidden)return;
+  currentPostId=id;
+  $("readCat").textContent=p.category||"";
+  $("readTitle").textContent=p.title;
+  $("readBody").textContent=p.content||"";
+  const name=p.authorName||(p.authorEmail||"অজ্ঞাত").split("@")[0];
+  $("readAuthorAvatar").textContent=name.charAt(0).toUpperCase();
+  $("readAuthorName").textContent=name;
+  $("readAuthorDate").textContent=fmt(p.timestamp);
+  const words=(p.content||"").trim().split(/\s+/).length;
+  const lines=(p.content||"").split("\n").filter(l=>l.trim()).length;
+  const mins=Math.max(1,Math.ceil(words/90));
+  $("readMeta").innerHTML=`<span>${toBn(lines)} লাইন</span><span class="read-meta-sep">·</span><span>${toBn(words)} শব্দ</span><span class="read-meta-sep">·</span><span>~${toBn(mins)} মিনিট</span>`;
+  updateFavBtn(id); updateLikeBtn(id,p.likes||0);
+  const isAdmin=currentUser&&currentUser.email===ADMIN_EMAIL;
+  const isOwner=currentUser&&currentUser.email===p.authorEmail;
+  $("adminEditBtn").style.display=(isAdmin||isOwner)?"flex":"none";
+  document.title=`${p.title} — প্রকাশ`;
+  if(pushHistory)history.pushState({postId:id},p.title,`#post/${id}`);
+  showView("reading",{restoreScroll:false,skipSave:true});
+  renderRelated(p); loadComments(id);
+  if(isTTSPlaying)stopTTS();
 }
-
-function renderRelated(current) {
-  const section = $("relatedSection"), list = $("relatedList");
-  const related = posts.filter(p=>p.id!==current.id&&p.category===current.category&&!p.hidden).slice(0,5);
-  if (!related.length) { section.style.display="none"; return; }
-  section.style.display = "";
-  list.innerHTML = related.map(p => {
-    const name = p.authorName||(p.authorEmail||"অজ্ঞাত").split("@")[0];
-    return `<div class="related-item" data-id="${p.id}"><span class="related-item-title">${esc(p.title)}</span><span class="related-item-author">${esc(name)}</span></div>`;
-  }).join("");
+function renderRelated(current){
+  const section=$("relatedSection"),list=$("relatedList");
+  const related=posts.filter(p=>p.id!==current.id&&p.category===current.category&&!p.hidden).slice(0,5);
+  if(!related.length){section.style.display="none";return;}
+  section.style.display="";
+  list.innerHTML=related.map(p=>{const name=p.authorName||(p.authorEmail||"অজ্ঞাত").split("@")[0];return`<div class="related-item" data-id="${p.id}"><span class="related-item-title">${esc(p.title)}</span><span class="related-item-author">${esc(name)}</span></div>`;}).join("");
   list.querySelectorAll(".related-item").forEach(el=>el.addEventListener("click",()=>openPost(el.dataset.id)));
 }
 
-/* ════════════════════════════════
-   FAV & LIKE
-════════════════════════════════ */
-function updateFavBtn(id) {
-  const btn = $("favActionBtn"), isFav = favorites.includes(id);
-  btn.classList.toggle("faved", isFav);
-  const svgFill = isFav ? "currentColor" : "none";
-  btn.innerHTML = `<svg viewBox="0 0 24 24" fill="${svgFill}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="11" height="11"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> ${isFav?"সংরক্ষিত":"সংরক্ষণ"}`;
-}
-function updateLikeBtn(id, count) {
-  const btn = $("likeActionBtn"), liked = userLikes.includes(id);
-  btn.classList.toggle("liked", liked);
-  $("likeCount").textContent = toBn(count);
-}
-window.toggleFav = () => {
-  if (!currentPostId) return;
-  const idx = favorites.indexOf(currentPostId);
-  if (idx > -1) { favorites.splice(idx,1); toast("সংগ্রহ থেকে সরানো হয়েছে","♡"); }
-  else { favorites.push(currentPostId); toast("সংরক্ষণ করা হয়েছে!","❤"); }
-  localStorage.setItem("prokash-favs", JSON.stringify(favorites));
-  updateFavBtn(currentPostId);
-  updateStats();
-  renderList();
-};
-window.toggleLike = async () => {
-  if (!currentPostId) return;
-  const idx = userLikes.indexOf(currentPostId), liked = idx>-1;
-  const p = posts.find(x=>x.id===currentPostId); if (!p) return;
-  if (liked) { userLikes.splice(idx,1); p.likes=Math.max(0,(p.likes||1)-1); }
-  else { userLikes.push(currentPostId); p.likes=(p.likes||0)+1; toast("পছন্দ করা হয়েছে!","❤"); }
-  localStorage.setItem("prokash-likes", JSON.stringify(userLikes));
-  updateLikeBtn(currentPostId, p.likes);
-  renderList();
-  try { await updateDoc(doc(db,"posts",currentPostId),{likes:p.likes}); } catch {}
-};
-window.copyPost = async () => {
-  const p = posts.find(x=>x.id===currentPostId); if (!p) return;
-  const name = p.authorName||(p.authorEmail||"অজ্ঞাত").split("@")[0];
-  try {
-    await navigator.clipboard.writeText(`${p.title}\n\n${p.content}\n\n— ${name} | প্রকাশ`);
-    toast("কপি করা হয়েছে!","📋");
-  } catch { toast("কপি করতে ব্যর্থ","✕"); }
-};
-window.sharePost = async () => {
-  const p = posts.find(x=>x.id===currentPostId); if (!p) return;
-  const url = `${location.href.split('#')[0]}#post/${p.id}`;
-  try {
-    if (navigator.share) { await navigator.share({title:p.title+" — প্রকাশ",text:firstLines(p.content,1)+"…",url}); toast("শেয়ার করা হয়েছে!","✓"); }
-    else { await navigator.clipboard.writeText(url); toast("লিংক কপি হয়েছে!","🔗"); }
-  } catch(e) {
-    if (e.name!=="AbortError") { try { await navigator.clipboard.writeText(url); toast("লিংক কপি হয়েছে!","🔗"); } catch {} }
-  }
-};
+/* ══ FAV & LIKE ══ */
+function updateFavBtn(id){const btn=$("favActionBtn"),isFav=favorites.includes(id);btn.classList.toggle("faved",isFav);const svgFill=isFav?"currentColor":"none";btn.innerHTML=`<svg viewBox="0 0 24 24" fill="${svgFill}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="11" height="11"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> ${isFav?"সংরক্ষিত":"সংরক্ষণ"}`;}
+function updateLikeBtn(id,count){const btn=$("likeActionBtn"),liked=userLikes.includes(id);btn.classList.toggle("liked",liked);$("likeCount").textContent=toBn(count);}
+window.toggleFav=()=>{if(!currentPostId)return;const idx=favorites.indexOf(currentPostId);if(idx>-1){favorites.splice(idx,1);toast("সংগ্রহ থেকে সরানো হয়েছে","♡");}else{favorites.push(currentPostId);toast("সংরক্ষণ করা হয়েছে!","❤");}localStorage.setItem("prokash-favs",JSON.stringify(favorites));updateFavBtn(currentPostId);updateStats();renderList();};
+window.toggleLike=async()=>{if(!currentPostId)return;const idx=userLikes.indexOf(currentPostId),liked=idx>-1;const p=posts.find(x=>x.id===currentPostId);if(!p)return;if(liked){userLikes.splice(idx,1);p.likes=Math.max(0,(p.likes||1)-1);}else{userLikes.push(currentPostId);p.likes=(p.likes||0)+1;toast("পছন্দ করা হয়েছে!","❤");}localStorage.setItem("prokash-likes",JSON.stringify(userLikes));updateLikeBtn(currentPostId,p.likes);renderList();try{await updateDoc(doc(db,"posts",currentPostId),{likes:p.likes});}catch{}};
+window.copyPost=async()=>{const p=posts.find(x=>x.id===currentPostId);if(!p)return;const name=p.authorName||(p.authorEmail||"অজ্ঞাত").split("@")[0];try{await navigator.clipboard.writeText(`${p.title}\n\n${p.content}\n\n— ${name} | প্রকাশ`);toast("কপি করা হয়েছে!","📋");}catch{toast("কপি করতে ব্যর্থ","✕");}};
+window.sharePost=async()=>{const p=posts.find(x=>x.id===currentPostId);if(!p)return;const url=`${location.href.split('#')[0]}#post/${p.id}`;try{if(navigator.share){await navigator.share({title:p.title+" — প্রকাশ",text:firstLines(p.content,1)+"…",url});toast("শেয়ার করা হয়েছে!","✓");}else{await navigator.clipboard.writeText(url);toast("লিংক কপি হয়েছে!","🔗");}}catch(e){if(e.name!=="AbortError"){try{await navigator.clipboard.writeText(url);toast("লিংক কপি হয়েছে!","🔗");}catch{}}}};
 
-/* ════════════════════════════════
-   TTS
-════════════════════════════════ */
-window.toggleTTS = () => {
-  if (isTTSPlaying) { stopTTS(); return; }
-  const p = posts.find(x=>x.id===currentPostId); if (!p) return;
-  if (!window.speechSynthesis) { toast("এই ব্রাউজারে TTS সমর্থিত নয়","✕"); return; }
-  ttsUtterance = new SpeechSynthesisUtterance(`${p.title}। ${p.content}`);
-  ttsUtterance.lang = "bn-BD";
-  ttsUtterance.rate = 0.9;
-  ttsUtterance.onend = () => { isTTSPlaying=false; $("ttsBtn").textContent="🔊 পড়ুন"; };
-  speechSynthesis.speak(ttsUtterance);
-  isTTSPlaying = true;
-  $("ttsBtn").textContent = "⏹ থামুন";
-  toast("পড়া শুরু হয়েছে…","🔊");
-};
-function stopTTS() {
-  if (window.speechSynthesis) speechSynthesis.cancel();
-  isTTSPlaying = false;
-  $("ttsBtn").textContent = "🔊 পড়ুন";
-}
-window.enterZen = () => { document.body.classList.add("zen"); $("zenBtn").classList.add("active"); };
-window.exitZen  = () => { document.body.classList.remove("zen"); $("zenBtn").classList.remove("active"); };
-window.openEditFromReading = () => { if (currentPostId) openEditModal(currentPostId); };
+/* ══ TTS ══ */
+window.toggleTTS=()=>{if(isTTSPlaying){stopTTS();return;}const p=posts.find(x=>x.id===currentPostId);if(!p)return;if(!window.speechSynthesis){toast("এই ব্রাউজারে TTS সমর্থিত নয়","✕");return;}ttsUtterance=new SpeechSynthesisUtterance(`${p.title}। ${p.content}`);ttsUtterance.lang="bn-BD";ttsUtterance.rate=0.9;ttsUtterance.onend=()=>{isTTSPlaying=false;$("ttsBtn").textContent="🔊 পড়ুন";};speechSynthesis.speak(ttsUtterance);isTTSPlaying=true;$("ttsBtn").textContent="⏹ থামুন";toast("পড়া শুরু হয়েছে…","🔊");};
+function stopTTS(){if(window.speechSynthesis)speechSynthesis.cancel();isTTSPlaying=false;$("ttsBtn").textContent="🔊 পড়ুন";}
+window.enterZen=()=>{document.body.classList.add("zen");$("zenBtn").classList.add("active");};
+window.exitZen=()=>{document.body.classList.remove("zen");$("zenBtn").classList.remove("active");};
+window.openEditFromReading=()=>{if(currentPostId)openEditModal(currentPostId);};
 
-/* ════════════════════════════════
-   EXPORT
-════════════════════════════════ */
-window.exportPosts = () => {
-  const data = JSON.stringify(posts.map(p=>({title:p.title,content:p.content,category:p.category,author:p.authorName,date:fmt(p.timestamp),likes:p.likes||0})),null,2);
-  const blob = new Blob([data],{type:"application/json"});
-  const url  = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href=url; a.download="prokash-posts.json"; a.click();
-  toast("এক্সপোর্ট সম্পন্ন","↓");
-};
+/* ══ EXPORT ══ */
+window.exportPosts=()=>{const data=JSON.stringify(posts.map(p=>({title:p.title,content:p.content,category:p.category,author:p.authorName,date:fmt(p.timestamp),likes:p.likes||0})),null,2);const blob=new Blob([data],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="prokash-posts.json";a.click();toast("এক্সপোর্ট সম্পন্ন","↓");};
 
-/* ════════════════════════════════
-   COMMENTS
-════════════════════════════════ */
-async function loadComments(postId) {
-  const list = $("commentsList"), badge = $("commentsCountBadge");
-  list.innerHTML = `<div class="loading-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>`;
-  try {
-    const q = query(collection(db,"comments"),where("postId","==",postId),orderBy("timestamp","desc"));
-    const snap = await getDocs(q);
-    const data = snap.docs.map(d=>({id:d.id,...d.data()}));
-    badge.textContent = toBn(data.length);
-    if (!data.length) {
-      list.innerHTML = `<div style="color:var(--text-muted);font-size:0.84rem;text-align:center;padding:1.5rem 0;line-height:2.2">এখনো কোনো মন্তব্য নেই।<br>প্রথম মন্তব্যটি আপনিই করুন!</div>`;
-      return;
-    }
-    const isAdmin = currentUser && currentUser.email===ADMIN_EMAIL;
-    list.innerHTML = data.map(d => `<div class="comment-item">
-      <div class="comment-top"><span class="comment-name">${esc(d.name||"অজ্ঞাত পাঠক")}</span><span class="comment-date">${fmt(d.timestamp)}</span></div>
-      <div class="comment-body">${esc(d.text).replace(/\n/g,"<br>")}</div>
-      ${isAdmin?`<button class="comment-del-btn" onclick="deleteComment('${d.id}')">✕</button>`:""}
-    </div>`).join("");
-  } catch {
-    list.innerHTML = `<div style="color:var(--red);font-size:0.84rem;padding:1rem 0">মন্তব্য লোড করতে সমস্যা।</div>`;
-  }
+/* ══ COMMENTS ══ */
+async function loadComments(postId){
+  const list=$("commentsList"),badge=$("commentsCountBadge");
+  list.innerHTML=`<div class="loading-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>`;
+  try{
+    const q=query(collection(db,"comments"),where("postId","==",postId),orderBy("timestamp","desc"));
+    const snap=await getDocs(q);
+    const data=snap.docs.map(d=>({id:d.id,...d.data()}));
+    badge.textContent=toBn(data.length);
+    if(!data.length){list.innerHTML=`<div style="color:var(--text-muted);font-size:0.84rem;text-align:center;padding:1.5rem 0;line-height:2.2">এখনো কোনো মন্তব্য নেই।<br>প্রথম মন্তব্যটি আপনিই করুন!</div>`;return;}
+    const isAdmin=currentUser&&currentUser.email===ADMIN_EMAIL;
+    list.innerHTML=data.map(d=>`<div class="comment-item"><div class="comment-top"><span class="comment-name">${esc(d.name||"অজ্ঞাত পাঠক")}</span><span class="comment-date">${fmt(d.timestamp)}</span></div><div class="comment-body">${esc(d.text).replace(/\n/g,"<br>")}</div>${isAdmin?`<button class="comment-del-btn" onclick="deleteComment('${d.id}')">✕</button>`:""}</div>`).join("");
+  }catch{list.innerHTML=`<div style="color:var(--red);font-size:0.84rem;padding:1rem 0">মন্তব্য লোড করতে সমস্যা।</div>`;}
 }
-window.deleteComment = async cid => {
-  try { await deleteDoc(doc(db,"comments",cid)); toast("মন্তব্য মুছে ফেলা হয়েছে","✓"); loadComments(currentPostId); }
-  catch { toast("মুছতে ব্যর্থ","✕"); }
-};
-$("submitCommentBtn").addEventListener("click", async () => {
-  if (!currentPostId) return;
-  const name = $("commentName").value.trim()||"অজ্ঞাত পাঠক";
-  const text = $("commentText").value.trim();
-  const btn  = $("submitCommentBtn");
-  if (!text) { toast("অনুগ্রহ করে কিছু লিখুন!","✏"); return; }
-  btn.disabled = true; btn.textContent = "প্রকাশ হচ্ছে…";
-  try {
-    await addDoc(collection(db,"comments"),{postId:currentPostId,name,text,timestamp:serverTimestamp()});
-    $("commentText").value = "";
-    toast("মন্তব্য প্রকাশিত!","✓");
-    loadComments(currentPostId);
-  } catch { toast("প্রকাশে ত্রুটি","✕"); }
-  btn.disabled=false; btn.textContent="মন্তব্য প্রকাশ করুন";
+window.deleteComment=async cid=>{try{await deleteDoc(doc(db,"comments",cid));toast("মন্তব্য মুছে ফেলা হয়েছে","✓");loadComments(currentPostId);}catch{toast("মুছতে ব্যর্থ","✕");}};
+$("submitCommentBtn").addEventListener("click",async()=>{
+  if(!currentPostId)return;
+  const name=$("commentName").value.trim()||"অজ্ঞাত পাঠক";
+  const text=$("commentText").value.trim();
+  const btn=$("submitCommentBtn");
+  if(!text){toast("অনুগ্রহ করে কিছু লিখুন!","✏");return;}
+  btn.disabled=true;btn.textContent="প্রকাশ হচ্ছে…";
+  try{await addDoc(collection(db,"comments"),{postId:currentPostId,name,text,timestamp:serverTimestamp()});$("commentText").value="";toast("মন্তব্য প্রকাশিত!","✓");loadComments(currentPostId);}catch{toast("প্রকাশে ত্রুটি","✕");}
+  btn.disabled=false;btn.textContent="মন্তব্য প্রকাশ করুন";
 });
 
-/* ════════════════════════════════
-   SORT & RANDOM
-════════════════════════════════ */
-document.querySelectorAll(".sort-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    if (btn.closest("#adminCatFilter")) return;
-    activeSort = btn.dataset.sort;
-    document.querySelectorAll(".sort-btn:not([data-acat])").forEach(b=>b.classList.toggle("active",b===btn));
-    renderList();
-  });
-});
-$("randomBtn").addEventListener("click", () => {
-  const vis = posts.filter(p=>!p.hidden);
-  if (vis.length) openPost(vis[Math.floor(Math.random()*vis.length)].id);
-});
+/* ══ SORT & RANDOM ══ */
+document.querySelectorAll(".sort-btn").forEach(btn=>{btn.addEventListener("click",()=>{if(btn.closest("#adminCatFilter"))return;activeSort=btn.dataset.sort;document.querySelectorAll(".sort-btn:not([data-acat])").forEach(b=>b.classList.toggle("active",b===btn));renderList();});});
+$("randomBtn").addEventListener("click",()=>{const vis=posts.filter(p=>!p.hidden);if(vis.length)openPost(vis[Math.floor(Math.random()*vis.length)].id);});
 
-/* ════════════════════════════════
-   SEARCH
-════════════════════════════════ */
-$("searchToggleBtn").addEventListener("click", toggleSearch);
-function toggleSearch() {
-  isSearchOpen = !isSearchOpen;
-  $("searchBar").classList.toggle("open", isSearchOpen);
-  $("searchToggleBtn").classList.toggle("active", isSearchOpen);
-  if (isSearchOpen) setTimeout(()=>$("searchInput").focus(), 200);
-  else {
-    searchQuery=""; $("searchInput").value="";
-    $("searchCount").textContent="";
-    $("searchClear").classList.remove("show");
-    renderList();
-  }
-}
-$("searchInput").addEventListener("input", () => {
-  searchQuery = $("searchInput").value;
-  $("searchClear").classList.toggle("show", !!searchQuery);
-  if (!$("homeView").classList.contains("active")) showView("home",{restoreScroll:false});
-  else renderList();
-});
-$("searchClear").addEventListener("click", () => {
-  searchQuery=""; $("searchInput").value="";
-  $("searchCount").textContent="";
-  $("searchClear").classList.remove("show");
-  renderList(); $("searchInput").focus();
-});
+/* ══ SEARCH ══ */
+$("searchToggleBtn").addEventListener("click",toggleSearch);
+function toggleSearch(){isSearchOpen=!isSearchOpen;$("searchBar").classList.toggle("open",isSearchOpen);$("searchToggleBtn").classList.toggle("active",isSearchOpen);if(isSearchOpen)setTimeout(()=>$("searchInput").focus(),200);else{searchQuery="";$("searchInput").value="";$("searchCount").textContent="";$("searchClear").classList.remove("show");renderList();}}
+$("searchInput").addEventListener("input",()=>{searchQuery=$("searchInput").value;$("searchClear").classList.toggle("show",!!searchQuery);if(!$("homeView").classList.contains("active"))showView("home",{restoreScroll:false});else renderList();});
+$("searchClear").addEventListener("click",()=>{searchQuery="";$("searchInput").value="";$("searchCount").textContent="";$("searchClear").classList.remove("show");renderList();$("searchInput").focus();});
 
-/* ════════════════════════════════
-   VIEW SYSTEM
-════════════════════════════════ */
-window.showView = function(name, opts={}) {
-  const {restoreScroll=false, skipSave=false} = opts;
-  if (!skipSave) { const cur = document.querySelector(".view.active"); if(cur) scrollMem[cur.id]=window.scrollY; }
-  if (name!=="home" && isSearchOpen) {
-    isSearchOpen=false; $("searchBar").classList.remove("open"); $("searchToggleBtn").classList.remove("active");
-    searchQuery=""; $("searchInput").value=""; $("searchCount").textContent="";
-  }
+/* ══ VIEW SYSTEM ══ */
+window.showView=function(name,opts={}){
+  const{restoreScroll=false,skipSave=false}=opts;
+  if(!skipSave){const cur=document.querySelector(".view.active");if(cur)scrollMem[cur.id]=window.scrollY;}
+  if(name!=="home"&&isSearchOpen){isSearchOpen=false;$("searchBar").classList.remove("open");$("searchToggleBtn").classList.remove("active");searchQuery="";$("searchInput").value="";$("searchCount").textContent="";}
   document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
   $(name+"View").classList.add("active");
-  if (restoreScroll && scrollMem[name+"View"]!==undefined) {
-    requestAnimationFrame(()=>window.scrollTo({top:scrollMem[name+"View"],behavior:"instant"}));
-  } else {
-    window.scrollTo({top:0,behavior:"instant"});
-  }
-  $("progressBar").classList.remove("visible");
-  $("progressBar").style.width = "0%";
+  if(restoreScroll&&scrollMem[name+"View"]!==undefined)requestAnimationFrame(()=>window.scrollTo({top:scrollMem[name+"View"],behavior:"instant"}));
+  else window.scrollTo({top:0,behavior:"instant"});
+  $("progressBar").classList.remove("visible");$("progressBar").style.width="0%";
   exitZen();
-  if (name!=="reading" && window.location.hash.startsWith("#post/")) history.pushState({},"",location.pathname+location.search);
-  if (name==="admin")     { renderAdminList(); buildAdminCatFilter(); }
-  if (name==="favorites") renderFavorites();
-  if (name==="authors")   renderAuthors();
-  if (name==="home")      document.title = "প্রকাশ — মুক্ত কলমের মঞ্চ";
+  if(name!=="reading"&&window.location.hash.startsWith("#post/"))history.pushState({},"",location.pathname+location.search);
+  if(name==="admin"){renderAdminList();buildAdminCatFilter();}
+  if(name==="favorites")renderFavorites();
+  if(name==="authors")renderAuthors();
+  if(name==="home")document.title="প্রকাশ — মুক্ত কলমের মঞ্চ";
 };
-window.navHome = () => showView("home",{restoreScroll:true});
+window.navHome=()=>showView("home",{restoreScroll:true});
+$("backBtn").addEventListener("click",()=>{const t=prevView||"home";prevView="home";showView(t,{restoreScroll:true});});
+$("favBtn").addEventListener("click",()=>{prevView="home";showView("favorites");});
+$("authorsBtn").addEventListener("click",()=>{prevView="home";showView("authors");});
+$("shortcutsBtn").addEventListener("click",()=>openOverlay("shortcutsOverlay"));
 
-$("backBtn").addEventListener("click", () => {
-  const t=prevView||"home"; prevView="home"; showView(t,{restoreScroll:true});
-});
-$("favBtn").addEventListener("click", () => { prevView="home"; showView("favorites"); });
-$("authorsBtn").addEventListener("click", () => { prevView="home"; showView("authors"); });
-$("shortcutsBtn").addEventListener("click", () => openOverlay("shortcutsOverlay"));
-
-/* ════════════════════════════════
-   PROGRESS & SCROLL
-════════════════════════════════ */
-window.addEventListener("scroll", () => {
-  const reading = $("readingView").classList.contains("active");
-  if (reading) {
-    const t = document.documentElement.scrollHeight - window.innerHeight;
-    $("progressBar").style.width = (t>0?(window.scrollY/t*100):0)+"%";
-    $("progressBar").classList.add("visible");
-  } else {
-    $("progressBar").classList.remove("visible");
-    $("progressBar").style.width = "0%";
-  }
-  $("scrollTopBtn").classList.toggle("show", window.scrollY>380);
+/* ══ PROGRESS & SCROLL ══ */
+window.addEventListener("scroll",()=>{
+  const reading=$("readingView").classList.contains("active");
+  if(reading){const t=document.documentElement.scrollHeight-window.innerHeight;$("progressBar").style.width=(t>0?(window.scrollY/t*100):0)+"%";$("progressBar").classList.add("visible");}
+  else{$("progressBar").classList.remove("visible");$("progressBar").style.width="0%";}
+  $("scrollTopBtn").classList.toggle("show",window.scrollY>380);
 });
 
-/* ════════════════════════════════
-   AUTH
-════════════════════════════════ */
-onAuthStateChanged(auth, user => {
-  currentUser = user;
-  const authBtn = $("authBtn");
-  if (user) {
-    authBtn.textContent = "প্রস্থান"; authBtn.onclick = doSignOut;
-    const name = user.displayName||user.email.split("@")[0];
-    const init = name.charAt(0).toUpperCase();
-    $("userChipWrap").innerHTML = `<div class="user-chip"><div class="user-avatar">${init}</div><span class="name-text">${esc(name)}</span></div>`;
-    $("adminPanelBtn").style.display = user.email===ADMIN_EMAIL ? "inline-block" : "none";
+/* ══ AUTH ══ */
+onAuthStateChanged(auth,user=>{
+  currentUser=user;
+  const authBtn=$("authBtn");
+  if(user){
+    authBtn.textContent="প্রস্থান";authBtn.onclick=doSignOut;
+    const name=user.displayName||user.email.split("@")[0];
+    const init=name.charAt(0).toUpperCase();
+    $("userChipWrap").innerHTML=`<div class="user-chip"><div class="user-avatar">${init}</div><span class="name-text">${esc(name)}</span></div>`;
+    $("adminPanelBtn").style.display=user.email===ADMIN_EMAIL?"inline-block":"none";
     $("fab").classList.add("show");
     closeOverlay("authOverlay");
-    $("writeLoginNotice").style.display = "none";
-    $("writeFormInner").style.display   = "block";
-  } else {
-    authBtn.textContent = "প্রবেশ"; authBtn.onclick = ()=>openOverlay("authOverlay");
-    $("userChipWrap").innerHTML = "";
-    $("adminPanelBtn").style.display = "none";
-    $("fab").classList.remove("show");
-    $("writeLoginNotice").style.display = "block";
-    $("writeFormInner").style.display   = "none";
-    if ($("adminView").classList.contains("active")) showView("home");
+    $("writeLoginNotice").style.display="none";$("writeFormInner").style.display="block";
+  }else{
+    authBtn.textContent="প্রবেশ";authBtn.onclick=()=>openOverlay("authOverlay");
+    $("userChipWrap").innerHTML="";$("adminPanelBtn").style.display="none";$("fab").classList.remove("show");
+    $("writeLoginNotice").style.display="block";$("writeFormInner").style.display="none";
+    if($("adminView").classList.contains("active"))showView("home");
   }
-  if ($("readingView").classList.contains("active") && currentPostId) {
-    const p = posts.find(x=>x.id===currentPostId);
-    if (p) {
-      const isAdmin = user&&user.email===ADMIN_EMAIL;
-      const isOwner = user&&user.email===p.authorEmail;
-      $("adminEditBtn").style.display = (isAdmin||isOwner) ? "flex" : "none";
-    }
-  }
+  if($("readingView").classList.contains("active")&&currentPostId){const p=posts.find(x=>x.id===currentPostId);if(p){const isAdmin=user&&user.email===ADMIN_EMAIL;const isOwner=user&&user.email===p.authorEmail;$("adminEditBtn").style.display=(isAdmin||isOwner)?"flex":"none";}}
 });
-
-window.switchAuthTab = tab => {
-  $("tabLogin").classList.toggle("active", tab==="login");
-  $("tabRegister").classList.toggle("active", tab==="register");
-  $("loginPanel").style.display    = tab==="login"    ? "block" : "none";
-  $("registerPanel").style.display = tab==="register" ? "block" : "none";
-};
-
-$("authBtn").addEventListener("click", () => {
-  if (!currentUser) openOverlay("authOverlay");
-});
-document.querySelectorAll("#authOverlay").forEach(el => {
-  el.addEventListener("click", e => { if (e.target===el) closeOverlay("authOverlay"); });
-});
-
-$("loginSubmit").addEventListener("click", doLogin);
-$("loginPass").addEventListener("keydown", e => { if (e.key==="Enter") doLogin(); });
-async function doLogin() {
-  const email=$("loginEmail").value.trim(), pass=$("loginPass").value;
-  const btn=$("loginSubmit"), err=$("loginErr");
+window.switchAuthTab=tab=>{$("tabLogin").classList.toggle("active",tab==="login");$("tabRegister").classList.toggle("active",tab==="register");$("loginPanel").style.display=tab==="login"?"block":"none";$("registerPanel").style.display=tab==="register"?"block":"none";};
+$("authBtn").addEventListener("click",()=>{if(!currentUser)openOverlay("authOverlay");});
+document.querySelectorAll("#authOverlay").forEach(el=>el.addEventListener("click",e=>{if(e.target===el)closeOverlay("authOverlay");}));
+$("loginSubmit").addEventListener("click",doLogin);
+$("loginPass").addEventListener("keydown",e=>{if(e.key==="Enter")doLogin();});
+async function doLogin(){
+  const email=$("loginEmail").value.trim(),pass=$("loginPass").value;
+  const btn=$("loginSubmit"),err=$("loginErr");
   err.classList.remove("show");
-  if (!email||!pass) { err.textContent="ইমেইল ও পাসওয়ার্ড দিন।"; err.classList.add("show"); return; }
-  btn.disabled=true; btn.textContent="অপেক্ষা করুন…";
-  try { await signInWithEmailAndPassword(auth,email,pass); toast("স্বাগতম! ✦","✦"); }
-  catch { err.textContent="ইমেইল বা পাসওয়ার্ড ভুল।"; err.classList.add("show"); }
-  btn.disabled=false; btn.textContent="প্রবেশ করুন ✦";
+  if(!email||!pass){err.textContent="ইমেইল ও পাসওয়ার্ড দিন।";err.classList.add("show");return;}
+  btn.disabled=true;btn.textContent="অপেক্ষা করুন…";
+  try{await signInWithEmailAndPassword(auth,email,pass);toast("স্বাগতম! ✦","✦");}
+  catch{err.textContent="ইমেইল বা পাসওয়ার্ড ভুল।";err.classList.add("show");}
+  btn.disabled=false;btn.textContent="প্রবেশ করুন ✦";
 }
-
-$("regSubmit").addEventListener("click", doRegister);
-$("regPass").addEventListener("keydown", e => { if (e.key==="Enter") doRegister(); });
-async function doRegister() {
-  const name=$("regName").value.trim(), email=$("regEmail").value.trim(), pass=$("regPass").value;
-  const btn=$("regSubmit"), err=$("regErr"), ok=$("regOk");
-  err.classList.remove("show"); ok.classList.remove("show");
-  if (!name) { err.textContent="নাম দিন।"; err.classList.add("show"); return; }
-  if (!email) { err.textContent="ইমেইল দিন।"; err.classList.add("show"); return; }
-  if (pass.length<6) { err.textContent="পাসওয়ার্ড কমপক্ষে ৬ অক্ষর।"; err.classList.add("show"); return; }
-  btn.disabled=true; btn.textContent="নিবন্ধন হচ্ছে…";
-  try {
-    const cred = await createUserWithEmailAndPassword(auth,email,pass);
+$("regSubmit").addEventListener("click",doRegister);
+$("regPass").addEventListener("keydown",e=>{if(e.key==="Enter")doRegister();});
+async function doRegister(){
+  const name=$("regName").value.trim(),email=$("regEmail").value.trim(),pass=$("regPass").value;
+  const btn=$("regSubmit"),err=$("regErr"),ok=$("regOk");
+  err.classList.remove("show");ok.classList.remove("show");
+  if(!name){err.textContent="নাম দিন।";err.classList.add("show");return;}
+  if(!email){err.textContent="ইমেইল দিন।";err.classList.add("show");return;}
+  if(pass.length<6){err.textContent="পাসওয়ার্ড কমপক্ষে ৬ অক্ষর।";err.classList.add("show");return;}
+  btn.disabled=true;btn.textContent="নিবন্ধন হচ্ছে…";
+  try{
+    const cred=await createUserWithEmailAndPassword(auth,email,pass);
     await updateProfile(cred.user,{displayName:name});
     await setDoc(doc(db,"users",cred.user.uid),{name,email,createdAt:serverTimestamp()},{merge:true});
-    ok.textContent = "নিবন্ধন সম্পন্ন! স্বাগতম, "+name+" ✦";
-    ok.classList.add("show");
-  } catch(e) {
-    let msg = "নিবন্ধনে সমস্যা।";
-    if (e.code==="auth/email-already-in-use") msg = "এই ইমেইলে আগেই অ্যাকাউন্ট আছে।";
-    err.textContent=msg; err.classList.add("show");
+    ok.textContent="নিবন্ধন সম্পন্ন! স্বাগতম, "+name+" ✦";ok.classList.add("show");
+  }catch(e){
+    let msg="নিবন্ধনে সমস্যা।";
+    if(e.code==="auth/email-already-in-use")msg="এই ইমেইলে আগেই অ্যাকাউন্ট আছে।";
+    err.textContent=msg;err.classList.add("show");
   }
-  btn.disabled=false; btn.textContent="নিবন্ধন করুন ✦";
+  btn.disabled=false;btn.textContent="নিবন্ধন করুন ✦";
 }
-async function doSignOut() {
-  await signOut(auth); toast("প্রস্থান সম্পন্ন","✓");
-}
+async function doSignOut(){await signOut(auth);toast("প্রস্থান সম্পন্ন","✓");}
 
-/* ════════════════════════════════
-   WRITE/EDIT MODAL
-════════════════════════════════ */
-window.openWriteModal = () => {
-  isEditMode = false; $("editingPostId").value = "";
-  $("writeModalTitle").textContent = "নতুন পোস্ট";
-  $("writeModalSub").textContent   = "আপনার লেখা, কবিতা, গল্প বা যা খুশি প্রকাশ করুন।";
-  $("writeSubmit").textContent     = "প্রকাশ করুন ✦";
-  $("postTitle").value = ""; $("postBody").value = "";
-  $("postDate").value  = todayValue();
-  $("titleCounter").textContent = "০/১২০";
-  $("lineCounter").textContent  = "০ লাইন";
-  $("wordCounter").textContent  = "০ শব্দ";
-  $("writeErr").classList.remove("show"); $("writeOk").classList.remove("show");
-  populatePostCatSelect();
-  openOverlay("writeOverlay");
-  setTimeout(()=>{ if(currentUser) $("postTitle").focus(); },200);
+/* ══ WRITE/EDIT MODAL ══ */
+window.openWriteModal=()=>{
+  isEditMode=false;$("editingPostId").value="";
+  $("writeModalTitle").textContent="নতুন পোস্ট";
+  $("writeModalSub").textContent="আপনার লেখা, কবিতা, গল্প বা যা খুশি প্রকাশ করুন।";
+  $("writeSubmit").textContent="প্রকাশ করুন ✦";
+  $("postTitle").value="";$("postBody").value="";$("postDate").value=todayValue();
+  $("titleCounter").textContent="০/১২০";$("lineCounter").textContent="০ লাইন";$("wordCounter").textContent="০ শব্দ";
+  $("writeErr").classList.remove("show");$("writeOk").classList.remove("show");
+  populatePostCatSelect();openOverlay("writeOverlay");
+  setTimeout(()=>{if(currentUser)$("postTitle").focus();},200);
 };
-
-function openEditModal(id) {
-  const p = posts.find(x=>x.id===id); if (!p) return;
-  isEditMode = true; $("editingPostId").value = id;
-  $("writeModalTitle").textContent = "পোস্ট সম্পাদনা";
-  $("writeModalSub").textContent   = `"${p.title}" সম্পাদনা করুন`;
-  $("writeSubmit").textContent     = "পরিবর্তন সংরক্ষণ করুন ✦";
-  $("postTitle").value = p.title;
-  $("postBody").value  = p.content||"";
-  const d = p.timestamp?.toDate ? p.timestamp.toDate() : (p.timestamp?.seconds ? new Date(p.timestamp.seconds*1000) : new Date());
-  $("postDate").value = isNaN(d)?todayValue():`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-  $("writeErr").classList.remove("show"); $("writeOk").classList.remove("show");
-  populatePostCatSelect();
-  $("postCat").value = p.category||categories[0];
+function openEditModal(id){
+  const p=posts.find(x=>x.id===id);if(!p)return;
+  isEditMode=true;$("editingPostId").value=id;
+  $("writeModalTitle").textContent="পোস্ট সম্পাদনা";
+  $("writeModalSub").textContent=`"${p.title}" সম্পাদনা করুন`;
+  $("writeSubmit").textContent="পরিবর্তন সংরক্ষণ করুন ✦";
+  $("postTitle").value=p.title;$("postBody").value=p.content||"";
+  const d=p.timestamp?.toDate?p.timestamp.toDate():(p.timestamp?.seconds?new Date(p.timestamp.seconds*1000):new Date());
+  $("postDate").value=isNaN(d)?todayValue():`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  $("writeErr").classList.remove("show");$("writeOk").classList.remove("show");
+  populatePostCatSelect();$("postCat").value=p.category||categories[0];
   openOverlay("writeOverlay");
 }
-
-$("postTitle").addEventListener("input", function() {
-  $("titleCounter").textContent = `${toBn(this.value.length)}/১২০`;
-  $("titleCounter").classList.toggle("warn", this.value.length>100);
-});
-$("postBody").addEventListener("input", function() {
-  const lines = this.value.split("\n").filter(l=>l.trim()).length;
-  const words = this.value.trim() ? this.value.trim().split(/\s+/).length : 0;
-  $("lineCounter").textContent = toBn(lines)+" লাইন";
-  $("wordCounter").textContent = toBn(words)+" শব্দ";
-});
-$("writeSubmit").addEventListener("click", async () => {
-  if (!currentUser) { toast("আগে লগইন করুন!","✕"); return; }
-  const title   = $("postTitle").value.trim();
-  const content = $("postBody").value.trim();
-  const category = $("postCat").value;
-  const dateVal  = $("postDate").value;
-  const btn=$("writeSubmit"), err=$("writeErr"), ok=$("writeOk");
-  err.classList.remove("show"); ok.classList.remove("show");
-  if (!title)   { err.textContent="শিরোনাম দিতে হবে।"; err.classList.add("show"); $("postTitle").focus(); return; }
-  if (!content) { err.textContent="বিষয়বস্তু দিতে হবে।"; err.classList.add("show"); $("postBody").focus(); return; }
-  const tsDate = dateVal ? Timestamp.fromDate(new Date(dateVal+"T12:00:00")) : null;
-  btn.disabled=true; btn.textContent="সংরক্ষণ হচ্ছে…";
-  try {
-    if (isEditMode) {
-      const id = $("editingPostId").value;
-      const updates = {title,content,category};
-      if (dateVal) updates.timestamp = tsDate;
-      await updateDoc(doc(db,"posts",id), updates);
-      ok.textContent = "পোস্ট সফলভাবে সংরক্ষিত!"; ok.classList.add("show");
+$("postTitle").addEventListener("input",function(){$("titleCounter").textContent=`${toBn(this.value.length)}/১২০`;$("titleCounter").classList.toggle("warn",this.value.length>100);});
+$("postBody").addEventListener("input",function(){const lines=this.value.split("\n").filter(l=>l.trim()).length;const words=this.value.trim()?this.value.trim().split(/\s+/).length:0;$("lineCounter").textContent=toBn(lines)+" লাইন";$("wordCounter").textContent=toBn(words)+" শব্দ";});
+$("writeSubmit").addEventListener("click",async()=>{
+  if(!currentUser){toast("আগে লগইন করুন!","✕");return;}
+  const title=$("postTitle").value.trim();
+  const content=$("postBody").value.trim();
+  const category=$("postCat").value;
+  const dateVal=$("postDate").value;
+  const btn=$("writeSubmit"),err=$("writeErr"),ok=$("writeOk");
+  err.classList.remove("show");ok.classList.remove("show");
+  if(!title){err.textContent="শিরোনাম দিতে হবে।";err.classList.add("show");$("postTitle").focus();return;}
+  if(!content){err.textContent="বিষয়বস্তু দিতে হবে।";err.classList.add("show");$("postBody").focus();return;}
+  const tsDate=dateVal?Timestamp.fromDate(new Date(dateVal+"T12:00:00")):null;
+  btn.disabled=true;btn.textContent="সংরক্ষণ হচ্ছে…";
+  try{
+    if(isEditMode){
+      const id=$("editingPostId").value;
+      const updates={title,content,category};
+      if(dateVal)updates.timestamp=tsDate;
+      await updateDoc(doc(db,"posts",id),updates);
+      ok.textContent="পোস্ট সফলভাবে সংরক্ষিত!";ok.classList.add("show");
       toast("পোস্ট সম্পাদনা সংরক্ষিত ✓","✓");
-      setTimeout(()=>closeOverlay("writeOverlay"), 1200);
-    } else {
-      const authorName = currentUser.displayName||currentUser.email.split("@")[0];
-      await addDoc(collection(db,"posts"),{
-        title,content,category,authorName,authorEmail:currentUser.email,
-        likes:0,pinned:false,hidden:false,featured:false,
-        timestamp: tsDate||serverTimestamp()
-      });
-      toast("পোস্ট প্রকাশিত হয়েছে ✦","✦");
-      closeOverlay("writeOverlay");
+      setTimeout(()=>closeOverlay("writeOverlay"),1200);
+    }else{
+      const authorName=currentUser.displayName||currentUser.email.split("@")[0];
+      await addDoc(collection(db,"posts"),{title,content,category,authorName,authorEmail:currentUser.email,likes:0,pinned:false,hidden:false,featured:false,timestamp:tsDate||serverTimestamp()});
+      toast("পোস্ট প্রকাশিত হয়েছে ✦","✦");closeOverlay("writeOverlay");
     }
-  } catch(e) {
-    err.textContent = isEditMode ? "সংরক্ষণ করা যায়নি।" : "প্রকাশ করা যায়নি।";
-    err.classList.add("show");
+  }catch(e){
+    err.textContent=isEditMode?"সংরক্ষণ করা যায়নি।":"প্রকাশ করা যায়নি।";err.classList.add("show");
   }
-  btn.disabled=false;
-  btn.textContent = isEditMode ? "পরিবর্তন সংরক্ষণ করুন ✦" : "প্রকাশ করুন ✦";
+  btn.disabled=false;btn.textContent=isEditMode?"পরিবর্তন সংরক্ষণ করুন ✦":"প্রকাশ করুন ✦";
 });
-document.querySelectorAll("#writeOverlay").forEach(el=>{
-  el.addEventListener("click",e=>{if(e.target===el)closeOverlay("writeOverlay");});
-});
+document.querySelectorAll("#writeOverlay").forEach(el=>el.addEventListener("click",e=>{if(e.target===el)closeOverlay("writeOverlay");}));
 
-/* ════════════════════════════════
-   DELETE
-════════════════════════════════ */
-window.askDelete = (id, title) => {
-  pendingDeleteId = id;
-  $("deleteModalSub").textContent = `"${title}" — চিরতরে মুছে যাবে।`;
-  openOverlay("deleteOverlay");
-};
-$("deleteOverlay").addEventListener("click", e=>{if(e.target===$("deleteOverlay"))closeOverlay("deleteOverlay");});
-$("confirmDeleteBtn").addEventListener("click", async () => {
-  if (!pendingDeleteId) return;
-  const btn = $("confirmDeleteBtn"); btn.disabled=true; btn.textContent="মুছছে…";
-  try {
+/* ══ DELETE ══ */
+window.askDelete=(id,title)=>{pendingDeleteId=id;$("deleteModalSub").textContent=`"${title}" — চিরতরে মুছে যাবে।`;openOverlay("deleteOverlay");};
+$("deleteOverlay").addEventListener("click",e=>{if(e.target===$("deleteOverlay"))closeOverlay("deleteOverlay");});
+$("confirmDeleteBtn").addEventListener("click",async()=>{
+  if(!pendingDeleteId)return;
+  const btn=$("confirmDeleteBtn");btn.disabled=true;btn.textContent="মুছছে…";
+  try{
     await deleteDoc(doc(db,"posts",pendingDeleteId));
-    favorites = favorites.filter(f=>f!==pendingDeleteId);
+    favorites=favorites.filter(f=>f!==pendingDeleteId);
     localStorage.setItem("prokash-favs",JSON.stringify(favorites));
-    closeOverlay("deleteOverlay");
-    toast("পোস্ট মুছে ফেলা হয়েছে","✓");
-    if (currentPostId===pendingDeleteId && $("readingView").classList.contains("active")) showView("home");
-  } catch { toast("মুছতে ব্যর্থ","✕"); }
-  btn.disabled=false; btn.textContent="হ্যাঁ, মুছুন"; pendingDeleteId=null;
+    closeOverlay("deleteOverlay");toast("পোস্ট মুছে ফেলা হয়েছে","✓");
+    if(currentPostId===pendingDeleteId&&$("readingView").classList.contains("active"))showView("home");
+  }catch{toast("মুছতে ব্যর্থ","✕");}
+  btn.disabled=false;btn.textContent="হ্যাঁ, মুছুন";pendingDeleteId=null;
 });
 
-/* ════════════════════════════════
-   SITE SETTINGS
-════════════════════════════════ */
-window.openSettings = () => {
-  populateSettingsForm();
-  openOverlay("settingsOverlay");
-};
-
-window.switchSettingsTab = tab => {
+/* ══ SETTINGS MODAL ══ */
+window.openSettings=()=>{populateSettingsForm();openOverlay("settingsOverlay");};
+window.switchSettingsTab=tab=>{
   document.querySelectorAll(".settings-tab").forEach(t=>t.classList.toggle("active",t.dataset.stab===tab));
   document.querySelectorAll(".settings-panel").forEach(p=>p.classList.toggle("active",p.id==="stab-"+tab));
-  if (tab==="categories") renderCatManageList();
-  if (tab==="dedication")  renderDedNamesList();
-  if (tab==="featured") {
-    const sel = $("s-featuredPost");
-    sel.innerHTML = `<option value="">— কোনো ফিচার পোস্ট নেই —</option>`;
-    posts.filter(p=>!p.hidden).forEach(p=>{
-      const opt=document.createElement("option");
-      opt.value=p.id; opt.textContent=p.title.substring(0,55);
-      if (p.id===siteSettings.featuredPostId) opt.selected=true;
-      sel.appendChild(opt);
-    });
+  if(tab==="categories")renderCatManageList();
+  if(tab==="dedication")renderDedNamesList();
+  if(tab==="featured"){
+    const sel=$("s-featuredPost");
+    sel.innerHTML=`<option value="">— কোনো ফিচার পোস্ট নেই —</option>`;
+    posts.filter(p=>!p.hidden).forEach(p=>{const opt=document.createElement("option");opt.value=p.id;opt.textContent=p.title.substring(0,55);if(p.id===siteSettings.featuredPostId)opt.selected=true;sel.appendChild(opt);});
   }
 };
 $("settingsOverlay").addEventListener("click",e=>{if(e.target===$("settingsOverlay"))closeOverlay("settingsOverlay");});
 
-function populateSettingsForm() {
-  $("s-siteName").value     = siteSettings.siteName||"প্রকাশ";
-  $("s-tagline").value      = siteSettings.tagline||"মুক্ত কলমের মঞ্চ";
-  $("s-heroTitle").value    = siteSettings.heroTitle||"লিখুন, পড়ুন, ভাগ করুন";
-  $("s-heroDesc").value     = siteSettings.heroDesc||"";
-  $("s-footerTag").value    = siteSettings.footerTag||"✦ মুক্ত কলমের মঞ্চ";
-  $("s-defaultTheme").value = siteSettings.defaultTheme||"dark";
-  $("s-accentColor").value  = siteSettings.accentColor||"#e8a84c";
-  $("colorHexDisplay").textContent = siteSettings.accentColor||"#e8a84c";
-  $("s-marqueeSpeed").value = siteSettings.marqueeSpeed||40;
-  $("s-annActive").checked  = !!(siteSettings.announcementActive);
-  $("s-annText").value      = siteSettings.announcement||"";
-  $("s-salaamActive").checked = siteSettings.salaamActive !== false;
-  $("s-salaamText").value   = siteSettings.salaamText||"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ · اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ";
+function populateSettingsForm(){
+  $("s-siteName").value=siteSettings.siteName||"প্রকাশ";
+  $("s-tagline").value=siteSettings.tagline||"মুক্ত কলমের মঞ্চ";
+  $("s-heroTitle").value=siteSettings.heroTitle||"লিখুন, পড়ুন, ভাগ করুন";
+  $("s-heroDesc").value=siteSettings.heroDesc||"";
+  $("s-footerTag").value=siteSettings.footerTag||"✦ মুক্ত কলমের মঞ্চ";
+  $("s-defaultTheme").value=siteSettings.defaultTheme||"dark";
+  $("s-accentColor").value=siteSettings.accentColor||"#e8a84c";
+  $("colorHexDisplay").textContent=siteSettings.accentColor||"#e8a84c";
+  $("s-marqueeSpeed").value=siteSettings.marqueeSpeed||40;
+  $("s-annActive").checked=!!(siteSettings.announcementActive);
+  $("s-annText").value=siteSettings.announcement||"";
+  $("s-salaamActive").checked=siteSettings.salaamActive!==false;
+  $("s-salaamText").value=siteSettings.salaamText||"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ · اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ";
   document.querySelectorAll(".color-swatch").forEach(s=>s.classList.toggle("active",s.dataset.color===(siteSettings.accentColor||"#e8a84c")));
 }
+window.selectColor=c=>{$("s-accentColor").value=c;$("colorHexDisplay").textContent=c;document.querySelectorAll(".color-swatch").forEach(s=>s.classList.toggle("active",s.dataset.color===c));};
+$("s-accentColor").addEventListener("input",function(){$("colorHexDisplay").textContent=this.value;});
 
-window.selectColor = c => {
-  $("s-accentColor").value = c; $("colorHexDisplay").textContent = c;
-  document.querySelectorAll(".color-swatch").forEach(s=>s.classList.toggle("active",s.dataset.color===c));
-};
-$("s-accentColor").addEventListener("input",function(){ $("colorHexDisplay").textContent=this.value; });
-
-window.saveIdentitySettings = async () => {
-  const update = {
-    siteName:$("s-siteName").value.trim(), tagline:$("s-tagline").value.trim(),
-    heroTitle:$("s-heroTitle").value.trim(), heroDesc:$("s-heroDesc").value.trim(),
-    footerTag:$("s-footerTag").value.trim()
-  };
-  try { await setDoc(doc(db,"settings","general"),update,{merge:true}); Object.assign(siteSettings,update); applySettings(); showSettingsOk("পরিচিতি সংরক্ষিত!"); }
-  catch { showSettingsOk("ব্যর্থ হয়েছে।"); }
-};
-window.saveThemeSettings = async () => {
-  const update = {defaultTheme:$("s-defaultTheme").value, accentColor:$("s-accentColor").value, marqueeSpeed:parseInt($("s-marqueeSpeed").value)};
-  try { await setDoc(doc(db,"settings","general"),update,{merge:true}); Object.assign(siteSettings,update); applySettings(); showSettingsOk("থিম সংরক্ষিত!"); }
-  catch { showSettingsOk("ব্যর্থ হয়েছে।"); }
-};
-window.saveSalaamSettings = async () => {
-  const update = {salaamText:$("s-salaamText").value.trim(), salaamActive:$("s-salaamActive").checked};
-  try { await setDoc(doc(db,"settings","general"),update,{merge:true}); Object.assign(siteSettings,update); applySettings(); showSettingsOk("সালাম সংরক্ষিত!"); computeOffsets(); }
-  catch { showSettingsOk("ব্যর্থ হয়েছে।"); }
-};
-window.saveAnnouncementSettings = async () => {
-  const update = {announcement:$("s-annText").value.trim(), announcementActive:$("s-annActive").checked};
-  try {
-    await setDoc(doc(db,"settings","general"),update,{merge:true});
-    Object.assign(siteSettings,update);
-    annHidden=false; sessionStorage.removeItem("ann-hidden");
-    applySettings(); showSettingsOk("ঘোষণা সংরক্ষিত!");
-  } catch { showSettingsOk("ব্যর্থ হয়েছে।"); }
-};
-window.saveFeaturedSettings = async () => {
-  const val = $("s-featuredPost").value;
-  const update = {featuredPostId:val||null};
-  try {
-    await setDoc(doc(db,"settings","general"),update,{merge:true});
-    Object.assign(siteSettings,update);
-    if(val) renderFeaturedBanner(val); else $("featuredBannerWrap").style.display="none";
-    showSettingsOk("ফিচার পোস্ট সংরক্ষিত!");
-  } catch { showSettingsOk("ব্যর্থ হয়েছে।"); }
-};
-
-/* ════ CATEGORIES SETTINGS ════ */
-let editingCategories = [];
-function renderCatManageList() {
-  editingCategories = [...categories];
-  const el = $("catManageList");
-  const vis = posts.filter(p=>!p.hidden);
-  const catCounts = {};
-  vis.forEach(p=>{ if(p.category) catCounts[p.category]=(catCounts[p.category]||0)+1; });
-  el.innerHTML = editingCategories.map((c,i) =>
-    `<div class="cat-manage-item">
-      <span class="cat-item-name">${esc(c)}</span>
-      <span class="cat-item-count">${toBn(catCounts[c]||0)} পোস্ট</span>
-      <button class="ded-name-del" onclick="removeCat(${i})">✕</button>
-    </div>`
-  ).join("");
+/* ══ CATEGORY MANAGEMENT ══ */
+let editingCategories=[];
+function renderCatManageList(){
+  editingCategories=[...categories];
+  const el=$("catManageList");
+  const vis=posts.filter(p=>!p.hidden);
+  const catCounts={};vis.forEach(p=>{if(p.category)catCounts[p.category]=(catCounts[p.category]||0)+1;});
+  el.innerHTML=editingCategories.map((c,i)=>`<div class="cat-manage-item"><span class="cat-item-name">${esc(c)}</span><span class="cat-item-count">${toBn(catCounts[c]||0)} পোস্ট</span><button class="ded-name-del" onclick="removeCat(${i})">✕</button></div>`).join("");
 }
-window.removeCat = i => {
-  const count = posts.filter(p=>p.category===editingCategories[i]&&!p.hidden).length;
-  if (count > 0 && !confirm(`"${editingCategories[i]}" বিভাগে ${count} টি পোস্ট আছে। তবুও মুছবেন?`)) return;
-  editingCategories.splice(i,1); renderCatManageList();
-};
-window.addCategory = () => {
-  const val = $("newCatInput").value.trim();
-  if (!val) return;
-  if (editingCategories.includes(val)) { $("catOk").textContent="এই বিভাগ আগেই আছে।"; $("catOk").classList.add("show"); return; }
-  editingCategories.push(val); $("newCatInput").value=""; renderCatManageList();
-  $("catOk").textContent="বিভাগ যোগ হয়েছে।"; $("catOk").classList.add("show");
-  setTimeout(()=>$("catOk").classList.remove("show"),2000);
-};
-window.saveCategoriesSettings = async () => {
-  if (!editingCategories.length) { alert("অন্তত একটি বিভাগ রাখতে হবে।"); return; }
-  const update = {categories: editingCategories};
-  try {
-    await setDoc(doc(db,"settings","general"),update,{merge:true});
-    Object.assign(siteSettings,update);
-    categories = [...editingCategories];
-    renderCategoryStrip(); populatePostCatSelect(); buildAdminCatFilter();
-    showSettingsOk("বিভাগ সংরক্ষিত!");
-  } catch { showSettingsOk("ব্যর্থ হয়েছে।"); }
-};
+window.removeCat=i=>{const count=posts.filter(p=>p.category===editingCategories[i]&&!p.hidden).length;if(count>0&&!confirm(`"${editingCategories[i]}" বিভাগে ${count} টি পোস্ট আছে। তবুও মুছবেন?`))return;editingCategories.splice(i,1);renderCatManageList();};
+window.addCategory=()=>{const val=$("newCatInput").value.trim();if(!val)return;if(editingCategories.includes(val)){showOk("catOk","এই বিভাগ আগেই আছে।");return;}editingCategories.push(val);$("newCatInput").value="";renderCatManageList();showOk("catOk","বিভাগ যোগ হয়েছে।");};
 
-/* ════ DEDICATION SETTINGS ════ */
-let editingDedNames = [];
-function renderDedNamesList() {
-  editingDedNames = [...dedNames];
-  const el = $("dedNamesList");
-  el.innerHTML = editingDedNames.map((n,i) =>
-    `<div class="ded-name-item">
-      <span class="ded-name-text">${esc(n)}</span>
-      <button class="ded-name-del" onclick="removeDedName(${i})">✕</button>
-    </div>`
-  ).join("");
+/* ══ DEDICATION MANAGEMENT ══ */
+let editingDedNames=[];
+function renderDedNamesList(){
+  editingDedNames=[...dedNames];
+  const el=$("dedNamesList");
+  el.innerHTML=editingDedNames.map((n,i)=>`<div class="ded-name-item"><span class="ded-name-text">${esc(n)}</span><button class="ded-name-del" onclick="removeDedName(${i})">✕</button></div>`).join("");
 }
-window.removeDedName = i => { editingDedNames.splice(i,1); renderDedNamesList(); };
-window.addDedName = () => {
-  const val = $("newDedName").value.trim();
-  if (!val) return;
-  editingDedNames.push(val); $("newDedName").value=""; renderDedNamesList();
-  $("dedOk").textContent="নাম যোগ হয়েছে।"; $("dedOk").classList.add("show");
-  setTimeout(()=>$("dedOk").classList.remove("show"),2000);
-};
-window.saveDedicationSettings = async () => {
-  const update = {dedNames: editingDedNames};
-  try {
-    await setDoc(doc(db,"settings","general"),update,{merge:true});
-    Object.assign(siteSettings,update);
-    dedNames = [...editingDedNames];
-    renderMarquee();
-    showSettingsOk("উৎসর্গ সংরক্ষিত!");
-  } catch { showSettingsOk("ব্যর্থ হয়েছে।"); }
-};
+window.removeDedName=i=>{editingDedNames.splice(i,1);renderDedNamesList();};
+window.addDedName=()=>{const val=$("newDedName").value.trim();if(!val)return;editingDedNames.push(val);$("newDedName").value="";renderDedNamesList();showOk("dedOk","নাম যোগ হয়েছে।");};
 
-/* ════ USER MANAGER ════ */
-window.openUserManager = async () => {
+/* ══ USER MANAGER ══ */
+window.openUserManager=async()=>{
   openOverlay("userManagerOverlay");
-  const el = $("userManagerList");
-  el.innerHTML = `<div class="loading-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>`;
-  try {
-    const snap = await getDocs(collection(db,"users"));
-    if (!snap.size) { el.innerHTML=`<div style="color:var(--text-muted);text-align:center;padding:2rem 0;font-size:0.88rem">কোনো নিবন্ধিত ব্যবহারকারী নেই।</div>`; return; }
-    el.innerHTML = snap.docs.map(d => {
-      const u = d.data();
-      return `<div class="admin-post-item">
-        <div>
-          <div class="admin-post-title">${esc(u.name||"অজ্ঞাত")}</div>
-          <div class="admin-post-meta">
-            <span class="post-date">${esc(u.email||"")}</span>
-            <span class="post-date">${fmt(u.createdAt)}</span>
-          </div>
-        </div>
-        <div class="admin-actions">
-          <span class="post-cat-badge">${u.email===ADMIN_EMAIL?"অ্যাডমিন":"ব্যবহারকারী"}</span>
-        </div>
-      </div>`;
-    }).join("");
-  } catch {
-    el.innerHTML = `<div style="color:var(--red);padding:1rem">লোড করতে সমস্যা।</div>`;
-  }
+  const el=$("userManagerList");
+  el.innerHTML=`<div class="loading-row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>`;
+  try{
+    const snap=await getDocs(collection(db,"users"));
+    if(!snap.size){el.innerHTML=`<div style="color:var(--text-muted);text-align:center;padding:2rem 0;font-size:0.88rem">কোনো নিবন্ধিত ব্যবহারকারী নেই।</div>`;return;}
+    el.innerHTML=snap.docs.map(d=>{const u=d.data();return`<div class="admin-post-item"><div><div class="admin-post-title">${esc(u.name||"অজ্ঞাত")}</div><div class="admin-post-meta"><span class="post-date">${esc(u.email||"")}</span><span class="post-date">${fmt(u.createdAt)}</span></div></div><div class="admin-actions"><span class="post-cat-badge">${u.email===ADMIN_EMAIL?"অ্যাডমিন":"ব্যবহারকারী"}</span></div></div>`;}).join("");
+  }catch{el.innerHTML=`<div style="color:var(--red);padding:1rem">লোড করতে সমস্যা।</div>`;}
 };
 document.querySelectorAll("#userManagerOverlay").forEach(el=>el.addEventListener("click",e=>{if(e.target===el)closeOverlay("userManagerOverlay");}));
 
-/* ════════════════════════════════
-   THEME
-════════════════════════════════ */
-const html = document.documentElement;
-const themeBtn = $("themeBtn");
-const themes = ["dark","light","sepia"];
-const themeEmojis = {dark:"🌙",light:"☀️",sepia:"📜"};
-let themeIdx = themes.indexOf(html.getAttribute("data-theme")||"dark");
-themeBtn.textContent = themeEmojis[themes[themeIdx]];
-themeBtn.addEventListener("click", () => {
-  themeIdx = (themeIdx+1)%3;
-  const next = themes[themeIdx];
-  html.setAttribute("data-theme",next);
-  themeBtn.textContent = themeEmojis[next];
-  localStorage.setItem("prokash-theme",next);
-  toast(next==="dark"?"ডার্ক থিম":next==="light"?"লাইট থিম":"সেপিয়া থিম",themeEmojis[next]);
-});
+/* ══ THEME ══ */
+const htmlEl=document.documentElement;
+const themeBtn=$("themeBtn");
+const themes=["dark","light","sepia"];
+const themeEmojis={dark:"🌙",light:"☀️",sepia:"📜"};
+let themeIdx=themes.indexOf(htmlEl.getAttribute("data-theme")||"dark");
+themeBtn.textContent=themeEmojis[themes[themeIdx]];
+themeBtn.addEventListener("click",()=>{themeIdx=(themeIdx+1)%3;const next=themes[themeIdx];htmlEl.setAttribute("data-theme",next);themeBtn.textContent=themeEmojis[next];localStorage.setItem("prokash-theme",next);toast(next==="dark"?"ডার্ক থিম":next==="light"?"লাইট থিম":"সেপিয়া থিম",themeEmojis[next]);});
 
-/* ════════════════════════════════
-   KEYBOARD SHORTCUTS
-════════════════════════════════ */
-document.addEventListener("keydown", e => {
-  const inInput = ["INPUT","TEXTAREA","SELECT"].includes(e.target.tagName);
-  if (e.key==="Escape") {
-    ["authOverlay","writeOverlay","deleteOverlay","settingsOverlay","shortcutsOverlay","userManagerOverlay"].forEach(closeOverlay);
-    if (isSearchOpen) toggleSearch();
-    exitZen();
-  }
-  if (!inInput) {
-    if (e.key==="/") { e.preventDefault(); isSearchOpen ? $("searchInput").focus() : toggleSearch(); }
-    if ((e.key==="n"||e.key==="ন") && currentUser) { e.preventDefault(); openWriteModal(); }
-    if (e.key==="r" && $("homeView").classList.contains("active")) {
-      const vis = posts.filter(p=>!p.hidden);
-      if (vis.length) openPost(vis[Math.floor(Math.random()*vis.length)].id);
-    }
-    if (e.key==="f" && $("homeView").classList.contains("active")) { prevView="home"; showView("favorites"); }
-    if (e.key==="?") { e.preventDefault(); openOverlay("shortcutsOverlay"); }
-    if (e.key==="t") themeBtn.click();
-    if (e.key==="ArrowLeft" && $("readingView").classList.contains("active")) {
-      e.preventDefault(); const t=prevView||"home"; prevView="home"; showView(t,{restoreScroll:true});
-    }
+/* ══ KEYBOARD SHORTCUTS ══ */
+document.addEventListener("keydown",e=>{
+  const inInput=["INPUT","TEXTAREA","SELECT"].includes(e.target.tagName);
+  if(e.key==="Escape"){["authOverlay","writeOverlay","deleteOverlay","settingsOverlay","shortcutsOverlay","userManagerOverlay"].forEach(closeOverlay);if(isSearchOpen)toggleSearch();exitZen();}
+  if(!inInput){
+    if(e.key==="/"){ e.preventDefault();isSearchOpen?$("searchInput").focus():toggleSearch();}
+    if((e.key==="n"||e.key==="ন")&&currentUser){e.preventDefault();openWriteModal();}
+    if(e.key==="r"&&$("homeView").classList.contains("active")){const vis=posts.filter(p=>!p.hidden);if(vis.length)openPost(vis[Math.floor(Math.random()*vis.length)].id);}
+    if(e.key==="f"&&$("homeView").classList.contains("active")){prevView="home";showView("favorites");}
+    if(e.key==="?"){e.preventDefault();openOverlay("shortcutsOverlay");}
+    if(e.key==="t")themeBtn.click();
+    if(e.key==="ArrowLeft"&&$("readingView").classList.contains("active")){e.preventDefault();const t=prevView||"home";prevView="home";showView(t,{restoreScroll:true});}
   }
 });
 
-/* ════════════════════════════════
-   POPSTATE
-════════════════════════════════ */
-window.addEventListener("popstate", () => {
-  const hash = window.location.hash;
-  if (hash.startsWith("#post/")) {
-    const id = hash.slice(6);
-    if (posts.find(x=>x.id===id)) { openPost(id,false); return; }
-  }
-  showView("home",{restoreScroll:true});
-});
+/* ══ POPSTATE ══ */
+window.addEventListener("popstate",()=>{const hash=window.location.hash;if(hash.startsWith("#post/")){const id=hash.slice(6);if(posts.find(x=>x.id===id)){openPost(id,false);return;}}showView("home",{restoreScroll:true});});
 
-/* ════════════════════════════════
-   BOOT
-════════════════════════════════ */
-async function boot() {
-  // Initial offsets with salaam bar active
+/* ══ BOOT ══ */
+async function boot(){
   computeOffsets();
   renderMarquee();
   renderCategoryStrip();
   populatePostCatSelect();
   buildAdminCatFilter();
-  await loadSettings();
+  await loadSettings(); // loads from localStorage instantly, then tries Firestore
   startListener();
 }
 boot();
